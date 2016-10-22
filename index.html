@@ -25,7 +25,9 @@
     <h1>Hello, world!</h1>
 
     <div id="app" v-cloak>
-      <Ingredient />
+      <Ingredient name="Calcium"></Ingredient>
+      <Ingredient name="Chlorine"></Ingredient>
+      <Ingredient name="Chlorine"></Ingredient>
     </div>
 
 
@@ -36,13 +38,11 @@
     <!-- <script src="https://unpkg.com/vue/dist/vue.js" crossorigin="anonymous"></script> -->
 
     <script type="text/javascript">
+      Vue.config.devtools = true
+
       Vue.component("Ingredient", {
         template: "<div>{{name}}</div>",
-        data: function () {
-          return {
-            name: "Calcium"
-          }
-        }
+        props: ["name"]
       })
 
       new Vue({
