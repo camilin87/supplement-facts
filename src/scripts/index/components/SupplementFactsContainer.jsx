@@ -7,9 +7,9 @@ export default class SupplementFactsContainer extends React.Component {
     constructor(props) {
         super(props)
 
-        var vm = this.props.viewModel
+        var vm = this.props.data
 
-        if (!this.props.viewModel){
+        if (!this.props.data){
             vm = {
                 percentOfDailyValueAdditionalSymbol: "^=",
                 dailyValueIngredients: [
@@ -22,9 +22,7 @@ export default class SupplementFactsContainer extends React.Component {
 
         vm.dailyValueIngredients = vm.dailyValueIngredients || []
 
-        this.state = {
-            viewModel: vm
-        }
+        this.state = vm
     }
 
     render (){
@@ -35,12 +33,12 @@ export default class SupplementFactsContainer extends React.Component {
                         <th></th>
                         <th>Amount per Serving</th>
                         <th>
-                            <DailyValueHeader addSymbol={this.state.viewModel.percentOfDailyValueAdditionalSymbol}/>
+                            <DailyValueHeader addSymbol={this.state.percentOfDailyValueAdditionalSymbol}/>
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    {this.state.viewModel.dailyValueIngredients.map(i => <LabelIngredient key={i.name} item={i}/>)}
+                    {this.state.dailyValueIngredients.map(i => <LabelIngredient key={i.name} item={i}/>)}
                 </tbody>
             </table>
         )

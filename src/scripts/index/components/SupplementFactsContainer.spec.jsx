@@ -2,10 +2,10 @@ import React from "react"
 import {shallow} from "enzyme"
 import SupplementFactsContainer from "./SupplementFactsContainer.jsx"
 
-test("Returns the header and the additional symbol", () => {
+test("Doesn't blow up on empty data", () => {
     var vm = {}
 
     const component = shallow(
-        <SupplementFactsContainer viewModel={vm} />
+        <SupplementFactsContainer data={vm} />
     )
 })
