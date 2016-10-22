@@ -10,8 +10,7 @@ export default class LabelIngredient extends React.Component {
 
                 <IngredientSource source={this.props.item.source} />
 
-                {this.props.item.quantity}
-                {this.props.item.unit}
+                {this.props.item.quantity + " " + this.props.item.unit}
 
                 <IngredientPercentage percentage={this.props.item.percentage} />
             </li>
