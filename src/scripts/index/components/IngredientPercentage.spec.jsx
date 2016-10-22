@@ -17,3 +17,11 @@ test("Returns a star when no percentage is defined", () => {
 
     expect(component.find("span").text()).toBe("*")
 })
+
+test("fail on purpose", () => {
+    const component = shallow(
+        <IngredientPercentage percentage="" />
+    )
+
+    expect(component.find("span").text()).toBe("lolo")
+})
