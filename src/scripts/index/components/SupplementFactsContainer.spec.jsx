@@ -21,3 +21,20 @@ test("displays the additional percentage of daily value", () => {
 
     expect(component.find("DailyValueHeader").props().addSymbol).toBe("^^")
 })
+
+test("displays the daily value ingredients", () => {
+    var vm = {
+        dailyValueIngredients: [
+            {name: "ingredient1"},
+            {name: "ingredient2"}
+        ]
+    }
+
+    const component = shallow(
+        <SupplementFactsContainer data={vm} />
+    )
+
+    expect(component.find("LabelIngredient").nodes.map(n => n.key)).toEqual(["ingredient1", "ingredient2"])
+})
+
+
