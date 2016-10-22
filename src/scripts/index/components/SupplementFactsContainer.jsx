@@ -10,9 +10,11 @@ export default class SupplementFactsContainer extends React.Component {
         ]
 
         return (
-            <ul>
-                {ingredients1.map(i => <LabelIngredient key={i.name} item={i}/>)}
-            </ul>
+            <table>
+                <tbody>
+                    {ingredients1.map(i => <LabelIngredient key={i.name} item={i}/>)}
+                </tbody>
+            </table>
         )
     }
 }
