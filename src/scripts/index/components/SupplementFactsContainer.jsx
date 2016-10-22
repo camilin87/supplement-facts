@@ -3,10 +3,16 @@ import LabelIngredient from './LabelIngredient.jsx';
 
 class SupplementFactsContainer extends React.Component {
     render (){
-        var item1 = {name: "Calcium", source: "AAAA", quantity: 14, unit: "mg", percentage: "15 %"}
+        var ingredients1 = [
+            {name: "Calcium", source: "AAAA", quantity: 14, unit: "mg", percentage: "15 %"},
+            {name: "Chlorine", quantity: 14, unit: "mg", percentage: "5 %"},
+            {name: "Sodium", quantity: 14, unit: "mg"}
+        ]
 
         return (
-            <LabelIngredient item={item1}/>
+            <div>
+                {ingredients1.map(i => <LabelIngredient item={i}/>)}
+            </div>
         )
     }
 }
