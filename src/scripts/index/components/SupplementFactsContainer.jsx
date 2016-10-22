@@ -10,9 +10,9 @@ class SupplementFactsContainer extends React.Component {
         ]
 
         return (
-            <div>
+            <ul>
                 {ingredients1.map(i => <LabelIngredient key={i.name} item={i}/>)}
-            </div>
+            </ul>
         )
     }
 }
