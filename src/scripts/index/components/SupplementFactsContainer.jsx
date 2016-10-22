@@ -46,6 +46,12 @@ export default class SupplementFactsContainer extends React.Component {
                 <tbody>
                     {this.state.dailyValueIngredients.map(i => <LabelIngredient key={i.name} item={i}/>)}
 
+                    <tr>
+                        <td colSpan="3">
+                            <hr />
+                        </td>
+                    </tr>
+
                     {this.state.nonDailyValueIngredients.map(i => <LabelIngredient key={i.name} item={i}/>)}
                 </tbody>
             </table>
