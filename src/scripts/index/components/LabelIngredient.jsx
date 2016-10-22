@@ -1,5 +1,6 @@
 import React from 'react'
 import IngredientSource from './IngredientSource.jsx';
+import IngredientPercentage from './IngredientPercentage.jsx';
 
 class LabelIngredient extends React.Component {
     render (){
@@ -11,7 +12,8 @@ class LabelIngredient extends React.Component {
 
                 {this.props.item.quantity}
                 {this.props.item.unit}
-                {this.props.item.percentage}
+
+                <IngredientPercentage percentage={this.props.item.percentage} />
             </div>
         )
     }
