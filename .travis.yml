@@ -5,7 +5,7 @@ node_js:
   - stable
 env:
   global:
-    - secure: 
+    - secure: uD/ioYpsGoMX0ixtE0Q2KjVOTHxLn3N6v2DM+I9wnWIqd8MIfq9XgfrsyJ5q+JD44Rt1BLUm8q+jXc0v2tAdmPKs/+vyT5++WJh42+rcoUD259ZBNoMQ7ST+veD6rKC6LBfS4UllmFyPLXvl7V1r3eQx7NBCWKTHIvGafYKQtiCu+GMu4UEz4pJHV6l138z4qod83XsO3s5Skgq9MZwMOfxMCpL4jYDIoSMQIjirW8T90I7aRsOTPnVtno8pXDEepUAYg+UFs6eHXdjb6XjmNXOMpxPcNDOXTqDJ23/T98ca7pY3ILNbP2CRhKBJxC+8Gb2S4jaYlYsG5Ini4Ca4XHKMU2v1qSUlglCcSyFguKOiiiJMaeiUszrvvNmSoMKzQ8BIT/KONY5wlF5kMhZ25Zcf1FOnXCqlcAgCQnlSagIOdKqyKsFx/xJGw4brIzbJyxnFOCKtooHjaRzYGDP7ZIIOmffajFQMNYVFY47Z5FL1Pq1Drd02ZhFQrGEJnUFkfDLcGl+neap+MgdF+oM1A1BNsNsF0VWclwu+H9Z6XT+iACwIRlWnRYW8iQf7t5LxQ2eYKgenA6GEauTd4TUXNiGzOcoG8xigFcfLdbgC1z4bXeI02ap2rN0kPpb0G31oQw4wq7qEzNHlNwTwCiruaqIpVqdSn+Ry5wz0iLHsLj8=
     - GITHUB_REPO: "camilin87/supplement-facts"
     - BRANCH_TO_MERGE_INTO: "gh-pages"
 after_success:
