@@ -2,7 +2,7 @@ import React from 'react'
 import IngredientSource from './IngredientSource.jsx';
 import IngredientPercentage from './IngredientPercentage.jsx';
 
-class LabelIngredient extends React.Component {
+export default class LabelIngredient extends React.Component {
     render (){
         return (
             <li>
@@ -18,5 +18,3 @@ class LabelIngredient extends React.Component {
         )
     }
 }
-
-export default LabelIngredient

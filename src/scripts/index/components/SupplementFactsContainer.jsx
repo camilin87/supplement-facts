@@ -1,7 +1,7 @@
 import React from 'react'
 import LabelIngredient from './LabelIngredient.jsx';
 
-class SupplementFactsContainer extends React.Component {
+export default class SupplementFactsContainer extends React.Component {
     render (){
         var ingredients1 = [
             {name: "Calcium", source: "AAAA", quantity: 14, unit: "mg", percentage: "15 %"},
@@ -16,5 +16,3 @@ class SupplementFactsContainer extends React.Component {
         )
     }
 }
-
-export default SupplementFactsContainer

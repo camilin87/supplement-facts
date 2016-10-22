@@ -1,6 +1,6 @@
 import React from 'react'
 
-class IngredientPercentage extends React.Component {
+export default class IngredientPercentage extends React.Component {
     render (){
         if (!this.props.percentage){
             return (<span>*</span>)
@@ -13,5 +13,3 @@ class IngredientPercentage extends React.Component {
         )
     }
 }
-
-export default IngredientPercentage
