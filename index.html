@@ -25,7 +25,7 @@
     <h1>Hello, world!</h1>
 
     <div id="app" v-cloak>
-      {{ message }}
+      <Ingredient />
     </div>
 
 
@@ -36,11 +36,17 @@
     <!-- <script src="https://unpkg.com/vue/dist/vue.js" crossorigin="anonymous"></script> -->
 
     <script type="text/javascript">
-      var app = new Vue({
-        el: '#app',
-        data: {
-          message: 'Hello Vue!'
+      Vue.component("Ingredient", {
+        template: "<div>{{name}}</div>",
+        data: function () {
+          return {
+            name: "Calcium"
+          }
         }
+      })
+
+      new Vue({
+        el: '#app'
       })
     </script>
   </body>
