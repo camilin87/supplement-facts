@@ -9,3 +9,15 @@ test("Doesn't blow up on empty data", () => {
         <SupplementFactsContainer data={vm} />
     )
 })
+
+test("displays the additional percentage of daily value", () => {
+    var vm = {
+        percentOfDailyValueAdditionalSymbol: "^^"
+    }
+
+    const component = shallow(
+        <SupplementFactsContainer data={vm} />
+    )
+
+    expect(component.find("DailyValueHeader").props().addSymbol).toBe("^^")
+})
