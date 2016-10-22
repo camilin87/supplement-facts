@@ -6,6 +6,7 @@
     "prestart": "npm install",
     "start": "./node_modules/.bin/webpack -d --watch & http-server -p 3000",
     "test": "jest",
+    "watch": "jest --watch",
     "bundle": "./node_modules/.bin/webpack -p",
     "devbundle": "./node_modules/.bin/webpack -d"
   },
