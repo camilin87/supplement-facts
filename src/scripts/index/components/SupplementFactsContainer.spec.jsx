@@ -50,4 +50,5 @@ test("displays the non daily value ingredients", () => {
     )
 
     expect(component.find("LabelIngredient").nodes.map(n => n.key)).toEqual(["ingredient1", "ingredient2"])
+    expect(component.find("NonDailyValueSeparator").props().ingredients).toBe(vm.nonDailyValueIngredients)
 })
