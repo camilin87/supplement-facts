@@ -37,4 +37,17 @@ test("displays the daily value ingredients", () => {
     expect(component.find("LabelIngredient").nodes.map(n => n.key)).toEqual(["ingredient1", "ingredient2"])
 })
 
+test("displays the non daily value ingredients", () => {
+    var vm = {
+        nonDailyValueIngredients: [
+            {name: "ingredient1"},
+            {name: "ingredient2"}
+        ]
+    }
 
+    const component = shallow(
+        <SupplementFactsContainer data={vm} />
+    )
+
+    expect(component.find("LabelIngredient").nodes.map(n => n.key)).toEqual(["ingredient1", "ingredient2"])
+})

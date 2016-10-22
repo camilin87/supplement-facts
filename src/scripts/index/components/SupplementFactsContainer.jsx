@@ -21,6 +21,7 @@ export default class SupplementFactsContainer extends React.Component {
         }
 
         vm.dailyValueIngredients = vm.dailyValueIngredients || []
+        vm.nonDailyValueIngredients = vm.nonDailyValueIngredients || []
 
         this.state = vm
     }
@@ -39,6 +40,8 @@ export default class SupplementFactsContainer extends React.Component {
                 </thead>
                 <tbody>
                     {this.state.dailyValueIngredients.map(i => <LabelIngredient key={i.name} item={i}/>)}
+
+                    {this.state.nonDailyValueIngredients.map(i => <LabelIngredient key={i.name} item={i}/>)}
                 </tbody>
             </table>
         )
