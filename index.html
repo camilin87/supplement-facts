@@ -16,38 +16,13 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <style type="text/css">
-      [v-cloak] { display:none; }
-    </style>
-
   </head>
   <body>
     <h1>Hello, world!</h1>
-
-    <div id="app" v-cloak>
-      <Ingredient name="Calcium"></Ingredient>
-      <Ingredient name="Chlorine"></Ingredient>
-      <Ingredient name="Chlorine"></Ingredient>
-    </div>
 
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-    <script src="https://unpkg.com/vue/dist/vue.min.js" crossorigin="anonymous"></script>
-    <!-- <script src="https://unpkg.com/vue/dist/vue.js" crossorigin="anonymous"></script> -->
-
-    <script type="text/javascript">
-      Vue.config.devtools = true
-
-      Vue.component("Ingredient", {
-        template: "<div>{{name}}</div>",
-        props: ["name"]
-      })
-
-      new Vue({
-        el: '#app'
-      })
-    </script>
   </body>
 </html>
