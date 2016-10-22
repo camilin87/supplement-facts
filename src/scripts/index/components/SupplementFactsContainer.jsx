@@ -1,5 +1,6 @@
 import React from 'react'
-import LabelIngredient from './LabelIngredient.jsx';
+import LabelIngredient from './LabelIngredient.jsx'
+import DailyValueHeader from './DailyValueHeader.jsx'
 
 export default class SupplementFactsContainer extends React.Component {
 
@@ -9,7 +10,7 @@ export default class SupplementFactsContainer extends React.Component {
         if (!this.props.viewModel){
             this.state = {
                 viewModel: {
-                    percentOfDailyValueAdditionalSymbol: "^",
+                    percentOfDailyValueAdditionalSymbol: "^=",
                     dailyValueIngredients: [
                         {name: "Calcium", source: "AAAA", quantity: 14, unit: "mg", percentage: "15 %"},
                         {name: "Chlorine", quantity: 14, unit: "mg", percentage: "5 %"},
@@ -32,7 +33,9 @@ export default class SupplementFactsContainer extends React.Component {
                     <tr>
                         <th></th>
                         <th>Amount per Serving</th>
-                        <th>% Daily Value {this.state.viewModel.percentOfDailyValueAdditionalSymbol}</th>
+                        <th>
+                            <DailyValueHeader addSymbol={this.state.viewModel.percentOfDailyValueAdditionalSymbol}/>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
