@@ -1,7 +1,8 @@
 import React from 'react'
 import {render} from 'react-dom'
+import SupplementFactsContainer from './components/SupplementFactsContainer.jsx';
 
 render(
-    <h1>React FTW</h1>,
+    <SupplementFactsContainer />,
     document.getElementById("label-container")
 )
