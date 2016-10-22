@@ -1,6 +1,7 @@
 import React from 'react'
 import LabelIngredient from './LabelIngredient.jsx'
 import DailyValueHeader from './DailyValueHeader.jsx'
+import NonDailyValueSeparator from './NonDailyValueSeparator.jsx'
 
 export default class SupplementFactsContainer extends React.Component {
 
@@ -46,12 +47,7 @@ export default class SupplementFactsContainer extends React.Component {
                 <tbody>
                     {this.state.dailyValueIngredients.map(i => <LabelIngredient key={i.name} item={i}/>)}
 
-                    <tr>
-                        <td colSpan="3">
-                            <hr />
-                        </td>
-                    </tr>
-
+                    <NonDailyValueSeparator ingredients={this.state.nonDailyValueIngredients} />
                     {this.state.nonDailyValueIngredients.map(i => <LabelIngredient key={i.name} item={i}/>)}
                 </tbody>
             </table>
