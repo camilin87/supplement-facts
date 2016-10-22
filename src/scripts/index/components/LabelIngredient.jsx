@@ -5,6 +5,10 @@ class LabelIngredient extends React.Component {
         return (
             <div>
                 {this.props.item.name}
+                ({this.props.item.source})
+                {this.props.item.quantity}
+                {this.props.item.unit}
+                {this.props.item.percentage}
             </div>
         )
     }
