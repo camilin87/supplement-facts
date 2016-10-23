@@ -15,10 +15,6 @@ export default class ServingSize extends React.Component {
 
         var additionalSymbol = this.props.info.percentOfDailyValueAdditionalSymbol
 
-        if (this.props.info.displayInfantsDisclaimer){
-            lines.push(`${additionalSymbol} Daily Value only for infants`)
-        }
-
         if (this.props.info.displayChildrenDisclaimer){
             lines.push(`${additionalSymbol} DV for Children under the age of 4`)
         }

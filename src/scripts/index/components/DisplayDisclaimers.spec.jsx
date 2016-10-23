@@ -32,19 +32,6 @@ test("returns daily value not established", () => {
     expect(component.text()).toContain("* Daily Value not established")
 })
 
-test("displays the infants disclaimer", () => {
-    var info = {
-        percentOfDailyValueAdditionalSymbol: "^",
-        displayInfantsDisclaimer: true
-    }
-
-    const component = shallow(
-        <DisplayDisclaimers info={info} />
-    )
-
-    expect(component.text()).toContain("^ Daily Value only for infants")
-})
-
 test("displays the Children disclaimer", () => {
     var info = {
         percentOfDailyValueAdditionalSymbol: "^",
