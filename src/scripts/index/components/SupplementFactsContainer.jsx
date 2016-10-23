@@ -68,16 +68,18 @@ export default class SupplementFactsContainer extends React.Component {
 
                 <hr />
 
+
+                <div className="row">
+                  <div className="col-xs-8">
+                    Amount per Serving
+                  </div>
+                  <div className="col-xs-4 text-right">
+                    <DailyValueHeader addSymbol={this.state.percentOfDailyValueAdditionalSymbol}/>
+                  </div>
+                </div>
+
+
                 <table>
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Amount per Serving</th>
-                            <th>
-                                <DailyValueHeader addSymbol={this.state.percentOfDailyValueAdditionalSymbol}/>
-                            </th>
-                        </tr>
-                    </thead>
                     <tbody>
                         {this.state.dailyValueIngredients.map(i => <LabelIngredient key={i.name} item={i}/>)}
 
