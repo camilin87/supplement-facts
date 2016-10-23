@@ -67,3 +67,18 @@ test("displays the serving size", () => {
 
     expect(component.find("ServingSize").props().servingSize).toBe(vm.servingSizeInfo)
 })
+
+test("displays the disclaimers", () => {
+    var vm = {
+        disclaimers: {
+            field1: "blah",
+            field2: "blah blah"
+        }
+    }
+
+    const component = shallow(
+        <SupplementFactsContainer data={vm} />
+    )
+
+    expect(component.find("DisplayDisclaimers").props().info).toBe(vm.disclaimers)
+})

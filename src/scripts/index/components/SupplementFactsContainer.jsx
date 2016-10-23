@@ -3,6 +3,7 @@ import ServingSize from './ServingSize.jsx'
 import LabelIngredient from './LabelIngredient.jsx'
 import DailyValueHeader from './DailyValueHeader.jsx'
 import NonDailyValueSeparator from './NonDailyValueSeparator.jsx'
+import DisplayDisclaimers from './DisplayDisclaimers.jsx'
 
 export default class SupplementFactsContainer extends React.Component {
 
@@ -61,6 +62,8 @@ export default class SupplementFactsContainer extends React.Component {
                         {this.state.nonDailyValueIngredients.map(i => <LabelIngredient key={i.name} item={i}/>)}
                     </tbody>
                 </table>
+
+                <DisplayDisclaimers info={this.state.disclaimers} />
             </div>
         )
     }
