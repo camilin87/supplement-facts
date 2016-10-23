@@ -21,9 +21,9 @@ export default class SupplementFactsContainer extends React.Component {
                     additionalComments: "(8g) 1 tbsp",
                     servingsPerContainer: 10
                 },
-                percentOfDailyValueAdditionalSymbol: "^=",
+                percentOfDailyValueAdditionalSymbol: "^",
                 disclaimers: {
-                    percentOfDailyValueAdditionalSymbol: "^=",
+                    percentOfDailyValueAdditionalSymbol: "^",
                     displayDailyValueNotEstablished: true,
                     displayChildrenDisclaimer: true,
                     displayPregnantWomenDisclaimer: true,
