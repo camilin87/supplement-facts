@@ -69,10 +69,10 @@ export default class SupplementFactsContainer extends React.Component {
 
 
                 <div className="row">
-                  <div className="col-xs-9">
+                  <div className="col-xs-8">
                     <h3>Amount per Serving</h3>
                   </div>
-                  <div className="col-xs-3 text-right">
+                  <div className="col-xs-4 text-right">
                     <DailyValueHeader addSymbol={this.state.percentOfDailyValueAdditionalSymbol}/>
                   </div>
                 </div>
