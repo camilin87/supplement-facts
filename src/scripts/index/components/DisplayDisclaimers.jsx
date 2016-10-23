@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default class ServingSize extends React.Component {
+export default class DisplayDisclaimers extends React.Component {
     render (){
 
         if (!this.props.info){
