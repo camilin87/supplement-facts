@@ -19,7 +19,7 @@ test("displays the additional percentage of daily value", () => {
         <SupplementFactsContainer data={vm} />
     )
 
-    expect(component.find("DailyValueHeader").props().addSymbol).toBe("^^")
+    expect(component.find("IngredientsHeader").props().addSymbol).toBe("^^")
 })
 
 test("displays the daily value ingredients", () => {

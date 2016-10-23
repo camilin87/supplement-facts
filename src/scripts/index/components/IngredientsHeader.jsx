@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default class DailyValueHeader extends React.Component {
+export default class IngredientsHeader extends React.Component {
     render (){
         var addSymbol = ""
 

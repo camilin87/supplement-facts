@@ -1,7 +1,7 @@
 import React from 'react'
 import ServingSize from './ServingSize.jsx'
 import SingleIngredient from './SingleIngredient.jsx'
-import DailyValueHeader from './DailyValueHeader.jsx'
+import IngredientsHeader from './IngredientsHeader.jsx'
 import NonDailyValueSeparator from './NonDailyValueSeparator.jsx'
 import DisplayDisclaimers from './DisplayDisclaimers.jsx'
 import DisplayOtherIngredients from './DisplayOtherIngredients.jsx'
@@ -83,7 +83,7 @@ export default class SupplementFactsContainer extends React.Component {
                     <ServingSize servingSize={this.state.servingSizeInfo} />
                     <hr />
 
-                    <DailyValueHeader addSymbol={this.state.percentOfDailyValueAdditionalSymbol}/>
+                    <IngredientsHeader addSymbol={this.state.percentOfDailyValueAdditionalSymbol}/>
                     <hr className="slim"/>
 
                     {this.state.dailyValueIngredients.map(i => <SingleIngredient key={i.name} item={i}/>)}
