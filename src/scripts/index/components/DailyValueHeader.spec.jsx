@@ -7,7 +7,8 @@ test("Returns the header and the additional symbol", () => {
         <DailyValueHeader addSymbol="^" />
     )
 
-    expect(component.text()).toBe("% Daily Value ^")
+    expect(component.find("h3").first().text()).toBe("Amount per Serving")
+    expect(component.find("h3").last().text()).toBe("% Daily Value ^")
 })
 
 test("Returns the header only when no additional symbol is defined", () => {
@@ -15,5 +16,5 @@ test("Returns the header only when no additional symbol is defined", () => {
         <DailyValueHeader addSymbol="" />
     )
 
-    expect(component.text()).toBe("% Daily Value")
+    expect(component.find("h3").last().text()).toBe("% Daily Value")
 })

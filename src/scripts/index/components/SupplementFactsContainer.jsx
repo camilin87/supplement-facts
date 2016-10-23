@@ -83,15 +83,7 @@ export default class SupplementFactsContainer extends React.Component {
                     <ServingSize servingSize={this.state.servingSizeInfo} />
                     <hr />
 
-
-                    <div className="row">
-                      <div className="col-xs-6">
-                        <h3>Amount per Serving</h3>
-                      </div>
-                      <div className="col-xs-6 text-right">
-                        <DailyValueHeader addSymbol={this.state.percentOfDailyValueAdditionalSymbol}/>
-                      </div>
-                    </div>
+                    <DailyValueHeader addSymbol={this.state.percentOfDailyValueAdditionalSymbol}/>
                     <hr className="slim"/>
 
                     {this.state.dailyValueIngredients.map(i => <LabelIngredient key={i.name} item={i}/>)}
