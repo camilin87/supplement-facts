@@ -57,3 +57,17 @@ test("displays the Children disclaimer", () => {
 
     expect(component.text()).toContain("^ Daily Value only for children")
 })
+
+test("displays the pregnant women disclaimer", () => {
+    var info = {
+        percentOfDailyValueAdditionalSymbol: "^",
+        displayPregnantWomenDisclaimer: true
+    }
+
+    const component = shallow(
+        <DisplayDisclaimers info={info} />
+    )
+
+    expect(component.text()).toContain("^ Daily Value only for pregnant women")
+})
+
