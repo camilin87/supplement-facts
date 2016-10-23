@@ -30,6 +30,16 @@ export default class SupplementFactsContainer extends React.Component {
                     otherIngredients: "pb, hg",
                     allergens: "nuts, penicillin"
                 },
+                businessInfo: {
+                    distributedByLabel: "Distributed by",
+                    businessName: "Apple",
+                    streetAddressLine1: "One infinite loop",
+                    streetAddressLine2: " --- ",
+                    city: "cupertino",
+                    state: "CA",
+                    zipCode: "55555",
+                    phone: "1-800-my-apple"
+                },
                 dailyValueIngredients: [
                     {name: "Vitamin A", source: "AAAA", quantity: 14, unit: "mg", percentage: "15 %"},
                     {name: "Vitamin C", source: "BBBB", quantity: 10, unit: "mg", percentage: "5 %"},
