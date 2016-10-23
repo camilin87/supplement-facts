@@ -1,4 +1,5 @@
 import React from 'react'
+import ServingSize from './ServingSize.jsx'
 import LabelIngredient from './LabelIngredient.jsx'
 import DailyValueHeader from './DailyValueHeader.jsx'
 import NonDailyValueSeparator from './NonDailyValueSeparator.jsx'
@@ -12,6 +13,12 @@ export default class SupplementFactsContainer extends React.Component {
 
         if (!this.props.data){
             vm = {
+                servingSizeInfo: {
+                    value: 23,
+                    type: "packet",
+                    additionalComments: "(8g) 1 tbsp",
+                    servingsPerContainer: 10
+                },
                 percentOfDailyValueAdditionalSymbol: "^=",
                 dailyValueIngredients: [
                     {name: "Vitamin A", source: "AAAA", quantity: 14, unit: "mg", percentage: "15 %"},
@@ -34,23 +41,27 @@ export default class SupplementFactsContainer extends React.Component {
 
     render (){
         return (
-            <table>
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Amount per Serving</th>
-                        <th>
-                            <DailyValueHeader addSymbol={this.state.percentOfDailyValueAdditionalSymbol}/>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {this.state.dailyValueIngredients.map(i => <LabelIngredient key={i.name} item={i}/>)}
+            <div>
+                <ServingSize servingSize={this.state.servingSizeInfo} />
 
-                    <NonDailyValueSeparator ingredients={this.state.nonDailyValueIngredients} />
-                    {this.state.nonDailyValueIngredients.map(i => <LabelIngredient key={i.name} item={i}/>)}
-                </tbody>
-            </table>
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Amount per Serving</th>
+                            <th>
+                                <DailyValueHeader addSymbol={this.state.percentOfDailyValueAdditionalSymbol}/>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.state.dailyValueIngredients.map(i => <LabelIngredient key={i.name} item={i}/>)}
+
+                        <NonDailyValueSeparator ingredients={this.state.nonDailyValueIngredients} />
+                        {this.state.nonDailyValueIngredients.map(i => <LabelIngredient key={i.name} item={i}/>)}
+                    </tbody>
+                </table>
+            </div>
         )
     }
 }

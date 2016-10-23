@@ -52,3 +52,18 @@ test("displays the non daily value ingredients", () => {
     expect(component.find("LabelIngredient").nodes.map(n => n.key)).toEqual(["ingredient1", "ingredient2"])
     expect(component.find("NonDailyValueSeparator").props().ingredients).toBe(vm.nonDailyValueIngredients)
 })
+
+test("displays the serving size", () => {
+    var vm = {
+        servingSizeInfo: {
+            field1: "blah",
+            field2: "blah blah"
+        }
+    }
+
+    const component = shallow(
+        <SupplementFactsContainer data={vm} />
+    )
+
+    expect(component.find("ServingSize").props().servingSize).toBe(vm.servingSizeInfo)
+})
