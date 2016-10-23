@@ -13,9 +13,15 @@ export default class ServingSize extends React.Component {
             lines.push("* Daily Value not established")
         }
 
+        var additionalSymbol = this.props.info.percentOfDailyValueAdditionalSymbol
+
+        if (this.props.info.displayInfantsDisclaimer){
+            lines.push(`${additionalSymbol} Daily Value only for infants`)
+        }
+
         return (
             <ul>
-                { lines.map(l => <li>{l}</li>) }
+                { lines.map(l => <li key={l}>{l}</li>) }
             </ul>
         )
     }
