@@ -33,10 +33,14 @@
 
 #label-container hr.slim {
     border: solid 0.25em;
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
 }
 
 #label-container hr.x-slim {
     border: solid 0.1em;
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
 }
 
 #label-container ul {
