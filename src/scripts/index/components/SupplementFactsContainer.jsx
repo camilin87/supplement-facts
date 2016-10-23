@@ -51,6 +51,8 @@ export default class SupplementFactsContainer extends React.Component {
     render (){
         return (
             <div>
+                <h2>Supplement Facts</h2>
+
                 <ServingSize servingSize={this.state.servingSizeInfo} />
 
                 <table>
