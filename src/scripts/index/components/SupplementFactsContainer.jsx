@@ -21,6 +21,14 @@ export default class SupplementFactsContainer extends React.Component {
                     servingsPerContainer: 10
                 },
                 percentOfDailyValueAdditionalSymbol: "^=",
+                disclaimers: {
+                    percentOfDailyValueAdditionalSymbol: "^=",
+                    displayDailyValueNotEstablished: true,
+                    displayChildrenDisclaimer: true,
+                    displayPregnantWomenDisclaimer: true,
+                    otherIngredients: "pb, hg",
+                    allergens: "nuts, penicillin"
+                },
                 dailyValueIngredients: [
                     {name: "Vitamin A", source: "AAAA", quantity: 14, unit: "mg", percentage: "15 %"},
                     {name: "Vitamin C", source: "BBBB", quantity: 10, unit: "mg", percentage: "5 %"},
