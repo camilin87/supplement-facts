@@ -1,6 +1,7 @@
 import React from 'react'
 import IngredientSource from './IngredientSource.jsx';
 import IngredientPercentage from './IngredientPercentage.jsx';
+import IngredientSeparator from './IngredientSeparator.jsx';
 
 export default class LabelIngredient extends React.Component {
     render (){
@@ -17,7 +18,8 @@ export default class LabelIngredient extends React.Component {
               <div className="col-xs-2">
                 <IngredientPercentage percentage={this.props.item.percentage} />
               </div>
-              <hr className="x-slim"/>
+
+              <IngredientSeparator isLast={this.props.item.isLast}/>
             </div>
         )
     }

@@ -20,4 +20,19 @@ test("Renders the elements", () => {
 
     expect(component.text()).toContain("Calcium")
     expect(component.text()).toContain("14 mg")
+
+    expect(component.find("IngredientSeparator").props().isLast).not.toBe(true)
+    
+})
+
+test("doesn't render the separator for the last element", () => {
+    const ingredient = {
+        isLast: true
+    }
+
+    const component = shallow(
+        <LabelIngredient item={ingredient} />
+    )
+
+    expect(component.find("IngredientSeparator").props().isLast).toBe(true)
 })
