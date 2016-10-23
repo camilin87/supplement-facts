@@ -4,6 +4,7 @@ import LabelIngredient from './LabelIngredient.jsx'
 import DailyValueHeader from './DailyValueHeader.jsx'
 import NonDailyValueSeparator from './NonDailyValueSeparator.jsx'
 import DisplayDisclaimers from './DisplayDisclaimers.jsx'
+import BusinessInfo from './BusinessInfo.jsx'
 
 export default class SupplementFactsContainer extends React.Component {
 
@@ -74,6 +75,7 @@ export default class SupplementFactsContainer extends React.Component {
                 </table>
 
                 <DisplayDisclaimers info={this.state.disclaimers} />
+                <BusinessInfo info={this.state.businessInfo} />
             </div>
         )
     }
