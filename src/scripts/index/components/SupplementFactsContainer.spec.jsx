@@ -83,6 +83,22 @@ test("displays the disclaimers", () => {
     expect(component.find("DisplayDisclaimers").props().info).toBe(vm.disclaimers)
 })
 
+test("displays the other ingredients", () => {
+    var vm = {
+        otherIngredients: {
+            field1: "blah",
+            field2: "blah blah"
+        }
+    }
+
+    const component = shallow(
+        <SupplementFactsContainer data={vm} />
+    )
+
+    expect(component.find("DisplayOtherIngredients").props().info).toBe(vm.otherIngredients)
+})
+
+
 test("displays the business info", () => {
     var vm = {
         businessInfo: {

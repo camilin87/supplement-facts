@@ -4,6 +4,7 @@ import LabelIngredient from './LabelIngredient.jsx'
 import DailyValueHeader from './DailyValueHeader.jsx'
 import NonDailyValueSeparator from './NonDailyValueSeparator.jsx'
 import DisplayDisclaimers from './DisplayDisclaimers.jsx'
+import DisplayOtherIngredients from './DisplayOtherIngredients.jsx'
 import BusinessInfo from './BusinessInfo.jsx'
 
 export default class SupplementFactsContainer extends React.Component {
@@ -26,7 +27,9 @@ export default class SupplementFactsContainer extends React.Component {
                     percentOfDailyValueAdditionalSymbol: "^",
                     displayDailyValueNotEstablished: true,
                     displayChildrenDisclaimer: true,
-                    displayPregnantWomenDisclaimer: true,
+                    displayPregnantWomenDisclaimer: true
+                },
+                otherIngredients: {
                     otherIngredients: "pb, hg",
                     allergens: "nuts, penicillin"
                 },
@@ -90,6 +93,7 @@ export default class SupplementFactsContainer extends React.Component {
                     <DisplayDisclaimers info={this.state.disclaimers} />
                 </div>
 
+                <DisplayOtherIngredients info={this.state.otherIngredients} />
                 <BusinessInfo info={this.state.businessInfo} />
             </div>
         )
