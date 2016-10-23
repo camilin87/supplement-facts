@@ -56,8 +56,18 @@ export default class SupplementFactsContainer extends React.Component {
             }
         }
 
-        vm.dailyValueIngredients = vm.dailyValueIngredients || []
-        vm.nonDailyValueIngredients = vm.nonDailyValueIngredients || []
+        function initIngredients(arr){
+            arr = arr || []
+
+            if (arr.length > 0){
+                arr[arr.length - 1].isLast = true
+            }
+
+            return arr
+        }
+
+        vm.dailyValueIngredients = initIngredients(vm.dailyValueIngredients)
+        vm.nonDailyValueIngredients = initIngredients(vm.nonDailyValueIngredients)
 
         this.state = vm
     }
