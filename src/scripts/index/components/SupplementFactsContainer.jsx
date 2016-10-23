@@ -82,6 +82,7 @@ export default class SupplementFactsContainer extends React.Component {
 
                 <NonDailyValueSeparator ingredients={this.state.nonDailyValueIngredients} />
                 {this.state.nonDailyValueIngredients.map(i => <LabelIngredient key={i.name} item={i}/>)}
+                <hr />
 
                 <DisplayDisclaimers info={this.state.disclaimers} />
                 <BusinessInfo info={this.state.businessInfo} />
