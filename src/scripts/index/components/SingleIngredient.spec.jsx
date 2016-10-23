@@ -1,6 +1,6 @@
 import React from "react"
 import {shallow} from "enzyme"
-import LabelIngredient from "./LabelIngredient.jsx"
+import SingleIngredient from "./SingleIngredient.jsx"
 
 test("Renders the elements", () => {
     const ingredient = {
@@ -12,7 +12,7 @@ test("Renders the elements", () => {
     }
 
     const component = shallow(
-        <LabelIngredient item={ingredient} />
+        <SingleIngredient item={ingredient} />
     )
 
     expect(component.find("IngredientSource").props().source).toBe("AAAA")
@@ -31,7 +31,7 @@ test("doesn't render the separator for the last element", () => {
     }
 
     const component = shallow(
-        <LabelIngredient item={ingredient} />
+        <SingleIngredient item={ingredient} />
     )
 
     expect(component.find("IngredientSeparator").props().isLast).toBe(true)

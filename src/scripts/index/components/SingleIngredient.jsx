@@ -3,7 +3,7 @@ import IngredientSource from './IngredientSource.jsx';
 import IngredientPercentage from './IngredientPercentage.jsx';
 import IngredientSeparator from './IngredientSeparator.jsx';
 
-export default class LabelIngredient extends React.Component {
+export default class SingleIngredient extends React.Component {
     render (){
         return (
             <div className="row">
