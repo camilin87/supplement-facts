@@ -23,14 +23,6 @@ export default class DisplayDisclaimers extends React.Component {
             lines.push(`${additionalSymbol} DV for Pregnant or Lactating Women`)
         }
 
-        if (this.props.info.otherIngredients){
-            lines.push(this.props.info.otherIngredients)
-        }
-
-        if (this.props.info.allergens){
-            lines.push(this.props.info.allergens)
-        }
-
         return (
             <ul>
                 { lines.map(l => <li key={l}>{l}</li>) }

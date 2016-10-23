@@ -57,28 +57,3 @@ test("displays the pregnant women disclaimer", () => {
 
     expect(component.text()).toContain("^ DV for Pregnant or Lactating Women")
 })
-
-test("displays the other ingredients", () => {
-    var info = {
-        otherIngredients: "lead, sulfur"
-    }
-
-    const component = shallow(
-        <DisplayDisclaimers info={info} />
-    )
-
-    expect(component.text()).toContain("lead, sulfur")
-})
-
-test("displays the allergens", () => {
-    var info = {
-        allergens: "nuts, penicillin"
-    }
-
-    const component = shallow(
-        <DisplayDisclaimers info={info} />
-    )
-
-    expect(component.text()).toContain("nuts, penicillin")
-})
-
