@@ -4,7 +4,8 @@
 
 #label-container,
 #label-container div,
-#label-container h2 {
+#label-container h2,
+#label-container hr {
     padding: 0;
     margin: 0;
 }
@@ -16,4 +17,10 @@
 
 #label-container h2 {
     font-weight: bold;
+}
+
+#label-container hr {
+    margin-top: 3px;
+    margin-bottom: 3px;
+    border: solid 0.5em;
 }

@@ -66,6 +66,8 @@ export default class SupplementFactsContainer extends React.Component {
 
                 <ServingSize servingSize={this.state.servingSizeInfo} />
 
+                <hr />
+
                 <table>
                     <thead>
                         <tr>
