@@ -19,3 +19,46 @@ test("doesn't display anything when no disclaimers are active", () => {
 
     expect(component.text()).toBe("")
 })
+
+test("returns the business name", () => {
+    var info = {
+        distributedByLabel: "Manufactured by",
+        businessName: "Apple"
+    }
+
+    const component = shallow(
+        <BusinessInfo info={info} />
+    )
+
+    expect(component.text()).toContain("Manufactured by Apple")
+})
+
+test("returns the business address", () => {
+    var info = {
+        streetAddressLine1: "one infinite loop",
+        streetAddressLine2: "the sunshine state",
+        city: "miami",
+        state: "FL",
+        zipCode: "33333"
+    }
+
+    const component = shallow(
+        <BusinessInfo info={info} />
+    )
+
+    expect(component.text()).toContain("one infinite loop")
+    expect(component.text()).toContain("the sunshine state")
+    expect(component.text()).toContain("miami FL 33333")
+})
+
+test("returns the phone number", () => {
+    var info = {
+        phone: "555-555-5555"
+    }
+
+    const component = shallow(
+        <BusinessInfo info={info} />
+    )
+
+    expect(component.text()).toContain("555-555-5555")
+})

@@ -7,7 +7,35 @@ export default class BusinessInfo extends React.Component {
             return (null)
         }
 
+        var info = this.props.info
+
         var lines = []
+
+        if (info.distributedByLabel && info.businessName){
+            lines.push(`${info.distributedByLabel} ${info.businessName}`)
+        }
+
+        if (info.streetAddressLine1){
+            lines.push(info.streetAddressLine1)
+        }
+
+        if (info.streetAddressLine2){
+            lines.push(info.streetAddressLine2)
+        }
+
+        info.city = info.city || ""
+        info.state = info.state || ""
+        info.zipCode = info.zipCode || ""
+
+        var address = `${info.city} ${info.state} ${info.zipCode}`
+
+        if (address.trim()){
+            lines.push(address)
+        }
+
+        if (info.phone){
+            lines.push(info.phone)
+        }
 
         return (
             <ul>
