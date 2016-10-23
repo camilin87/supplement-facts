@@ -55,7 +55,7 @@ test("displays the Children disclaimer", () => {
         <DisplayDisclaimers info={info} />
     )
 
-    expect(component.text()).toContain("^ Daily Value only for children")
+    expect(component.text()).toContain("^ DV for Children under the age of 4")
 })
 
 test("displays the pregnant women disclaimer", () => {
@@ -68,7 +68,7 @@ test("displays the pregnant women disclaimer", () => {
         <DisplayDisclaimers info={info} />
     )
 
-    expect(component.text()).toContain("^ Daily Value only for pregnant women")
+    expect(component.text()).toContain("^ DV for Pregnant or Lactating Women")
 })
 
 test("displays the other ingredients", () => {

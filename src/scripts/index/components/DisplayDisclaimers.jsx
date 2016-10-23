@@ -20,11 +20,11 @@ export default class ServingSize extends React.Component {
         }
 
         if (this.props.info.displayChildrenDisclaimer){
-            lines.push(`${additionalSymbol} Daily Value only for children`)
+            lines.push(`${additionalSymbol} DV for Children under the age of 4`)
         }
 
         if (this.props.info.displayPregnantWomenDisclaimer){
-            lines.push(`${additionalSymbol} Daily Value only for pregnant women`)
+            lines.push(`${additionalSymbol} DV for Pregnant or Lactating Women`)
         }
 
         if (this.props.info.otherIngredients){
