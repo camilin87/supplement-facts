@@ -4,6 +4,8 @@
 
 #label-container,
 #label-container div,
+#label-container ul,
+#label-container li,
 #label-container h2,
 #label-container h3,
 #label-container hr {
@@ -35,3 +37,6 @@
     border: solid 0.25em;
 }
 
+#label-container li {
+    list-style-type: none;
+}
