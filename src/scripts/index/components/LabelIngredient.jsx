@@ -17,6 +17,7 @@ export default class LabelIngredient extends React.Component {
               <div className="col-xs-2">
                 <IngredientPercentage percentage={this.props.item.percentage} />
               </div>
+              <hr className="x-slim"/>
             </div>
         )
     }

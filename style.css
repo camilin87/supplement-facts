@@ -35,6 +35,10 @@
     border: solid 0.25em;
 }
 
+#label-container hr.x-slim {
+    border: solid 0.1em;
+}
+
 #label-container ul {
     margin-top: 0.2em;
     margin-bottom: 0.2em;
