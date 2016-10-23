@@ -27,6 +27,14 @@ export default class ServingSize extends React.Component {
             lines.push(`${additionalSymbol} Daily Value only for pregnant women`)
         }
 
+        if (this.props.info.otherIngredients){
+            lines.push(this.props.info.otherIngredients)
+        }
+
+        if (this.props.info.allergens){
+            lines.push(this.props.info.allergens)
+        }
+
         return (
             <ul>
                 { lines.map(l => <li key={l}>{l}</li>) }
