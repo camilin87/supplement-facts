@@ -11,8 +11,8 @@
 }
 
 #label-container {
-    padding-left: 3px;
-    padding-right: 3px;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
 }
 
 #label-container h2 {
@@ -20,7 +20,7 @@
 }
 
 #label-container hr {
-    margin-top: 3px;
-    margin-bottom: 3px;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
     border: solid 0.5em;
 }
