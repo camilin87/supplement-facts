@@ -19,6 +19,10 @@ export default class ServingSize extends React.Component {
             lines.push(`${additionalSymbol} Daily Value only for infants`)
         }
 
+        if (this.props.info.displayChildrenDisclaimer){
+            lines.push(`${additionalSymbol} Daily Value only for children`)
+        }
+
         return (
             <ul>
                 { lines.map(l => <li key={l}>{l}</li>) }
