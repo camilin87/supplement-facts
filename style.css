@@ -24,3 +24,8 @@
     margin-bottom: 0.5em;
     border: solid 0.5em;
 }
+
+#label-container hr.slim {
+    border: solid 0.25em;
+}
+

@@ -78,6 +78,7 @@ export default class SupplementFactsContainer extends React.Component {
                   </div>
                 </div>
 
+                <hr className="slim"/>
 
                 <table>
                     <tbody>
