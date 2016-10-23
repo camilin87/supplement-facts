@@ -62,31 +62,34 @@ export default class SupplementFactsContainer extends React.Component {
     render (){
         return (
             <div>
-                <div className="text-center">
-                    <h2>Supplement Facts</h2>
+                <div className="label-box">
+                    <div className="text-center">
+                        <h2>Supplement Facts</h2>
+                    </div>
+
+                    <ServingSize servingSize={this.state.servingSizeInfo} />
+                    <hr />
+
+
+                    <div className="row">
+                      <div className="col-xs-6">
+                        <h3>Amount per Serving</h3>
+                      </div>
+                      <div className="col-xs-6 text-right">
+                        <DailyValueHeader addSymbol={this.state.percentOfDailyValueAdditionalSymbol}/>
+                      </div>
+                    </div>
+                    <hr className="slim"/>
+
+                    {this.state.dailyValueIngredients.map(i => <LabelIngredient key={i.name} item={i}/>)}
+
+                    <NonDailyValueSeparator ingredients={this.state.nonDailyValueIngredients} />
+                    {this.state.nonDailyValueIngredients.map(i => <LabelIngredient key={i.name} item={i}/>)}
+                    <hr />
+
+                    <DisplayDisclaimers info={this.state.disclaimers} />
                 </div>
 
-                <ServingSize servingSize={this.state.servingSizeInfo} />
-                <hr />
-
-
-                <div className="row">
-                  <div className="col-xs-6">
-                    <h3>Amount per Serving</h3>
-                  </div>
-                  <div className="col-xs-6 text-right">
-                    <DailyValueHeader addSymbol={this.state.percentOfDailyValueAdditionalSymbol}/>
-                  </div>
-                </div>
-                <hr className="slim"/>
-
-                {this.state.dailyValueIngredients.map(i => <LabelIngredient key={i.name} item={i}/>)}
-
-                <NonDailyValueSeparator ingredients={this.state.nonDailyValueIngredients} />
-                {this.state.nonDailyValueIngredients.map(i => <LabelIngredient key={i.name} item={i}/>)}
-                <hr />
-
-                <DisplayDisclaimers info={this.state.disclaimers} />
                 <BusinessInfo info={this.state.businessInfo} />
             </div>
         )
