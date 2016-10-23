@@ -7,7 +7,7 @@ test("Returns the source", () => {
         <IngredientSource source="aisle five" />
     )
 
-    expect(component.find("div").text()).toBe("(aisle five)")
+    expect(component.text()).toBe("(aisle five)")
 })
 
 test("Returns null when no source is defined", () => {

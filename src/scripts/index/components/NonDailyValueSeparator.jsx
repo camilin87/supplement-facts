@@ -7,11 +7,7 @@ export default class NonDailyValueSeparator extends React.Component {
         }
 
         return (
-            <tr>
-                <td colSpan="3">
-                    <hr />
-                </td>
-            </tr>
+            <hr />
         )
     }
 }

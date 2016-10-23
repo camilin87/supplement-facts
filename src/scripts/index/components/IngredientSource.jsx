@@ -6,10 +6,10 @@ export default class IngredientSource extends React.Component {
             return (null)
         }
 
+        var str = `(${this.props.source})`
+
         return (
-            <div>
-                ({this.props.source})
-            </div>
+            <span>{str}</span>
         )
     }
 }
