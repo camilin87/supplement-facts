@@ -9,9 +9,9 @@ export default class DailyValueHeader extends React.Component {
         }
 
         return (
-            <span>
+            <h3>
                 % Daily Value{addSymbol}
-            </span>
+            </h3>
         )
     }
 }
