@@ -12,6 +12,7 @@ cp -R build $out_path/
 
 cp CNAME $out_path/
 cp *.html $out_path/
+cp *.css $out_path/
 cp -R images $out_path/
 
 echo "building complete!"
