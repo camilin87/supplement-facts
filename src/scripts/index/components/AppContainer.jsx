@@ -5,7 +5,13 @@ export default class AppContainer extends React.Component {
     constructor(props){
         super(props)
 
-        var vm1 = {
+        this.state = {
+            labelData: this.getVm2()
+        }
+    }
+
+    getVm1() {
+        return {
             servingSizeInfo: {
                 value: 23,
                 type: "packet",
@@ -44,9 +50,30 @@ export default class AppContainer extends React.Component {
                 {name: "Sodium", quantity: 14, unit: "mg"}
             ]
         }
+    }
 
-        this.state = {
-            labelData: vm1
+    getVm2() {
+        return {
+            servingSizeInfo: {
+                value: 1,
+                type: "bottle",
+                additionalComments: "1 tbsp",
+                servingsPerContainer: 1
+            },
+            disclaimers: {
+                displayDailyValueNotEstablished: true,
+                displayChildrenDisclaimer: false,
+                displayPregnantWomenDisclaimer: false
+            },
+            otherIngredients: {},
+            businessInfo: {},
+            dailyValueIngredients: [
+                {name: "Vitamin C", quantity: 10, unit: "mg", percentage: "5 %"},
+                {name: "Vitamin D", quantity: 11, unit: "mg", percentage: "< 1 %"}
+            ],
+            nonDailyValueIngredients: [
+                {name: "Sodium", quantity: 14, unit: "mg"}
+            ]
         }
     }
 
