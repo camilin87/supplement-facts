@@ -4,5 +4,5 @@ import SupplementFactsContainer from './components/SupplementFactsContainer.jsx'
 
 render(
     <SupplementFactsContainer />,
-    document.getElementById("label-container")
+    document.getElementById("app-container")
 )

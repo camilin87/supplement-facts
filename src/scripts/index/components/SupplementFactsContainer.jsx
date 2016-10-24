@@ -74,7 +74,7 @@ export default class SupplementFactsContainer extends React.Component {
 
     render (){
         return (
-            <div>
+            <div id="label-container">
                 <div className="label-box">
                     <div className="text-center">
                         <h2>Supplement Facts</h2>
