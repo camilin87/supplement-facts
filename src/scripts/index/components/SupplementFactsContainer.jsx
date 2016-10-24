@@ -56,20 +56,17 @@ export default class SupplementFactsContainer extends React.Component {
             }
         }
 
-        function initIngredients(arr){
-            arr = arr || []
+        this.state = vm
+    }
 
-            if (arr.length > 0){
-                arr[arr.length - 1].isLast = true
-            }
+    initIngredients(arr){
+        arr = arr || []
 
-            return arr
+        if (arr.length > 0){
+            arr[arr.length - 1].isLast = true
         }
 
-        vm.dailyValueIngredients = initIngredients(vm.dailyValueIngredients)
-        vm.nonDailyValueIngredients = initIngredients(vm.nonDailyValueIngredients)
-
-        this.state = vm
+        return arr
     }
 
     render (){
@@ -86,10 +83,10 @@ export default class SupplementFactsContainer extends React.Component {
                     <IngredientsHeader addSymbol={this.state.percentOfDailyValueAdditionalSymbol}/>
                     <hr className="slim"/>
 
-                    {this.state.dailyValueIngredients.map(i => <SingleIngredient key={i.name} item={i}/>)}
+                    {this.initIngredients(this.state.dailyValueIngredients).map(i => <SingleIngredient key={i.name} item={i}/>)}
 
                     <NonDailyValueSeparator ingredients={this.state.nonDailyValueIngredients} />
-                    {this.state.nonDailyValueIngredients.map(i => <SingleIngredient key={i.name} item={i}/>)}
+                    {this.initIngredients(this.state.nonDailyValueIngredients).map(i => <SingleIngredient key={i.name} item={i}/>)}
                     <hr />
 
                     <DisplayDisclaimers info={this.state.disclaimers} />
