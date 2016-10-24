@@ -2,8 +2,10 @@ import React from 'react'
 import SupplementFactsContainer from './SupplementFactsContainer.jsx'
 
 export default class AppContainer extends React.Component {
-    render (){
-        var vm = {
+    constructor(props){
+        super(props)
+
+        var vm1 = {
             servingSizeInfo: {
                 value: 23,
                 type: "packet",
@@ -43,12 +45,18 @@ export default class AppContainer extends React.Component {
             ]
         }
 
+        this.state = {
+            labelData: vm1
+        }
+    }
+
+    render (){
         return (
             <div className="container">
               <div className="row">
                 <div className="col-sm-6"></div>
                 <div className="col-sm-6">
-                    <SupplementFactsContainer data={vm} />
+                    <SupplementFactsContainer data={this.state.labelData} />
                 </div>
               </div>
             </div>
