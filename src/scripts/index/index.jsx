@@ -1,8 +1,8 @@
 import React from 'react'
 import {render} from 'react-dom'
-import SupplementFactsContainer from './components/SupplementFactsContainer.jsx';
+import AppContainer from './components/AppContainer.jsx';
 
 render(
-    <SupplementFactsContainer />,
+    <AppContainer />,
     document.getElementById("app-container")
 )
