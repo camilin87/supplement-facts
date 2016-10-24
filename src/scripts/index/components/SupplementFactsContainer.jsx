@@ -8,57 +8,6 @@ import DisplayOtherIngredients from './DisplayOtherIngredients.jsx'
 import BusinessInfo from './BusinessInfo.jsx'
 
 export default class SupplementFactsContainer extends React.Component {
-
-    constructor(props) {
-        super(props)
-
-        var vm = this.props.data
-
-        if (!this.props.data){
-            vm = {
-                servingSizeInfo: {
-                    value: 23,
-                    type: "packet",
-                    additionalComments: "(8g) 1 tbsp",
-                    servingsPerContainer: 10
-                },
-                percentOfDailyValueAdditionalSymbol: "^",
-                disclaimers: {
-                    percentOfDailyValueAdditionalSymbol: "^",
-                    displayDailyValueNotEstablished: true,
-                    displayChildrenDisclaimer: true,
-                    displayPregnantWomenDisclaimer: true
-                },
-                otherIngredients: {
-                    otherIngredients: "pb, hg",
-                    allergens: "nuts, penicillin"
-                },
-                businessInfo: {
-                    distributedByLabel: "Distributed by",
-                    businessName: "Apple",
-                    streetAddressLine1: "One infinite loop",
-                    streetAddressLine2: " --- ",
-                    city: "cupertino",
-                    state: "CA",
-                    zipCode: "55555",
-                    phone: "1-800-my-apple"
-                },
-                dailyValueIngredients: [
-                    {name: "Vitamin A", source: "AAAA", quantity: 14, unit: "mg", percentage: "15 %"},
-                    {name: "Vitamin C", source: "BBBB", quantity: 10, unit: "mg", percentage: "5 %"},
-                    {name: "Vitamin D", source: "CCCC", quantity: 11, unit: "mg", percentage: "< 1 %"}
-                ],
-                nonDailyValueIngredients: [
-                    {name: "Calcium", source: "AAAA", quantity: 14, unit: "mg"},
-                    {name: "Chlorine", quantity: 14, unit: "mg"},
-                    {name: "Sodium", quantity: 14, unit: "mg"}
-                ]
-            }
-        }
-
-        this.state = vm
-    }
-
     initIngredients(arr){
         arr = arr || []
 
@@ -70,6 +19,8 @@ export default class SupplementFactsContainer extends React.Component {
     }
 
     render (){
+        var vm = this.props.data
+
         return (
             <div id="label-container">
                 <div className="label-box">
@@ -77,23 +28,23 @@ export default class SupplementFactsContainer extends React.Component {
                         <h2>Supplement Facts</h2>
                     </div>
 
-                    <ServingSize servingSize={this.state.servingSizeInfo} />
+                    <ServingSize servingSize={vm.servingSizeInfo} />
                     <hr />
 
-                    <IngredientsHeader addSymbol={this.state.percentOfDailyValueAdditionalSymbol}/>
+                    <IngredientsHeader addSymbol={vm.percentOfDailyValueAdditionalSymbol}/>
                     <hr className="slim"/>
 
-                    {this.initIngredients(this.state.dailyValueIngredients).map(i => <SingleIngredient key={i.name} item={i}/>)}
+                    {this.initIngredients(vm.dailyValueIngredients).map(i => <SingleIngredient key={i.name} item={i}/>)}
 
-                    <NonDailyValueSeparator ingredients={this.state.nonDailyValueIngredients} />
-                    {this.initIngredients(this.state.nonDailyValueIngredients).map(i => <SingleIngredient key={i.name} item={i}/>)}
+                    <NonDailyValueSeparator ingredients={vm.nonDailyValueIngredients} />
+                    {this.initIngredients(vm.nonDailyValueIngredients).map(i => <SingleIngredient key={i.name} item={i}/>)}
                     <hr />
 
-                    <DisplayDisclaimers info={this.state.disclaimers} />
+                    <DisplayDisclaimers info={vm.disclaimers} />
                 </div>
 
-                <DisplayOtherIngredients info={this.state.otherIngredients} />
-                <BusinessInfo info={this.state.businessInfo} />
+                <DisplayOtherIngredients info={vm.otherIngredients} />
+                <BusinessInfo info={vm.businessInfo} />
             </div>
         )
     }
