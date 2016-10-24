@@ -6,7 +6,7 @@ export default class AppContainer extends React.Component {
         super(props)
 
         this.state = {
-            labelData: this.getVm2()
+            labelData: this.getVm1()
         }
     }
 
