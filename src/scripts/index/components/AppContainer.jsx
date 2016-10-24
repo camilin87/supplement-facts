@@ -78,10 +78,28 @@ export default class AppContainer extends React.Component {
     }
 
     render (){
+        var sender = this
+
+        function displayLabel1(){
+            sender.setState({
+                labelData: sender.getVm1()
+            })
+        }
+
+        function displayLabel2(){
+            sender.setState({
+                labelData: sender.getVm2()
+            })
+        }
+
         return (
             <div className="container">
               <div className="row">
-                <div className="col-sm-6"></div>
+                <div className="col-sm-6">
+                    <button type="button" className="btn btn-primary" onClick={displayLabel1}>Label 1</button>
+                    <button type="button" className="btn btn-success" onClick={displayLabel2}>Label 2</button>
+
+                </div>
                 <div className="col-sm-6">
                     <SupplementFactsContainer data={this.state.labelData} />
                 </div>
