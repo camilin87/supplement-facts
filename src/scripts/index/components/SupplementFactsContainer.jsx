@@ -21,6 +21,10 @@ export default class SupplementFactsContainer extends React.Component {
     render (){
         var vm = this.props.data
 
+        if (!vm || (Object.keys(vm).length === 0 && vm.constructor === Object)){
+            return (null)
+        }
+
         return (
             <div className="label-container">
                 <div>

@@ -2,12 +2,24 @@ import React from "react"
 import {shallow} from "enzyme"
 import SupplementFactsContainer from "./SupplementFactsContainer.jsx"
 
-test("Doesn't blow up on empty data", () => {
+test("Doesn't render anything on no data", () => {
+    var vm = null
+
+    const component = shallow(
+        <SupplementFactsContainer data={vm} />
+    )
+
+    expect(component.html()).toBe(null)
+})
+
+test("Doesn't render anything on empty data", () => {
     var vm = {}
 
     const component = shallow(
         <SupplementFactsContainer data={vm} />
     )
+
+    expect(component.html()).toBe(null)
 })
 
 test("displays the additional percentage of daily value", () => {
