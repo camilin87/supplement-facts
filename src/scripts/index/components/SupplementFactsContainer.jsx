@@ -22,8 +22,8 @@ export default class SupplementFactsContainer extends React.Component {
         var vm = this.props.data
 
         return (
-            <div id="label-container">
-                <div className="label-box">
+            <div className="label-container">
+                <div>
                     <div className="text-center">
                         <h2>Supplement Facts</h2>
                     </div>
