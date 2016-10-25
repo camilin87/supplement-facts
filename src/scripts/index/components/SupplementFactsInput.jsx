@@ -4,8 +4,50 @@ export default class DisplayDisclaimers extends React.Component {
     constructor(props){
         super(props)
 
+        this.state = {
+            inputData: {
+                productType: "",
+                percentOfDailyValueAdditionalSymbol: "",
+                servingSizeInfo: {
+                    value: 23,
+                    type: "packet",
+                    additionalComments: "(8g) 1 tbsp",
+                    servingsPerContainer: 10
+                },
+                dailyValueIngredients: [
+                    {name: "Vitamin A", source: "AAAA", quantity: 14, unit: "mg"},
+                    {name: "Vitamin C", source: "BBBB", quantity: 10, unit: "mg"},
+                    {name: "Vitamin D", source: "CCCC", quantity: 11, unit: "mg"}
+                ],
+                nonDailyValueIngredients: [
+                    {name: "Calcium", source: "AAAA", quantity: 14, unit: "mg"},
+                    {name: "Chlorine", quantity: 14, unit: "mg"},
+                    {name: "Sodium", quantity: 14, unit: "mg"}
+                ],
+                otherIngredients: [
+                    {name: "hg", quantity: 10},
+                    {name: "pb", quantity: 1000}
+                ],
+                allergens: [
+                    "nuts",
+                    "penicillin"
+                ],
+                businessInfo: {
+                    distributedByLabel: "Distributed by",
+                    businessName: "Apple",
+                    streetAddressLine1: "One infinite loop",
+                    streetAddressLine2: " --- ",
+                    city: "cupertino",
+                    state: "CA",
+                    zipCode: "55555",
+                    phone: "1-800-my-apple"
+                }
+            }
+        }
+
         this.handleChange = this.handleChange.bind(this)
 
+        //TODO: delete these once the data input is ready
         this.displayLabel1 = this.displayLabel1.bind(this)
         this.displayLabel2 = this.displayLabel2.bind(this)
     }
