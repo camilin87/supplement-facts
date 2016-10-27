@@ -1,6 +1,7 @@
 import React from 'react'
 import SupplementFactsContainer from './SupplementFactsContainer.jsx'
 import SupplementFactsInput from './SupplementFactsInput.jsx'
+import DataTransformer from '../lib/DataTransformer.jsx'
 
 export default class AppContainer extends React.Component {
     constructor(props){
@@ -15,7 +16,7 @@ export default class AppContainer extends React.Component {
 
     handleSupplementFactsInput(supplementFactsInput){
         this.setState({
-            labelData: supplementFactsInput
+            labelData: new DataTransformer().generateLabelData()
         })
     }
 
