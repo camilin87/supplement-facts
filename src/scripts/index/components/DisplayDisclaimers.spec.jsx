@@ -55,5 +55,5 @@ test("displays the pregnant women disclaimer", () => {
         <DisplayDisclaimers info={info} />
     )
 
-    expect(component.text()).toContain("^ DV for Pregnant or Lactating Women")
+    expect(component.text()).toContain("^ Percent Daily Values (%DV) for pregnant and lactating women.")
 })

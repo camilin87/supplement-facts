@@ -20,7 +20,7 @@ export default class DisplayDisclaimers extends React.Component {
         }
 
         if (this.props.info.displayPregnantWomenDisclaimer){
-            lines.push(`${additionalSymbol} DV for Pregnant or Lactating Women`)
+            lines.push(`${additionalSymbol} Percent Daily Values (%DV) for pregnant and lactating women.`)
         }
 
         return (
