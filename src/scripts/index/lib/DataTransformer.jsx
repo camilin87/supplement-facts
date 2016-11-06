@@ -45,7 +45,11 @@ export default class DataTransformer {
 
         var result = {
             businessInfo: {},
-            disclaimers: {},
+            disclaimers: {
+                displayDailyValueNotEstablished: false,
+                displayChildrenDisclaimer: false,
+                displayPregnantWomenDisclaimer: false
+            },
             servingSizeInfo: {},
             otherIngredients: {},
             dailyValueIngredients: [],

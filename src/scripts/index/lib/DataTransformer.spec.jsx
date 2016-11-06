@@ -12,7 +12,10 @@ test("Returns empty object by default", () => {
         },
         percentOfDailyValueAdditionalSymbol: "",
         disclaimers: {
-            percentOfDailyValueAdditionalSymbol: ""
+            percentOfDailyValueAdditionalSymbol: "",
+            displayDailyValueNotEstablished: false,
+            displayChildrenDisclaimer: false,
+            displayPregnantWomenDisclaimer: false
         },
         otherIngredients: {
             otherIngredients: "",
