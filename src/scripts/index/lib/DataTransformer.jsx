@@ -46,7 +46,6 @@ export default class DataTransformer {
         var result = {
             businessInfo: {},
             disclaimers: {
-                displayDailyValueNotEstablished: false,
                 displayChildrenDisclaimer: false,
                 displayPregnantWomenDisclaimer: false
             },
@@ -81,6 +80,19 @@ export default class DataTransformer {
         result.businessInfo.state = inputBusinessInfo.state || ""
         result.businessInfo.zipCode = inputBusinessInfo.zipCode || ""
         result.businessInfo.phone = inputBusinessInfo.phone || ""
+
+        var inputNonDailyValueIngredients = supplementFactsInput.nonDailyValueIngredients || []
+        result.disclaimers.displayDailyValueNotEstablished = inputNonDailyValueIngredients.length > 0
+        result.nonDailyValueIngredients = inputNonDailyValueIngredients
+            .sort((a, b) => a.quantity >= b.quantity ? -1 : 1)
+            .map(i => {
+                return {
+                    name: i.name || "",
+                    source: i.source || "",
+                    quantity: i.quantity,
+                    unit: i.unit || ""
+                }
+            })
 
         return result
     }

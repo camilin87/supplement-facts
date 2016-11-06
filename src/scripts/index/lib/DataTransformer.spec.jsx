@@ -113,3 +113,20 @@ test("Reads the Business Info", () => {
         phone: "1-800-my-apple"
     })
 })
+
+test("Reads the non dailyValue Ingredients", () => {
+    var vm = new DataTransformer().generateLabelData({
+        nonDailyValueIngredients: [
+            {name: "Calcium", source: "AAAA", quantity: 14, unit: "mg"},
+            {name: "Chlorine", quantity: 140, unit: "mg"},
+            {name: "Sodium", quantity: 11, unit: "mg"}
+        ]
+    })
+
+    expect(vm.disclaimers.displayDailyValueNotEstablished).toBe(true)
+    expect(vm.nonDailyValueIngredients).toEqual([
+        {name: "Chlorine", source: "", quantity: 140, unit: "mg"},
+        {name: "Calcium", source: "AAAA", quantity: 14, unit: "mg"},
+        {name: "Sodium", source: "", quantity: 11, unit: "mg"}
+    ])
+})
