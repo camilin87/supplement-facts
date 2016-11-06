@@ -44,7 +44,12 @@ export default class DataTransformer {
         }
 
         var result = {
-            otherIngredients: {}
+            businessInfo: {},
+            disclaimers: {},
+            servingSizeInfo: {},
+            otherIngredients: {},
+            dailyValueIngredients: [],
+            nonDailyValueIngredients: []
         }
 
         result.otherIngredients.otherIngredients = (supplementFactsInput.otherIngredients || [])

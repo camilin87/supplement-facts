@@ -2,6 +2,22 @@ import React from "react"
 import {shallow} from "enzyme"
 import DataTransformer from "./DataTransformer.jsx"
 
+test("Returns empty object by default", () => {
+    var vm = new DataTransformer().generateLabelData({})
+
+    expect(vm).toEqual({
+        servingSizeInfo: {},
+        disclaimers: {},
+        otherIngredients: {
+            otherIngredients: "",
+            allergens: ""
+        },
+        businessInfo: {},
+        dailyValueIngredients: [],
+        nonDailyValueIngredients: []
+    })
+})
+
 test("Returns the otherIngredients", () => {
     var vm = new DataTransformer().generateLabelData({
         otherIngredients: [
