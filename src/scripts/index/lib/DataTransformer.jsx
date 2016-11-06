@@ -68,6 +68,16 @@ export default class DataTransformer {
         result.servingSizeInfo.type = inputServingSizeInfo.type || ""
         result.servingSizeInfo.additionalComments = inputServingSizeInfo.additionalComments || ""
 
+        var inputBusinessInfo = supplementFactsInput.businessInfo || {}
+        result.businessInfo.distributedByLabel = inputBusinessInfo.distributedByLabel || ""
+        result.businessInfo.businessName = inputBusinessInfo.businessName || ""
+        result.businessInfo.streetAddressLine1 = inputBusinessInfo.streetAddressLine1 || ""
+        result.businessInfo.streetAddressLine2 = inputBusinessInfo.streetAddressLine2 || ""
+        result.businessInfo.city = inputBusinessInfo.city || ""
+        result.businessInfo.state = inputBusinessInfo.state || ""
+        result.businessInfo.zipCode = inputBusinessInfo.zipCode || ""
+        result.businessInfo.phone = inputBusinessInfo.phone || ""
+
         return result
     }
 }

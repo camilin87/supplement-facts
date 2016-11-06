@@ -18,7 +18,16 @@ test("Returns empty object by default", () => {
             otherIngredients: "",
             allergens: ""
         },
-        businessInfo: {},
+        businessInfo: {
+            distributedByLabel: "",
+            businessName: "",
+            streetAddressLine1: "",
+            streetAddressLine2: "",
+            city: "",
+            state: "",
+            zipCode: "",
+            phone: ""
+        },
         dailyValueIngredients: [],
         nonDailyValueIngredients: []
     })
@@ -73,5 +82,31 @@ test("Reads the Serving Size Info", () => {
         type: "bottle",
         additionalComments: "(4g) 1 tbsp",
         servingsPerContainer: 5
+    })
+})
+
+test("Reads the Business Info", () => {
+    var vm = new DataTransformer().generateLabelData({
+        businessInfo: {
+            distributedByLabel: "Distributed by",
+            businessName: "Apple",
+            streetAddressLine1: "One infinite loop",
+            streetAddressLine2: " --- ",
+            city: "cupertino",
+            state: "CA",
+            zipCode: "55555",
+            phone: "1-800-my-apple"
+        }
+    })
+
+    expect(vm.businessInfo).toEqual({
+        distributedByLabel: "Distributed by",
+        businessName: "Apple",
+        streetAddressLine1: "One infinite loop",
+        streetAddressLine2: " --- ",
+        city: "cupertino",
+        state: "CA",
+        zipCode: "55555",
+        phone: "1-800-my-apple"
     })
 })
