@@ -16,7 +16,7 @@ export default class AppContainer extends React.Component {
 
     handleSupplementFactsInput(supplementFactsInput){
         this.setState({
-            labelData: new DataTransformer().generateLabelData(supplementFactsInput)
+            labelData: new DataTransformer().generateLabelData()
         })
     }
 
