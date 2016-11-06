@@ -1,4 +1,5 @@
 import React from 'react'
+import SupplementFactsHeader from './SupplementFactsHeader.jsx'
 import ServingSize from './ServingSize.jsx'
 import SingleIngredient from './SingleIngredient.jsx'
 import IngredientsHeader from './IngredientsHeader.jsx'
@@ -28,9 +29,7 @@ export default class SupplementFactsContainer extends React.Component {
         return (
             <div className="label-container">
                 <div>
-                    <div className="text-center">
-                        <h2>Supplement Facts</h2>
-                    </div>
+                    <SupplementFactsHeader />
 
                     <ServingSize servingSize={vm.servingSizeInfo} />
                     <hr />
