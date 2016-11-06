@@ -14,3 +14,16 @@ test("Returns the otherIngredients", () => {
 
     expect(vm.otherIngredients.otherIngredients).toEqual("U, pb, pb1, hg")
 })
+
+test("Returns the allergens", () => {
+    var vm = new DataTransformer().generateLabelData({
+        allergens: [
+            "penicillin",
+            "nuts",
+            "soy"
+        ]
+    })
+
+    expect(vm.otherIngredients.allergens).toEqual("penicillin, nuts, soy")
+})
+

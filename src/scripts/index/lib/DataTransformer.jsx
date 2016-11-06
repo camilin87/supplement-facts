@@ -52,6 +52,8 @@ export default class DataTransformer {
             .map(i => i.name)
             .join(", ")
 
+        result.otherIngredients.allergens = (supplementFactsInput.allergens || []).join(", ")
+
         return result
     }
 }
