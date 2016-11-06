@@ -59,23 +59,22 @@ export default class DisplayDisclaimers extends React.Component {
     displayLabel1(){
         function getVm1() {
             return {
+                productType: "Adults",
+                percentOfDailyValueAdditionalSymbol: "^",
                 servingSizeInfo: {
                     value: 23,
                     type: "packet",
                     additionalComments: "(8g) 1 tbsp",
                     servingsPerContainer: 10
                 },
-                percentOfDailyValueAdditionalSymbol: "^",
-                disclaimers: {
-                    percentOfDailyValueAdditionalSymbol: "^",
-                    displayDailyValueNotEstablished: true,
-                    displayChildrenDisclaimer: true,
-                    displayPregnantWomenDisclaimer: true
-                },
-                otherIngredients: {
-                    otherIngredients: "pb, hg",
-                    allergens: "nuts, penicillin"
-                },
+                otherIngredients: [
+                    {name: "hg", quantity: 10},
+                    {name: "pb", quantity: 1000}
+                ],
+                allergens: [
+                    "nuts",
+                    "penicillin"
+                ],
                 businessInfo: {
                     distributedByLabel: "Distributed by",
                     businessName: "Apple",
@@ -87,9 +86,9 @@ export default class DisplayDisclaimers extends React.Component {
                     phone: "1-800-my-apple"
                 },
                 dailyValueIngredients: [
-                    {name: "Vitamin A", source: "AAAA", quantity: 14, unit: "mg", percentage: "15 %"},
-                    {name: "Vitamin C", source: "BBBB", quantity: 10, unit: "mg", percentage: "5 %"},
-                    {name: "Vitamin D", source: "CCCC", quantity: 11, unit: "mg", percentage: "< 1 %"}
+                    {name: "Vitamin A", source: "AAAA", quantity: 14, unit: "mg"},
+                    {name: "Vitamin C", source: "BBBB", quantity: 10, unit: "mg"},
+                    {name: "Vitamin D", source: "CCCC", quantity: 11, unit: "mg"}
                 ],
                 nonDailyValueIngredients: [
                     {name: "Calcium", source: "AAAA", quantity: 14, unit: "mg"},
@@ -105,22 +104,16 @@ export default class DisplayDisclaimers extends React.Component {
     displayLabel2(){
         function getVm2() {
             return {
+                productType: "Adults",
                 servingSizeInfo: {
                     value: 1,
                     type: "bottle",
                     additionalComments: "1 tbsp",
                     servingsPerContainer: 1
                 },
-                disclaimers: {
-                    displayDailyValueNotEstablished: true,
-                    displayChildrenDisclaimer: false,
-                    displayPregnantWomenDisclaimer: false
-                },
-                otherIngredients: {},
-                businessInfo: {},
                 dailyValueIngredients: [
-                    {name: "Vitamin C", quantity: 10, unit: "mg", percentage: "5 %"},
-                    {name: "Vitamin D", quantity: 11, unit: "mg", percentage: "< 1 %"}
+                    {name: "Vitamin C", quantity: 10, unit: "mg"},
+                    {name: "Vitamin D", quantity: 11, unit: "mg"}
                 ],
                 nonDailyValueIngredients: [
                     {name: "Sodium", quantity: 14, unit: "mg"}
