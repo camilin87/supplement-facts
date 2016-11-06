@@ -62,6 +62,12 @@ export default class DataTransformer {
         result.percentOfDailyValueAdditionalSymbol = supplementFactsInput.percentOfDailyValueAdditionalSymbol || ""
         result.disclaimers.percentOfDailyValueAdditionalSymbol = result.percentOfDailyValueAdditionalSymbol
 
+        var inputServingSizeInfo = supplementFactsInput.servingSizeInfo || {}
+        result.servingSizeInfo.value = inputServingSizeInfo.value
+        result.servingSizeInfo.servingsPerContainer = inputServingSizeInfo.servingsPerContainer
+        result.servingSizeInfo.type = inputServingSizeInfo.type || ""
+        result.servingSizeInfo.additionalComments = inputServingSizeInfo.additionalComments || ""
+
         return result
     }
 }

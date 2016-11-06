@@ -6,7 +6,10 @@ test("Returns empty object by default", () => {
     var vm = new DataTransformer().generateLabelData({})
 
     expect(vm).toEqual({
-        servingSizeInfo: {},
+        servingSizeInfo: {
+            type: "",
+            additionalComments: ""
+        },
         percentOfDailyValueAdditionalSymbol: "",
         disclaimers: {
             percentOfDailyValueAdditionalSymbol: ""
@@ -53,4 +56,22 @@ test("returns the percent of daily value additional symbol", () => {
 
     expect(vm.percentOfDailyValueAdditionalSymbol).toEqual("^")
     expect(vm.disclaimers.percentOfDailyValueAdditionalSymbol).toBe("^")
+})
+
+test("Reads the Serving Size Info", () => {
+    var vm = new DataTransformer().generateLabelData({
+        servingSizeInfo: {
+            value: 21,
+            type: "bottle",
+            additionalComments: "(4g) 1 tbsp",
+            servingsPerContainer: 5
+        }
+    })
+
+    expect(vm.servingSizeInfo).toEqual({
+        value: 21,
+        type: "bottle",
+        additionalComments: "(4g) 1 tbsp",
+        servingsPerContainer: 5
+    })
 })
