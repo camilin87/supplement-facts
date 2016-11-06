@@ -59,6 +59,9 @@ export default class DataTransformer {
 
         result.otherIngredients.allergens = (supplementFactsInput.allergens || []).join(", ")
 
+        result.percentOfDailyValueAdditionalSymbol = supplementFactsInput.percentOfDailyValueAdditionalSymbol || ""
+        result.disclaimers.percentOfDailyValueAdditionalSymbol = result.percentOfDailyValueAdditionalSymbol
+
         return result
     }
 }

@@ -7,7 +7,10 @@ test("Returns empty object by default", () => {
 
     expect(vm).toEqual({
         servingSizeInfo: {},
-        disclaimers: {},
+        percentOfDailyValueAdditionalSymbol: "",
+        disclaimers: {
+            percentOfDailyValueAdditionalSymbol: ""
+        },
         otherIngredients: {
             otherIngredients: "",
             allergens: ""
@@ -43,3 +46,11 @@ test("Returns the allergens", () => {
     expect(vm.otherIngredients.allergens).toEqual("penicillin, nuts, soy")
 })
 
+test("returns the percent of daily value additional symbol", () => {
+    var vm = new DataTransformer().generateLabelData({
+        percentOfDailyValueAdditionalSymbol: "^"
+    })
+
+    expect(vm.percentOfDailyValueAdditionalSymbol).toEqual("^")
+    expect(vm.disclaimers.percentOfDailyValueAdditionalSymbol).toBe("^")
+})
