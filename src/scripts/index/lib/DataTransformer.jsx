@@ -63,7 +63,15 @@ export default class DataTransformer {
                 var matchingIngredient = allIngredients.find(j => j.name === sourceIngredient.name)
 
                 sourceIngredient.unit = matchingIngredient.unit
-                sourceIngredient.percentage = "100 %"
+
+                var percentage = sourceIngredient.quantity * 100.0 / matchingIngredient.values[0]
+                percentage = Math.floor(percentage)
+                var percentageText = `${percentage}%`
+                if (percentage < 1){
+                    percentageText = "< 1%"
+                }
+
+                sourceIngredient.percentage = percentageText
 
                 return sourceIngredient
             })

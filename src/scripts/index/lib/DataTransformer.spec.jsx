@@ -151,7 +151,64 @@ test("Reads the dailyValue Ingredients for adults", () => {
     })
 
     expect(vm.dailyValueIngredients).toEqual([
-        {name: "Vitamin A", source: "AAAA", quantity: 300, unit: "IU", percentage: "100 %"},
-        {name: "Vitamin C", source: "BBBB", quantity: 200, unit: "mg", percentage: "100 %"},
+        {name: "Vitamin A", source: "AAAA", quantity: 300, unit: "IU", percentage: "100%"},
+        {name: "Vitamin C", source: "BBBB", quantity: 200, unit: "mg", percentage: "100%"},
     ])
+})
+
+test("Calculates the dailyValue Ingredients percentage for adults", () => {
+    var dailyValueIngredientsDataServiceMock = {
+        all: () => {
+            return [
+                {name: "Vitamin C", unit: "mg", values: [200, 0, 0, 0]}
+            ]
+        }
+    }
+
+    var vm = new DataTransformer(dailyValueIngredientsDataServiceMock).generateLabelData({
+        productType: "Adults",
+        dailyValueIngredients: [
+            {name: "Vitamin C", source: "BBBB", quantity: 100}
+        ]
+    })
+
+    expect(vm.dailyValueIngredients[0].percentage).toEqual("50%")
+})
+
+test("Rounds down the dailyValue Ingredients percentage for adults", () => {
+    var dailyValueIngredientsDataServiceMock = {
+        all: () => {
+            return [
+                {name: "Vitamin C", unit: "mg", values: [200, 0, 0, 0]}
+            ]
+        }
+    }
+
+    var vm = new DataTransformer(dailyValueIngredientsDataServiceMock).generateLabelData({
+        productType: "Adults",
+        dailyValueIngredients: [
+            {name: "Vitamin C", source: "BBBB", quantity: 133}
+        ]
+    })
+
+    expect(vm.dailyValueIngredients[0].percentage).toEqual("66%")
+})
+
+test("Returns less than 1 percent when needed", () => {
+    var dailyValueIngredientsDataServiceMock = {
+        all: () => {
+            return [
+                {name: "Vitamin C", unit: "mg", values: [200, 0, 0, 0]}
+            ]
+        }
+    }
+
+    var vm = new DataTransformer(dailyValueIngredientsDataServiceMock).generateLabelData({
+        productType: "Adults",
+        dailyValueIngredients: [
+            {name: "Vitamin C", source: "BBBB", quantity: 1}
+        ]
+    })
+
+    expect(vm.dailyValueIngredients[0].percentage).toEqual("< 1%")
 })
