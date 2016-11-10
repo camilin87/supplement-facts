@@ -12,11 +12,7 @@ export default class DataTransformer {
     generateLabelData(input){
         var result = {
             businessInfo: {},
-            disclaimers: {
-                displayDailyValueNotEstablished: false,
-                displayChildrenDisclaimer: false,
-                displayPregnantWomenDisclaimer: false
-            },
+            disclaimers: {},
             servingSizeInfo: {},
             otherIngredients: {},
             dailyValueIngredients: [],
@@ -31,7 +27,6 @@ export default class DataTransformer {
         result.otherIngredients.allergens = (input.allergens || []).join(", ")
 
         result.percentOfDailyValueAdditionalSymbol = input.percentOfDailyValueAdditionalSymbol || ""
-        result.disclaimers.percentOfDailyValueAdditionalSymbol = result.percentOfDailyValueAdditionalSymbol
 
         var inputServingSizeInfo = input.servingSizeInfo || {}
         result.servingSizeInfo.value = inputServingSizeInfo.value
@@ -50,7 +45,8 @@ export default class DataTransformer {
         result.businessInfo.phone = inputBusinessInfo.phone || ""
 
         var nonDailyValueIngredients = input.nonDailyValueIngredients || []
-        this._updateNonDailyValueDisclaimers(input.productType, nonDailyValueIngredients, result.disclaimers)
+        result.disclaimers = this._readDisclaimers(input.productType, nonDailyValueIngredients, result.percentOfDailyValueAdditionalSymbol)
+
         result.nonDailyValueIngredients = this._readNonDailyValueIngredients(nonDailyValueIngredients)
         result.dailyValueIngredients = this._readDailyValueIngredients(input.productType, input.dailyValueIngredients || [])
 
@@ -89,20 +85,29 @@ export default class DataTransformer {
         })
     }
 
-    _updateNonDailyValueDisclaimers(productType, ingredients, disclaimers){
-        if (ingredients.length <= 0) {
-            return;
+    _readDisclaimers(productType, nonDailyValueIngredients, percentOfDailyValueAdditionalSymbol){
+        var result = {
+            percentOfDailyValueAdditionalSymbol: percentOfDailyValueAdditionalSymbol,
+            displayDailyValueNotEstablished: false,
+            displayChildrenDisclaimer: false,
+            displayPregnantWomenDisclaimer: false
         }
 
-        disclaimers.displayDailyValueNotEstablished = true
+        if (nonDailyValueIngredients.length <= 0) {
+            return result
+        }
+
+        result.displayDailyValueNotEstablished = true
 
         if (productType === this._PRODUCT_TYPES.toddlers || productType === this._PRODUCT_TYPES.infants){
-            disclaimers.displayChildrenDisclaimer = true
+            result.displayChildrenDisclaimer = true
         }
 
         if (productType === this._PRODUCT_TYPES.pregnant){
-            disclaimers.displayPregnantWomenDisclaimer = true
+            result.displayPregnantWomenDisclaimer = true
         }
+
+        return result
     }
 
     _readIngredientPercentageText(quantity, dailyValue){
