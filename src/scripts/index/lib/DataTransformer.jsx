@@ -19,10 +19,7 @@ export default class DataTransformer {
             nonDailyValueIngredients: []
         }
 
-        result.otherIngredients.otherIngredients = (input.otherIngredients || [])
-            .sort((a, b) => a.quantity >= b.quantity ? -1 : 1)
-            .map(i => i.name)
-            .join(", ")
+        result.otherIngredients.otherIngredients = this._readOtherIngredients(input.otherIngredients)
 
         result.otherIngredients.allergens = (input.allergens || []).join(", ")
 
@@ -45,12 +42,19 @@ export default class DataTransformer {
         result.businessInfo.phone = inputBusinessInfo.phone || ""
 
         var nonDailyValueIngredients = input.nonDailyValueIngredients || []
-        result.disclaimers = this._readDisclaimers(input.productType, nonDailyValueIngredients, result.percentOfDailyValueAdditionalSymbol)
+        result.disclaimers = this._readDisclaimers(input.productType, nonDailyValueIngredients, input.percentOfDailyValueAdditionalSymbol)
 
         result.nonDailyValueIngredients = this._readNonDailyValueIngredients(nonDailyValueIngredients)
         result.dailyValueIngredients = this._readDailyValueIngredients(input.productType, input.dailyValueIngredients || [])
 
         return result
+    }
+
+    _readOtherIngredients(otherIngredients){
+        return (otherIngredients || [])
+            .sort((a, b) => a.quantity >= b.quantity ? -1 : 1)
+            .map(i => i.name)
+            .join(", ")
     }
 
     _readNonDailyValueIngredients(nonDailyValueIngredients){
@@ -87,7 +91,7 @@ export default class DataTransformer {
 
     _readDisclaimers(productType, nonDailyValueIngredients, percentOfDailyValueAdditionalSymbol){
         var result = {
-            percentOfDailyValueAdditionalSymbol: percentOfDailyValueAdditionalSymbol,
+            percentOfDailyValueAdditionalSymbol: percentOfDailyValueAdditionalSymbol || "",
             displayDailyValueNotEstablished: false,
             displayChildrenDisclaimer: false,
             displayPregnantWomenDisclaimer: false
