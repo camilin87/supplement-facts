@@ -1,6 +1,12 @@
 export default class DataTransformer {
     constructor(dailyValueIngredientsDataService){
         this._dailyValueIngredientsDataService = dailyValueIngredientsDataService
+        this._PRODUCT_TYPES = {
+            adults: "Adults",
+            infants: "Infants",
+            toddlers: "Toddlers",
+            pregnant: "Pregnant"
+        }
     }
 
     generateLabelData(supplementFactsInput){
@@ -44,8 +50,8 @@ export default class DataTransformer {
 
         var inputNonDailyValueIngredients = supplementFactsInput.nonDailyValueIngredients || []
         result.disclaimers.displayDailyValueNotEstablished = inputNonDailyValueIngredients.length > 0
-        result.disclaimers.displayChildrenDisclaimer = inputNonDailyValueIngredients.length > 0 && (supplementFactsInput.productType === "Toddlers" || supplementFactsInput.productType === "Infants")
-        result.disclaimers.displayPregnantWomenDisclaimer = inputNonDailyValueIngredients.length > 0 && supplementFactsInput.productType === "Pregnant"
+        result.disclaimers.displayChildrenDisclaimer = inputNonDailyValueIngredients.length > 0 && (supplementFactsInput.productType === this._PRODUCT_TYPES.toddlers || supplementFactsInput.productType === this._PRODUCT_TYPES.infants)
+        result.disclaimers.displayPregnantWomenDisclaimer = inputNonDailyValueIngredients.length > 0 && supplementFactsInput.productType === this._PRODUCT_TYPES.pregnant
 
         result.nonDailyValueIngredients = inputNonDailyValueIngredients
             .sort((a, b) => a.quantity >= b.quantity ? -1 : 1)
@@ -88,7 +94,12 @@ export default class DataTransformer {
     }
 
     _readDailyValue(productType, ingredientValues){
-        var productTypeIndices = ["Adults", "Infants", "Toddlers", "Pregnant"]
+        var productTypeIndices = [
+            this._PRODUCT_TYPES.adults,
+            this._PRODUCT_TYPES.infants,
+            this._PRODUCT_TYPES.toddlers,
+            this._PRODUCT_TYPES.pregnant
+        ]
         var index = productTypeIndices.indexOf(productType)
         return ingredientValues[index]
     }
