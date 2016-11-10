@@ -51,8 +51,14 @@ export default class DataTransformer {
 
         var nonDailyValueIngredients = input.nonDailyValueIngredients || []
         this._updateNonDailyValueDisclaimers(input.productType, nonDailyValueIngredients, result.disclaimers)
+        result.nonDailyValueIngredients = this._readNonDailyValueIngredients(nonDailyValueIngredients)
+        result.dailyValueIngredients = this._readDailyValueIngredients(input.productType, input.dailyValueIngredients || [])
 
-        result.nonDailyValueIngredients = nonDailyValueIngredients
+        return result
+    }
+
+    _readNonDailyValueIngredients(nonDailyValueIngredients){
+        return nonDailyValueIngredients
             .sort((a, b) => a.quantity >= b.quantity ? -1 : 1)
             .map(i => {
                 return {
@@ -62,10 +68,6 @@ export default class DataTransformer {
                     unit: i.unit || ""
                 }
             })
-
-        result.dailyValueIngredients = this._readDailyValueIngredients(input.productType, input.dailyValueIngredients || [])
-
-        return result
     }
 
     _readDailyValueIngredients(productType, dailyValueIngredients){
