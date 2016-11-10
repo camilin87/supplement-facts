@@ -82,20 +82,8 @@ export default class DataTransformer {
     }
 
     _readDailyValue(productType, ingredientValues){
-        var index = 0
-
-        if (productType === "Infants"){
-            index = 1
-        }
-
-        if (productType === "Toddlers"){
-            index = 2
-        }
-
-        if (productType === "Pregnant"){
-            index = 3
-        }
-
+        var productTypeIndices = ["Adults", "Infants", "Toddlers", "Pregnant"]
+        var index = productTypeIndices.indexOf(productType)
         return ingredientValues[index]
     }
 }
