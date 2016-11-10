@@ -9,7 +9,7 @@ export default class DataTransformer {
         }
     }
 
-    generateLabelData(supplementFactsInput){
+    generateLabelData(input){
         var result = {
             businessInfo: {},
             disclaimers: {
@@ -23,23 +23,23 @@ export default class DataTransformer {
             nonDailyValueIngredients: []
         }
 
-        result.otherIngredients.otherIngredients = (supplementFactsInput.otherIngredients || [])
+        result.otherIngredients.otherIngredients = (input.otherIngredients || [])
             .sort((a, b) => a.quantity >= b.quantity ? -1 : 1)
             .map(i => i.name)
             .join(", ")
 
-        result.otherIngredients.allergens = (supplementFactsInput.allergens || []).join(", ")
+        result.otherIngredients.allergens = (input.allergens || []).join(", ")
 
-        result.percentOfDailyValueAdditionalSymbol = supplementFactsInput.percentOfDailyValueAdditionalSymbol || ""
+        result.percentOfDailyValueAdditionalSymbol = input.percentOfDailyValueAdditionalSymbol || ""
         result.disclaimers.percentOfDailyValueAdditionalSymbol = result.percentOfDailyValueAdditionalSymbol
 
-        var inputServingSizeInfo = supplementFactsInput.servingSizeInfo || {}
+        var inputServingSizeInfo = input.servingSizeInfo || {}
         result.servingSizeInfo.value = inputServingSizeInfo.value
         result.servingSizeInfo.servingsPerContainer = inputServingSizeInfo.servingsPerContainer
         result.servingSizeInfo.type = inputServingSizeInfo.type || ""
         result.servingSizeInfo.additionalComments = inputServingSizeInfo.additionalComments || ""
 
-        var inputBusinessInfo = supplementFactsInput.businessInfo || {}
+        var inputBusinessInfo = input.businessInfo || {}
         result.businessInfo.distributedByLabel = inputBusinessInfo.distributedByLabel || ""
         result.businessInfo.businessName = inputBusinessInfo.businessName || ""
         result.businessInfo.streetAddressLine1 = inputBusinessInfo.streetAddressLine1 || ""
@@ -49,10 +49,10 @@ export default class DataTransformer {
         result.businessInfo.zipCode = inputBusinessInfo.zipCode || ""
         result.businessInfo.phone = inputBusinessInfo.phone || ""
 
-        var inputNonDailyValueIngredients = supplementFactsInput.nonDailyValueIngredients || []
-        this._updateNonDailyValueDisclaimers(supplementFactsInput.productType, inputNonDailyValueIngredients, result.disclaimers)
+        var nonDailyValueIngredients = input.nonDailyValueIngredients || []
+        this._updateNonDailyValueDisclaimers(input.productType, nonDailyValueIngredients, result.disclaimers)
 
-        result.nonDailyValueIngredients = inputNonDailyValueIngredients
+        result.nonDailyValueIngredients = nonDailyValueIngredients
             .sort((a, b) => a.quantity >= b.quantity ? -1 : 1)
             .map(i => {
                 return {
@@ -63,14 +63,14 @@ export default class DataTransformer {
                 }
             })
 
-        var dailyValueIngredients = (supplementFactsInput.dailyValueIngredients || [])
+        var dailyValueIngredients = (input.dailyValueIngredients || [])
         if (dailyValueIngredients.length > 0){
             var allIngredients = this._dailyValueIngredientsDataService.all()
 
             result.dailyValueIngredients = dailyValueIngredients.map(sourceIngredient => {
                 var matchingIngredient = allIngredients.find(j => j.name === sourceIngredient.name)
 
-                var dailyValue = this._readDailyValue(supplementFactsInput.productType, matchingIngredient.values)
+                var dailyValue = this._readDailyValue(input.productType, matchingIngredient.values)
 
                 sourceIngredient.percentage = this._readIngredientPercentageText(sourceIngredient.quantity, dailyValue)
                 sourceIngredient.unit = matchingIngredient.unit
