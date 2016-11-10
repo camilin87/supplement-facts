@@ -1,4 +1,8 @@
 export default class DataTransformer {
+    constructor(dailyValueIngredientsDataService){
+        this.dailyValueIngredientsDataService = dailyValueIngredientsDataService
+    }
+
     generateLabelData(supplementFactsInput){
         var result = {
             businessInfo: {},
@@ -50,6 +54,20 @@ export default class DataTransformer {
                     unit: i.unit || ""
                 }
             })
+
+        var dailyValueIngredients = (supplementFactsInput.dailyValueIngredients || [])
+        if (dailyValueIngredients.length > 0){
+            var allIngredients = this.dailyValueIngredientsDataService.all()
+
+            result.dailyValueIngredients = dailyValueIngredients.map(sourceIngredient => {
+                var matchingIngredient = allIngredients.find(j => j.name === sourceIngredient.name)
+
+                sourceIngredient.unit = matchingIngredient.unit
+                sourceIngredient.percentage = "100 %"
+
+                return sourceIngredient
+            })
+        }
 
         return result
     }

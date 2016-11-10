@@ -130,3 +130,28 @@ test("Reads the non dailyValue Ingredients", () => {
         {name: "Sodium", source: "", quantity: 11, unit: "mg"}
     ])
 })
+
+test("Reads the dailyValue Ingredients for adults", () => {
+    var dailyValueIngredientsDataServiceMock = {
+        all: () => {
+            return [
+                {name: "Vitamin A", unit: "IU", values: [300, 0, 0, 0]},
+                {name: "Vitamin C", unit: "mg", values: [200, 0, 0, 0]},
+                {name: "Vitamin D", unit: "IU", values: [100, 0, 0, 0]}
+            ]
+        }
+    }
+
+    var vm = new DataTransformer(dailyValueIngredientsDataServiceMock).generateLabelData({
+        productType: "Adults",
+        dailyValueIngredients: [
+            {name: "Vitamin A", source: "AAAA", quantity: 300},
+            {name: "Vitamin C", source: "BBBB", quantity: 200}
+        ]
+    })
+
+    expect(vm.dailyValueIngredients).toEqual([
+        {name: "Vitamin A", source: "AAAA", quantity: 300, unit: "IU", percentage: "100 %"},
+        {name: "Vitamin C", source: "BBBB", quantity: 200, unit: "mg", percentage: "100 %"},
+    ])
+})
