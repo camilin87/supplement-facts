@@ -156,6 +156,25 @@ test("Reads the dailyValue Ingredients for adults", () => {
     ])
 })
 
+test("Reads the dailyValue Ingredients for infants", () => {
+    var dailyValueIngredientsDataServiceMock = {
+        all: () => {
+            return [
+                {name: "Vitamin A", unit: "IU", values: [0, 300, 0, 0]}
+            ]
+        }
+    }
+
+    var vm = new DataTransformer(dailyValueIngredientsDataServiceMock).generateLabelData({
+        productType: "Infants",
+        dailyValueIngredients: [
+            {name: "Vitamin A", source: "AAAA", quantity: 300}
+        ]
+    })
+
+    expect(vm.dailyValueIngredients[0].percentage).toEqual("100%")
+})
+
 test("Calculates the dailyValue Ingredients percentage for adults", () => {
     var dailyValueIngredientsDataServiceMock = {
         all: () => {
