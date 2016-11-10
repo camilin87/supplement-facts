@@ -63,23 +63,28 @@ export default class DataTransformer {
                 }
             })
 
-        var dailyValueIngredients = (input.dailyValueIngredients || [])
-        if (dailyValueIngredients.length > 0){
-            var allIngredients = this._dailyValueIngredientsDataService.all()
-
-            result.dailyValueIngredients = dailyValueIngredients.map(sourceIngredient => {
-                var matchingIngredient = allIngredients.find(j => j.name === sourceIngredient.name)
-
-                var dailyValue = this._readDailyValue(input.productType, matchingIngredient.values)
-
-                sourceIngredient.percentage = this._readIngredientPercentageText(sourceIngredient.quantity, dailyValue)
-                sourceIngredient.unit = matchingIngredient.unit
-
-                return sourceIngredient
-            })
-        }
+        result.dailyValueIngredients = this._readDailyValueIngredients(input.productType, input.dailyValueIngredients || [])
 
         return result
+    }
+
+    _readDailyValueIngredients(productType, dailyValueIngredients){
+        if (dailyValueIngredients.length === 0){
+            return []
+        }
+
+        var allIngredients = this._dailyValueIngredientsDataService.all()
+
+        return dailyValueIngredients.map(sourceIngredient => {
+            var matchingIngredient = allIngredients.find(j => j.name === sourceIngredient.name)
+
+            var dailyValue = this._readIngredientDailyValue(productType, matchingIngredient.values)
+
+            sourceIngredient.percentage = this._readIngredientPercentageText(sourceIngredient.quantity, dailyValue)
+            sourceIngredient.unit = matchingIngredient.unit
+
+            return sourceIngredient
+        })
     }
 
     _updateNonDailyValueDisclaimers(productType, ingredients, disclaimers){
@@ -108,7 +113,7 @@ export default class DataTransformer {
         return `${percentage}%`
     }
 
-    _readDailyValue(productType, ingredientValues){
+    _readIngredientDailyValue(productType, ingredientValues){
         var productTypeIndices = [
             this._PRODUCT_TYPES.adults,
             this._PRODUCT_TYPES.infants,
