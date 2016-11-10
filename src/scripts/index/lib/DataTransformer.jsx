@@ -13,6 +13,7 @@ export default class DataTransformer {
         var result = {
             businessInfo: {},
             disclaimers: {
+                displayDailyValueNotEstablished: false,
                 displayChildrenDisclaimer: false,
                 displayPregnantWomenDisclaimer: false
             },
@@ -49,9 +50,7 @@ export default class DataTransformer {
         result.businessInfo.phone = inputBusinessInfo.phone || ""
 
         var inputNonDailyValueIngredients = supplementFactsInput.nonDailyValueIngredients || []
-        result.disclaimers.displayDailyValueNotEstablished = inputNonDailyValueIngredients.length > 0
-        result.disclaimers.displayChildrenDisclaimer = inputNonDailyValueIngredients.length > 0 && (supplementFactsInput.productType === this._PRODUCT_TYPES.toddlers || supplementFactsInput.productType === this._PRODUCT_TYPES.infants)
-        result.disclaimers.displayPregnantWomenDisclaimer = inputNonDailyValueIngredients.length > 0 && supplementFactsInput.productType === this._PRODUCT_TYPES.pregnant
+        this._updateNonDailyValueDisclaimers(supplementFactsInput.productType, inputNonDailyValueIngredients, result.disclaimers)
 
         result.nonDailyValueIngredients = inputNonDailyValueIngredients
             .sort((a, b) => a.quantity >= b.quantity ? -1 : 1)
@@ -81,6 +80,22 @@ export default class DataTransformer {
         }
 
         return result
+    }
+
+    _updateNonDailyValueDisclaimers(productType, ingredients, disclaimers){
+        if (ingredients.length <= 0) {
+            return;
+        }
+
+        disclaimers.displayDailyValueNotEstablished = true
+
+        if (productType === this._PRODUCT_TYPES.toddlers || productType === this._PRODUCT_TYPES.infants){
+            disclaimers.displayChildrenDisclaimer = true
+        }
+
+        if (productType === this._PRODUCT_TYPES.pregnant){
+            disclaimers.displayPregnantWomenDisclaimer = true
+        }
     }
 
     _readIngredientPercentageText(quantity, dailyValue){
