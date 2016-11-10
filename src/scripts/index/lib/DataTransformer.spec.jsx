@@ -131,6 +131,28 @@ test("Reads the non dailyValue Ingredients", () => {
     ])
 })
 
+test("Displays the children disclaimer for infants", () => {
+    var vm = new DataTransformer().generateLabelData({
+        productType: "Infants",
+        nonDailyValueIngredients: [
+            {name: "Calcium", source: "AAAA", quantity: 14, unit: "mg"}
+        ]
+    })
+
+    expect(vm.disclaimers.displayChildrenDisclaimer).toBe(true)
+})
+
+test("Displays the children disclaimer for toddlers", () => {
+    var vm = new DataTransformer().generateLabelData({
+        productType: "Toddlers",
+        nonDailyValueIngredients: [
+            {name: "Calcium", source: "AAAA", quantity: 14, unit: "mg"}
+        ]
+    })
+
+    expect(vm.disclaimers.displayChildrenDisclaimer).toBe(true)
+})
+
 test("Reads the dailyValue Ingredients for adults", () => {
     var dailyValueIngredientsDataServiceMock = {
         all: () => {
