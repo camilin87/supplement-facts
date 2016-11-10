@@ -88,6 +88,10 @@ export default class DataTransformer {
             index = 1
         }
 
+        if (productType === "Toddlers"){
+            index = 2
+        }
+
         return ingredientValues[index]
     }
 }
