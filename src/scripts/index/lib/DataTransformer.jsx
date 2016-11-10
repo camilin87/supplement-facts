@@ -92,6 +92,10 @@ export default class DataTransformer {
             index = 2
         }
 
+        if (productType === "Pregnant"){
+            index = 3
+        }
+
         return ingredientValues[index]
     }
 }
