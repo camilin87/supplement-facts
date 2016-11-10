@@ -62,23 +62,26 @@ export default class DataTransformer {
             result.dailyValueIngredients = dailyValueIngredients.map(sourceIngredient => {
                 var matchingIngredient = allIngredients.find(j => j.name === sourceIngredient.name)
 
-                sourceIngredient.unit = matchingIngredient.unit
-
                 var dailyValue = this._readDailyValue(supplementFactsInput.productType, matchingIngredient.values)
-                var percentage = sourceIngredient.quantity * 100.0 / dailyValue
-                percentage = Math.floor(percentage)
-                var percentageText = `${percentage}%`
-                if (percentage < 1){
-                    percentageText = "< 1%"
-                }
 
-                sourceIngredient.percentage = percentageText
+                sourceIngredient.percentage = this._readIngredientPercentageText(sourceIngredient.quantity, dailyValue)
+                sourceIngredient.unit = matchingIngredient.unit
 
                 return sourceIngredient
             })
         }
 
         return result
+    }
+
+    _readIngredientPercentageText(quantity, dailyValue){
+        var percentage = Math.floor(quantity * 100.0 / dailyValue)
+
+        if (percentage < 1){
+            return "< 1%"
+        }
+
+        return `${percentage}%`
     }
 
     _readDailyValue(productType, ingredientValues){
