@@ -153,6 +153,17 @@ test("Displays the children disclaimer for toddlers", () => {
     expect(vm.disclaimers.displayChildrenDisclaimer).toBe(true)
 })
 
+test("Displays the pregnant women disclaimer for pregnant women", () => {
+    var vm = new DataTransformer().generateLabelData({
+        productType: "Pregnant",
+        nonDailyValueIngredients: [
+            {name: "Calcium", source: "AAAA", quantity: 14, unit: "mg"}
+        ]
+    })
+
+    expect(vm.disclaimers.displayPregnantWomenDisclaimer).toBe(true)
+})
+
 test("Reads the dailyValue Ingredients for adults", () => {
     var dailyValueIngredientsDataServiceMock = {
         all: () => {

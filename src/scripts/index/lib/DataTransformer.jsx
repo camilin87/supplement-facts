@@ -45,6 +45,7 @@ export default class DataTransformer {
         var inputNonDailyValueIngredients = supplementFactsInput.nonDailyValueIngredients || []
         result.disclaimers.displayDailyValueNotEstablished = inputNonDailyValueIngredients.length > 0
         result.disclaimers.displayChildrenDisclaimer = inputNonDailyValueIngredients.length > 0 && (supplementFactsInput.productType === "Toddlers" || supplementFactsInput.productType === "Infants")
+        result.disclaimers.displayPregnantWomenDisclaimer = inputNonDailyValueIngredients.length > 0 && supplementFactsInput.productType === "Pregnant"
 
         result.nonDailyValueIngredients = inputNonDailyValueIngredients
             .sort((a, b) => a.quantity >= b.quantity ? -1 : 1)
