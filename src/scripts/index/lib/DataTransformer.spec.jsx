@@ -73,7 +73,7 @@ test("returns the percent of daily value additional symbol", () => {
 test("Reads the Serving Size Info", () => {
     var vm = new DataTransformer().generateLabelData({
         servingSizeInfo: {
-            value: 21,
+            value: 1,
             type: "bottle",
             additionalComments: "(4g) 1 tbsp",
             servingsPerContainer: 5
@@ -81,11 +81,22 @@ test("Reads the Serving Size Info", () => {
     })
 
     expect(vm.servingSizeInfo).toEqual({
-        value: 21,
+        value: 1,
         type: "bottle",
         additionalComments: "(4g) 1 tbsp",
         servingsPerContainer: 5
     })
+})
+
+test("Pluralizes the Serving Size type", () => {
+    var vm = new DataTransformer().generateLabelData({
+        servingSizeInfo: {
+            value: 2,
+            type: "bottle"
+        }
+    })
+
+    expect(vm.servingSizeInfo.type).toEqual("bottles")
 })
 
 test("Reads the Business Info", () => {

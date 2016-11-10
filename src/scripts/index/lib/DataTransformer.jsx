@@ -1,3 +1,5 @@
+var pluralize = require("pluralize")
+
 export default class DataTransformer {
     constructor(dailyValueIngredientsDataService){
         this._dailyValueIngredientsDataService = dailyValueIngredientsDataService
@@ -24,12 +26,7 @@ export default class DataTransformer {
         result.otherIngredients.allergens = (input.allergens || []).join(", ")
 
         result.percentOfDailyValueAdditionalSymbol = input.percentOfDailyValueAdditionalSymbol || ""
-
-        var inputServingSizeInfo = input.servingSizeInfo || {}
-        result.servingSizeInfo.value = inputServingSizeInfo.value
-        result.servingSizeInfo.servingsPerContainer = inputServingSizeInfo.servingsPerContainer
-        result.servingSizeInfo.type = inputServingSizeInfo.type || ""
-        result.servingSizeInfo.additionalComments = inputServingSizeInfo.additionalComments || ""
+        result.servingSizeInfo = this._readServingSizeInfo(input.servingSizeInfo)
 
         var inputBusinessInfo = input.businessInfo || {}
         result.businessInfo.distributedByLabel = inputBusinessInfo.distributedByLabel || ""
@@ -46,6 +43,23 @@ export default class DataTransformer {
 
         result.nonDailyValueIngredients = this._readNonDailyValueIngredients(nonDailyValueIngredients)
         result.dailyValueIngredients = this._readDailyValueIngredients(input.productType, input.dailyValueIngredients || [])
+
+        return result
+    }
+
+    _readServingSizeInfo(inputServingSizeInfo){
+        var inputServingSizeInfo = inputServingSizeInfo || {}
+
+        var result = {
+            value: inputServingSizeInfo.value,
+            servingsPerContainer: inputServingSizeInfo.servingsPerContainer,
+            type: inputServingSizeInfo.type || "",
+            additionalComments: inputServingSizeInfo.additionalComments || "",
+        }
+
+        if (result.value > 1){
+            result.type = pluralize(result.type)
+        }
 
         return result
     }
