@@ -135,10 +135,13 @@ export default class SupplementFactsInput extends React.Component {
                 <button type="button" className="btn btn-primary" onClick={this._displayLabel1}>Label 1</button>
                 <button type="button" className="btn btn-success" onClick={this._displayLabel2}>Label 2</button>
 
-                <div id="selectProductType">
-                    <Select options={productTypesSelect} clearable={false} value={this.state.productType} onChange={this._productTypeChanged} />
-                </div>
-                
+                <Select 
+                    id="selectProductType"
+                    options={productTypesSelect}
+                    clearable={false}
+                    value={this.state.productType}
+                    onChange={this._productTypeChanged} />
+
                 <hr />
 
             </div>

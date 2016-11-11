@@ -36,22 +36,22 @@ describe("SupplementFactsInput", () => {
 
         test("Selects the first product type", () => {
             expect(component.state().productType).toBe("Toddlers")
-            expect(component.find("#selectProductType Select").props().value).toBe("Toddlers")
+            expect(component.find("Select#selectProductType").props().value).toBe("Toddlers")
         })
 
         test("The product type is not clearable", () => {
-            expect(component.find("#selectProductType Select").props().clearable).toBe(false)
+            expect(component.find("Select#selectProductType").props().clearable).toBe(false)
         })
 
         test("Displays one option per product type", () => {
-            expect(component.find("#selectProductType Select").props().options).toEqual([
+            expect(component.find("Select#selectProductType").props().options).toEqual([
                 {value: "Toddlers", label: "Toddlers"},
                 {value: "Pregnant", label: "Pregnant"}
             ])
         })
 
         test("Product type changes are broadcasted", () => {
-            component.find("#selectProductType Select").props().onChange({value: "Pregnant"})
+            component.find("Select#selectProductType").props().onChange({value: "Pregnant"})
 
             expect(latestBroadcastedState.productType).toBe("Pregnant")
         })
