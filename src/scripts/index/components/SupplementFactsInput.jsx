@@ -1,21 +1,24 @@
 import React from 'react'
+import ProductTypesDataService from '../lib/ProductTypesDataService.jsx'
 
 export default class SupplementFactsInput extends React.Component {
     constructor(props){
         super(props)
 
-        this.handleChange = this.handleChange.bind(this)
+        this._productTypesDataService = new ProductTypesDataService()
+
+        this._handleChange = this._handleChange.bind(this)
 
         //TODO: delete these once the data input is ready
-        this.displayLabel1 = this.displayLabel1.bind(this)
-        this.displayLabel2 = this.displayLabel2.bind(this)
+        this._displayLabel1 = this._displayLabel1.bind(this)
+        this._displayLabel2 = this._displayLabel2.bind(this)
     }
 
-    handleChange(change){
+    _handleChange(change){
         this.props.onChange(change)
     }
 
-    displayLabel1(){
+    _displayLabel1(){
         function getVm1() {
             return {
                 productType: "Adults",
@@ -57,10 +60,10 @@ export default class SupplementFactsInput extends React.Component {
             }
         }
 
-        this.handleChange(getVm1())
+        this._handleChange(getVm1())
     }
 
-    displayLabel2(){
+    _displayLabel2(){
         function getVm2() {
             return {
                 productType: "Adults",
@@ -80,15 +83,22 @@ export default class SupplementFactsInput extends React.Component {
             }
         }
 
-        this.handleChange(getVm2())
+        this._handleChange(getVm2())
     }
 
     render (){
+        var productTypesRaw = this._productTypesDataService.read()
+        var productTypes = Object.keys(productTypesRaw).map(k => productTypesRaw[k])
 
         return (
             <div>
-                <button type="button" className="btn btn-primary" onClick={this.displayLabel1}>Label 1</button>
-                <button type="button" className="btn btn-success" onClick={this.displayLabel2}>Label 2</button>
+                <button type="button" className="btn btn-primary" onClick={this._displayLabel1}>Label 1</button>
+                <button type="button" className="btn btn-success" onClick={this._displayLabel2}>Label 2</button>
+
+                { productTypes }
+
+                <hr />
+
             </div>
         )
     }
