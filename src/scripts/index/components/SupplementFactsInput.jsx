@@ -50,7 +50,9 @@ export default class SupplementFactsInput extends React.Component {
 
     _handleChange(change){
         this.setState(change, () => {
-            this.props.onChange(this.state)
+            if (this.props.onChange){
+                this.props.onChange(this.state)
+            }
         })
     }
 
@@ -133,13 +135,10 @@ export default class SupplementFactsInput extends React.Component {
                 <button type="button" className="btn btn-primary" onClick={this._displayLabel1}>Label 1</button>
                 <button type="button" className="btn btn-success" onClick={this._displayLabel2}>Label 2</button>
 
-                <Select 
-                    name="select-product-type"
-                    options={productTypesSelect}
-                    clearable={false}
-                    value={this.state.productType}
-                    onChange={this._productTypeChanged} />
-
+                <div id="selectProductType">
+                    <Select options={productTypesSelect} clearable={false} value={this.state.productType} onChange={this._productTypeChanged} />
+                </div>
+                
                 <hr />
 
             </div>

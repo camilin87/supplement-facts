@@ -2,47 +2,68 @@ import React from "react"
 import {shallow} from "enzyme"
 import SupplementFactsInput from "./SupplementFactsInput.jsx"
 
-var seededProductTypes = {
-    adults: "Adults",
-    infants: "Infants",
-    toddlers: "Toddlers",
-    pregnant: "Pregnant"
-}
-const productTypesDataServiceMock = { read: () => seededProductTypes }
+describe("SupplementFactsInput", () => {
+    var seededProductTypes = {
+        adults: "Adults",
+        infants: "Infants",
+        toddlers: "Toddlers",
+        pregnant: "Pregnant"
+    }
+    const productTypesDataServiceMock = { read: () => seededProductTypes }
 
-describe("Product Selection", () => {
+    var latestBroadcastedState = null
+    var onChangeHandler = change => {
+        latestBroadcastedState = change
+    }
+
     beforeEach(() => {
-        seededProductTypes = {
-            toddlers: "Toddlers",
-            pregnant: "Pregnant"
-        }
+        latestBroadcastedState = null
     })
 
-    test("Selects the first product type", () => {
-        const component = shallow(
-            <SupplementFactsInput ProductTypesDataService={productTypesDataServiceMock}/>
-        )
+    describe("Product Selection", () => {
+        beforeEach(() => {
+            seededProductTypes = {
+                toddlers: "Toddlers",
+                pregnant: "Pregnant"
+            }
+        })
 
-        expect(component.find({name: "select-product-type"}).props().value).toBe("Toddlers")
-    })
+        test("Selects the first product type", () => {
+            const component = shallow(
+                <SupplementFactsInput ProductTypesDataService={productTypesDataServiceMock}/>
+            )
 
-    test("The product type is not clearable", () => {
-        const component = shallow(
-            <SupplementFactsInput ProductTypesDataService={productTypesDataServiceMock}/>
-        )
+            expect(component.state().productType).toBe("Toddlers")
+            expect(component.find("#selectProductType Select").props().value).toBe("Toddlers")
+        })
 
-        expect(component.find({name: "select-product-type"}).props().clearable).toBe(false)
-    })
+        test("The product type is not clearable", () => {
+            const component = shallow(
+                <SupplementFactsInput ProductTypesDataService={productTypesDataServiceMock}/>
+            )
 
-    test("Displays one option per product type", () => {
-        const component = shallow(
-            <SupplementFactsInput ProductTypesDataService={productTypesDataServiceMock}/>
-        )
+            expect(component.find("#selectProductType Select").props().clearable).toBe(false)
+        })
 
-        expect(component.find({name: "select-product-type"}).props().options).toEqual([
-            {value: "Toddlers", label: "Toddlers"},
-            {value: "Pregnant", label: "Pregnant"}
-        ])
+        test("Displays one option per product type", () => {
+            const component = shallow(
+                <SupplementFactsInput ProductTypesDataService={productTypesDataServiceMock}/>
+            )
+
+            expect(component.find("#selectProductType Select").props().options).toEqual([
+                {value: "Toddlers", label: "Toddlers"},
+                {value: "Pregnant", label: "Pregnant"}
+            ])
+        })
+
+        test("Product type changes are broadcasted", () => {
+            const component = shallow(
+                <SupplementFactsInput ProductTypesDataService={productTypesDataServiceMock} onChange={onChangeHandler}/>
+            )
+
+            component.find('#selectProductType Select').props().onChange({value: "Pregnant"})
+
+            expect(latestBroadcastedState.productType).toBe("Pregnant")
+        })
     })
 })
-
