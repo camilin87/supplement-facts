@@ -12,11 +12,11 @@ export default class SingleIngredient extends React.Component {
                   {this.props.item.name}
                   <IngredientSource source={this.props.item.source} />
                 </div>
-                <div className="col-xs-2">
+                <div className="col-xs-2 nobr">
                   {this.props.item.quantity + " " + this.props.item.unit}
                 </div>
                 <div className="col-xs-1"></div>
-                <div className="col-xs-1 text-right">
+                <div className="col-xs-1 text-right nobr">
                   <IngredientPercentage percentage={this.props.item.percentage} />
                 </div>
                 <div className="col-xs-1"></div>
