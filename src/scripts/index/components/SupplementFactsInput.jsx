@@ -37,6 +37,7 @@ export default class SupplementFactsInput extends React.Component {
 
         //**** event handlers *****
         this._productTypeChanged = this._productTypeChanged.bind(this)
+        this._symbolChanged = this._symbolChanged.bind(this)
 
         //TODO: delete these once the data input is ready
         this._displayLabel1 = this._displayLabel1.bind(this)
@@ -59,7 +60,7 @@ export default class SupplementFactsInput extends React.Component {
     _displayLabel1(){
         this._handleChange({
             productType: this.state.productType,
-            percentOfDailyValueAdditionalSymbol: "^",
+            percentOfDailyValueAdditionalSymbol: this.state.percentOfDailyValueAdditionalSymbol,
             servingSizeInfo: {
                 value: 23,
                 type: "packet",
@@ -122,6 +123,14 @@ export default class SupplementFactsInput extends React.Component {
         })
     }
 
+    _symbolChanged(event){
+        console.log("_symbolChanged", event.target.value)
+
+        this._handleChange({
+            percentOfDailyValueAdditionalSymbol: event.target.value
+        })
+    }
+
     render (){
         var productTypesSelect = this._readProductTypes().map(v => {
             return {
@@ -141,6 +150,8 @@ export default class SupplementFactsInput extends React.Component {
                     clearable={false}
                     value={this.state.productType}
                     onChange={this._productTypeChanged} />
+
+                <input type="text" id="percentOfDailyValueAdditionalSymbol" onChange={this._symbolChanged} />
 
                 <hr />
 

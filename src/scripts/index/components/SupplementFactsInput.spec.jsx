@@ -22,6 +22,37 @@ describe("SupplementFactsInput", () => {
         }
     })
 
+    test("default state", () => {
+        const component = shallow(
+            <SupplementFactsInput ProductTypesDataService={productTypesDataServiceMock} onChange={onChangeHandler}/>
+        )
+
+        expect(component.state()).toEqual({
+            productType: "Adults",
+            percentOfDailyValueAdditionalSymbol: null,
+            servingSizeInfo: {
+                value: 0,
+                type: null,
+                additionalComments: null,
+                servingsPerContainer: 10
+            },
+            otherIngredients: [],
+            allergens: [],
+            businessInfo: {
+                distributedByLabel: null,
+                businessName: null,
+                streetAddressLine1: null,
+                streetAddressLine2: null,
+                city: null,
+                state: null,
+                zipCode: null,
+                phone: null
+            },
+            dailyValueIngredients: [],
+            nonDailyValueIngredients: []
+        })
+    })
+
     describe("Product Selection", () => {
         var component = null
 
@@ -53,40 +84,19 @@ describe("SupplementFactsInput", () => {
         })
 
         test("Product type changes are broadcasted", () => {
-            component.find("Select#selectProductType").props().onChange({value: "Pregnant"})
+            component.find("Select#selectProductType").simulate("change", {value: "Pregnant"})
 
             expect(latestBroadcastedState.productType).toBe("Pregnant")
         })
     })
 
-    test("default state", () => {
+    test("updates the percentOfDailyValueAdditionalSymbol", () => {
         const component = shallow(
             <SupplementFactsInput ProductTypesDataService={productTypesDataServiceMock} onChange={onChangeHandler}/>
         )
 
-        expect(component.state()).toEqual({
-            productType: "Adults",
-            percentOfDailyValueAdditionalSymbol: null,
-            servingSizeInfo: {
-                value: 0,
-                type: null,
-                additionalComments: null,
-                servingsPerContainer: 10
-            },
-            otherIngredients: [],
-            allergens: [],
-            businessInfo: {
-                distributedByLabel: null,
-                businessName: null,
-                streetAddressLine1: null,
-                streetAddressLine2: null,
-                city: null,
-                state: null,
-                zipCode: null,
-                phone: null
-            },
-            dailyValueIngredients: [],
-            nonDailyValueIngredients: []
-        })
+        component.find("input#percentOfDailyValueAdditionalSymbol").simulate("change", {target: {value: "newValue"}})
+
+        expect(latestBroadcastedState.percentOfDailyValueAdditionalSymbol).toBe("newValue")
     })
 })
