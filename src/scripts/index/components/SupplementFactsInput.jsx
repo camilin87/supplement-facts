@@ -7,7 +7,7 @@ export default class SupplementFactsInput extends React.Component {
         super(props)
 
         //**** dependencies ****
-        this._productTypesDataService = new ProductTypesDataService()
+        this._productTypesDataService = props["ProductTypesDataService"] || new ProductTypesDataService()
 
         //**** initial state ****
         this.state = {
@@ -134,6 +134,7 @@ export default class SupplementFactsInput extends React.Component {
                 <button type="button" className="btn btn-success" onClick={this._displayLabel2}>Label 2</button>
 
                 <Select 
+                    name="select-product-type"
                     options={productTypesSelect}
                     clearable={false}
                     value={this.state.productType}
