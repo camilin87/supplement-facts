@@ -90,17 +90,28 @@ export default class DataTransformer {
         }
 
         var allIngredients = this._dailyValueIngredientsDataService.all()
+            .map((i, idx) => {
+                i.position = idx
+                return i
+            })
 
-        return dailyValueIngredients.map(sourceIngredient => {
-            var matchingIngredient = allIngredients.find(j => j.name === sourceIngredient.name)
+        return dailyValueIngredients
+            .map(sourceIngredient => {
+                var matchingIngredient = allIngredients.find(j => j.name === sourceIngredient.name)
 
-            var dailyValue = this._readIngredientDailyValue(productType, matchingIngredient.values)
+                var dailyValue = this._readIngredientDailyValue(productType, matchingIngredient.values)
 
-            sourceIngredient.percentage = this._readIngredientPercentageText(sourceIngredient.quantity, dailyValue)
-            sourceIngredient.unit = matchingIngredient.unit
+                sourceIngredient.percentage = this._readIngredientPercentageText(sourceIngredient.quantity, dailyValue)
+                sourceIngredient.unit = matchingIngredient.unit
+                sourceIngredient.position = matchingIngredient.position
 
-            return sourceIngredient
-        })
+                return sourceIngredient
+            }).sort((i, j) => {
+                return i.position - j.position
+            }).map(i => {
+                delete i.position
+                return i
+            })
     }
 
     _readDisclaimers(productType, nonDailyValueIngredients, percentOfDailyValueAdditionalSymbol){

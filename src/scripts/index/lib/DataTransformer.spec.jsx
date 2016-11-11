@@ -200,6 +200,33 @@ test("Reads the dailyValue Ingredients for adults", () => {
     ])
 })
 
+test("Reads the dailyValue Ingredients sorted by their predefined order", () => {
+    var dailyValueIngredientsDataServiceMock = {
+        all: () => {
+            return [
+                {name: "Vitamin A", unit: "IU", values: [100, 0, 0, 0]},
+                {name: "Vitamin C", unit: "IU", values: [100, 0, 0, 0]},
+                {name: "Vitamin D", unit: "IU", values: [100, 0, 0, 0]}
+            ]
+        }
+    }
+
+    var vm = new DataTransformer(dailyValueIngredientsDataServiceMock).generateLabelData({
+        productType: "Adults",
+        dailyValueIngredients: [
+            {name: "Vitamin D", quantity: 100},
+            {name: "Vitamin A", quantity: 100},
+            {name: "Vitamin C", quantity: 100}
+        ]
+    })
+
+    expect(vm.dailyValueIngredients.map(i => i.name)).toEqual([
+        "Vitamin A",
+        "Vitamin C",
+        "Vitamin D"
+    ])
+})
+
 test("Reads the dailyValue Ingredients for infants", () => {
     var dailyValueIngredientsDataServiceMock = {
         all: () => {
