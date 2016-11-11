@@ -1,14 +1,10 @@
 var pluralize = require("pluralize")
+import ProductTypesDataService from './ProductTypesDataService.jsx'
 
 export default class DataTransformer {
     constructor(dailyValueIngredientsDataService){
         this._dailyValueIngredientsDataService = dailyValueIngredientsDataService
-        this._PRODUCT_TYPES = {
-            adults: "Adults",
-            infants: "Infants",
-            toddlers: "Toddlers",
-            pregnant: "Pregnant"
-        }
+        this._PRODUCT_TYPES = new ProductTypesDataService().read()
     }
 
     generateLabelData(input){
