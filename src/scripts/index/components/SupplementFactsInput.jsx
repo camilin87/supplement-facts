@@ -6,16 +6,12 @@ export default class SupplementFactsInput extends React.Component {
     constructor(props){
         super(props)
 
+        //**** dependencies ****
         this._productTypesDataService = new ProductTypesDataService()
 
-        this._handleChange = this._handleChange.bind(this)
-        this._productTypeChanged = this._productTypeChanged.bind(this)
-
-        var productTypesRaw = this._productTypesDataService.read()
-        var productTypes = Object.keys(productTypesRaw).map(k => productTypesRaw[k])
-
+        //**** initial state ****
         this.state = {
-            productType: productTypes[0],
+            productType: this._readProductTypes()[0],
             percentOfDailyValueAdditionalSymbol: null,
             servingSizeInfo: {
                 value: 0,
@@ -39,9 +35,17 @@ export default class SupplementFactsInput extends React.Component {
             nonDailyValueIngredients: []
         }
 
+        //**** event handlers *****
+        this._productTypeChanged = this._productTypeChanged.bind(this)
+
         //TODO: delete these once the data input is ready
         this._displayLabel1 = this._displayLabel1.bind(this)
         this._displayLabel2 = this._displayLabel2.bind(this)
+    }
+
+    _readProductTypes(){
+        var productTypesRaw = this._productTypesDataService.read()
+        return Object.keys(productTypesRaw).map(k => productTypesRaw[k])
     }
 
     _handleChange(change){
@@ -117,9 +121,7 @@ export default class SupplementFactsInput extends React.Component {
     }
 
     render (){
-        var productTypesRaw = this._productTypesDataService.read()
-        var productTypes = Object.keys(productTypesRaw).map(k => productTypesRaw[k])
-        var productTypesSelect = productTypes.map(v => {
+        var productTypesSelect = this._readProductTypes().map(v => {
             return {
                 value: v,
                 label: v
