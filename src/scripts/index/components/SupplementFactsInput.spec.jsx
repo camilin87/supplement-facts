@@ -21,35 +21,29 @@ describe("SupplementFactsInput", () => {
     })
 
     describe("Product Selection", () => {
+        var component = null
+
         beforeEach(() => {
             seededProductTypes = {
                 toddlers: "Toddlers",
                 pregnant: "Pregnant"
             }
+
+            component = shallow(
+                <SupplementFactsInput ProductTypesDataService={productTypesDataServiceMock} onChange={onChangeHandler}/>
+            )
         })
 
         test("Selects the first product type", () => {
-            const component = shallow(
-                <SupplementFactsInput ProductTypesDataService={productTypesDataServiceMock}/>
-            )
-
             expect(component.state().productType).toBe("Toddlers")
             expect(component.find("#selectProductType Select").props().value).toBe("Toddlers")
         })
 
         test("The product type is not clearable", () => {
-            const component = shallow(
-                <SupplementFactsInput ProductTypesDataService={productTypesDataServiceMock}/>
-            )
-
             expect(component.find("#selectProductType Select").props().clearable).toBe(false)
         })
 
         test("Displays one option per product type", () => {
-            const component = shallow(
-                <SupplementFactsInput ProductTypesDataService={productTypesDataServiceMock}/>
-            )
-
             expect(component.find("#selectProductType Select").props().options).toEqual([
                 {value: "Toddlers", label: "Toddlers"},
                 {value: "Pregnant", label: "Pregnant"}
@@ -57,11 +51,7 @@ describe("SupplementFactsInput", () => {
         })
 
         test("Product type changes are broadcasted", () => {
-            const component = shallow(
-                <SupplementFactsInput ProductTypesDataService={productTypesDataServiceMock} onChange={onChangeHandler}/>
-            )
-
-            component.find('#selectProductType Select').props().onChange({value: "Pregnant"})
+            component.find("#selectProductType Select").props().onChange({value: "Pregnant"})
 
             expect(latestBroadcastedState.productType).toBe("Pregnant")
         })
