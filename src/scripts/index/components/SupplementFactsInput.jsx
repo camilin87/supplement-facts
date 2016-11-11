@@ -37,7 +37,7 @@ export default class SupplementFactsInput extends React.Component {
 
         //**** event handlers *****
         this._productTypeChanged = this._productTypeChanged.bind(this)
-        this._symbolChanged = this._symbolChanged.bind(this)
+        this._handleTextChanged = this._handleTextChanged.bind(this)
 
         //TODO: delete these once the data input is ready
         this._displayLabel1 = this._displayLabel1.bind(this)
@@ -123,12 +123,15 @@ export default class SupplementFactsInput extends React.Component {
         })
     }
 
-    _symbolChanged(event){
-        console.log("_symbolChanged", event.target.value)
+    _handleTextChanged(propertyName){
+        var that = this
 
-        this._handleChange({
-            percentOfDailyValueAdditionalSymbol: event.target.value
-        })
+        return (event) => {
+            var stateChange = {}
+            stateChange[propertyName] = event.target.value
+
+            that._handleChange(stateChange)
+        }
     }
 
     render (){
@@ -151,7 +154,10 @@ export default class SupplementFactsInput extends React.Component {
                     value={this.state.productType}
                     onChange={this._productTypeChanged} />
 
-                <input type="text" id="percentOfDailyValueAdditionalSymbol" onChange={this._symbolChanged} />
+                <input 
+                    id="percentOfDailyValueAdditionalSymbol"
+                    type="text"
+                    onChange={this._handleTextChanged("percentOfDailyValueAdditionalSymbol")} />
 
                 <hr />
 
