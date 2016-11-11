@@ -1,16 +1,13 @@
 import React from 'react'
 import SupplementFactsContainer from './SupplementFactsContainer.jsx'
 import SupplementFactsInput from './SupplementFactsInput.jsx'
-import DailyValueIngredientsDataService from '../lib/DailyValueIngredientsDataService.jsx'
 import DataTransformer from '../lib/DataTransformer.jsx'
 
 export default class AppContainer extends React.Component {
     constructor(props){
         super(props)
 
-        this._dataTransformer = new DataTransformer(
-            new DailyValueIngredientsDataService()
-        )
+        this._dataTransformer = new DataTransformer()
 
         this.handleSupplementFactsInput = this.handleSupplementFactsInput.bind(this)
 
