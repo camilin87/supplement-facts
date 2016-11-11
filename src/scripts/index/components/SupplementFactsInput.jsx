@@ -1,4 +1,5 @@
 import React from 'react'
+import Select from 'react-select'
 import ProductTypesDataService from '../lib/ProductTypesDataService.jsx'
 
 export default class SupplementFactsInput extends React.Component {
@@ -8,6 +9,7 @@ export default class SupplementFactsInput extends React.Component {
         this._productTypesDataService = new ProductTypesDataService()
 
         this._handleChange = this._handleChange.bind(this)
+        this._productTypeChanged = this._productTypeChanged.bind(this)
 
         //TODO: delete these once the data input is ready
         this._displayLabel1 = this._displayLabel1.bind(this)
@@ -86,16 +88,26 @@ export default class SupplementFactsInput extends React.Component {
         this._handleChange(getVm2())
     }
 
+    _productTypeChanged(newValue){
+        console.log(newValue)
+    }
+
     render (){
         var productTypesRaw = this._productTypesDataService.read()
         var productTypes = Object.keys(productTypesRaw).map(k => productTypesRaw[k])
+        var productTypesSelect = productTypes.map(v => {
+            return {
+                value: v,
+                label: v
+            }
+        })
 
         return (
             <div>
                 <button type="button" className="btn btn-primary" onClick={this._displayLabel1}>Label 1</button>
                 <button type="button" className="btn btn-success" onClick={this._displayLabel2}>Label 2</button>
 
-                { productTypes }
+                <Select options={productTypesSelect} onChange={this._productTypeChanged} />
 
                 <hr />
 
