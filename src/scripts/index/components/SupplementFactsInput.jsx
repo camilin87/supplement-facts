@@ -11,6 +11,31 @@ export default class SupplementFactsInput extends React.Component {
         this._handleChange = this._handleChange.bind(this)
         this._productTypeChanged = this._productTypeChanged.bind(this)
 
+        this.state = {
+            productType: this._productTypesDataService.read()[0],
+            percentOfDailyValueAdditionalSymbol: null,
+            servingSizeInfo: {
+                value: 0,
+                type: null,
+                additionalComments: null,
+                servingsPerContainer: 10
+            },
+            otherIngredients: [],
+            allergens: [],
+            businessInfo: {
+                distributedByLabel: null,
+                businessName: null,
+                streetAddressLine1: null,
+                streetAddressLine2: null,
+                city: null,
+                state: null,
+                zipCode: null,
+                phone: null
+            },
+            dailyValueIngredients: [],
+            nonDailyValueIngredients: []
+        }
+
         //TODO: delete these once the data input is ready
         this._displayLabel1 = this._displayLabel1.bind(this)
         this._displayLabel2 = this._displayLabel2.bind(this)
@@ -89,7 +114,9 @@ export default class SupplementFactsInput extends React.Component {
     }
 
     _productTypeChanged(newValue){
-        console.log(newValue)
+        this.setState({
+            productType: newValue.value
+        })
     }
 
     render (){
@@ -107,7 +134,7 @@ export default class SupplementFactsInput extends React.Component {
                 <button type="button" className="btn btn-primary" onClick={this._displayLabel1}>Label 1</button>
                 <button type="button" className="btn btn-success" onClick={this._displayLabel2}>Label 2</button>
 
-                <Select options={productTypesSelect} onChange={this._productTypeChanged} />
+                <Select options={productTypesSelect} value={this.state.productType} onChange={this._productTypeChanged} />
 
                 <hr />
 
