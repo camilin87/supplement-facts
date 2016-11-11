@@ -3,12 +3,7 @@ import {shallow} from "enzyme"
 import SupplementFactsInput from "./SupplementFactsInput.jsx"
 
 describe("SupplementFactsInput", () => {
-    var seededProductTypes = {
-        adults: "Adults",
-        infants: "Infants",
-        toddlers: "Toddlers",
-        pregnant: "Pregnant"
-    }
+    var seededProductTypes = null
     const productTypesDataServiceMock = { read: () => seededProductTypes }
 
     var latestBroadcastedState = null
@@ -18,6 +13,13 @@ describe("SupplementFactsInput", () => {
 
     beforeEach(() => {
         latestBroadcastedState = null
+
+        seededProductTypes = {
+            adults: "Adults",
+            infants: "Infants",
+            toddlers: "Toddlers",
+            pregnant: "Pregnant"
+        }
     })
 
     describe("Product Selection", () => {
@@ -54,6 +56,37 @@ describe("SupplementFactsInput", () => {
             component.find("Select#selectProductType").props().onChange({value: "Pregnant"})
 
             expect(latestBroadcastedState.productType).toBe("Pregnant")
+        })
+    })
+
+    test("default state", () => {
+        const component = shallow(
+            <SupplementFactsInput ProductTypesDataService={productTypesDataServiceMock} onChange={onChangeHandler}/>
+        )
+
+        expect(component.state()).toEqual({
+            productType: "Adults",
+            percentOfDailyValueAdditionalSymbol: null,
+            servingSizeInfo: {
+                value: 0,
+                type: null,
+                additionalComments: null,
+                servingsPerContainer: 10
+            },
+            otherIngredients: [],
+            allergens: [],
+            businessInfo: {
+                distributedByLabel: null,
+                businessName: null,
+                streetAddressLine1: null,
+                streetAddressLine2: null,
+                city: null,
+                state: null,
+                zipCode: null,
+                phone: null
+            },
+            dailyValueIngredients: [],
+            nonDailyValueIngredients: []
         })
     })
 })
