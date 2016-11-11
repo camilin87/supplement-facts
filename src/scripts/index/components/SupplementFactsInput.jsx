@@ -148,14 +148,14 @@ export default class SupplementFactsInput extends React.Component {
                 <button type="button" className="btn btn-success" onClick={this._displayLabel2}>Label 2</button>
 
                 <Select 
-                    id="selectProductType"
+                    name="productType"
                     options={productTypesSelect}
                     clearable={false}
                     value={this.state.productType}
                     onChange={this._productTypeChanged} />
 
                 <input 
-                    id="percentOfDailyValueAdditionalSymbol"
+                    name="percentOfDailyValueAdditionalSymbol"
                     type="text"
                     onChange={this._handleTextChanged("percentOfDailyValueAdditionalSymbol")} />
 

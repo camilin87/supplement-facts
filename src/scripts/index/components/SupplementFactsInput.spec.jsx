@@ -69,22 +69,22 @@ describe("SupplementFactsInput", () => {
 
         test("Selects the first product type", () => {
             expect(component.state().productType).toBe("Toddlers")
-            expect(component.find("Select#selectProductType").props().value).toBe("Toddlers")
+            expect(component.find("Select[name='productType']").props().value).toBe("Toddlers")
         })
 
         test("The product type is not clearable", () => {
-            expect(component.find("Select#selectProductType").props().clearable).toBe(false)
+            expect(component.find("Select[name='productType']").props().clearable).toBe(false)
         })
 
         test("Displays one option per product type", () => {
-            expect(component.find("Select#selectProductType").props().options).toEqual([
+            expect(component.find("Select[name='productType']").props().options).toEqual([
                 {value: "Toddlers", label: "Toddlers"},
                 {value: "Pregnant", label: "Pregnant"}
             ])
         })
 
         test("Product type changes are broadcasted", () => {
-            component.find("Select#selectProductType").simulate("change", {value: "Pregnant"})
+            component.find("Select[name='productType']").simulate("change", {value: "Pregnant"})
 
             expect(latestBroadcastedState.productType).toBe("Pregnant")
         })
@@ -95,7 +95,7 @@ describe("SupplementFactsInput", () => {
             <SupplementFactsInput ProductTypesDataService={productTypesDataServiceMock} onChange={onChangeHandler}/>
         )
 
-        component.find("input#percentOfDailyValueAdditionalSymbol").simulate("change", {target: {value: "newValue"}})
+        component.find("input[name='percentOfDailyValueAdditionalSymbol']").simulate("change", {target: {value: "newValue"}})
 
         expect(latestBroadcastedState.percentOfDailyValueAdditionalSymbol).toBe("newValue")
     })
