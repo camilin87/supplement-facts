@@ -72,8 +72,8 @@ test("returns the percent of daily value additional symbol", () => {
 
 test("Reads the Serving Size Info", () => {
     var vm = new DataTransformer().generateLabelData({
+        servingSizeInfoValue: 1,
         servingSizeInfo: {
-            value: 1,
             type: "bottle",
             additionalComments: "(4g) 1 tbsp",
             servingsPerContainer: 5
@@ -90,8 +90,8 @@ test("Reads the Serving Size Info", () => {
 
 test("Pluralizes the Serving Size type", () => {
     var vm = new DataTransformer().generateLabelData({
+        servingSizeInfoValue: 2,
         servingSizeInfo: {
-            value: 2,
             type: "bottle"
         }
     })

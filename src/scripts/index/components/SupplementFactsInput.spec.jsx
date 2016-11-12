@@ -35,8 +35,8 @@ describe("SupplementFactsInput", () => {
             expect(component.state()).toEqual({
                 productType: "Adults",
                 percentOfDailyValueAdditionalSymbol: "",
+                servingSizeInfoValue: 0,
                 servingSizeInfo: {
-                    value: 0,
                     type: null,
                     additionalComments: null,
                     servingsPerContainer: 10
@@ -71,11 +71,7 @@ describe("SupplementFactsInput", () => {
         })
 
         test("displays the serving size info value", () => {
-            component.setState({
-                servingSizeInfo: {
-                    value: 10
-                }
-            })
+            component.setState({ servingSizeInfoValue: 10 })
 
             expect(component.find("input[name='servingSizeInfoValue']").props().value).toBe(10)
         })
@@ -83,7 +79,7 @@ describe("SupplementFactsInput", () => {
         test("updates the serving size info value", () => {
             component.find("input[name='servingSizeInfoValue']").simulate("change", {target: {value: 11}})
 
-            expect(latestBroadcastedState.servingSizeInfo.value).toBe(11)
+            expect(latestBroadcastedState.servingSizeInfoValue).toBe(11)
         })
     })
 

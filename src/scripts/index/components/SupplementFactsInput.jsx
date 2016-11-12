@@ -13,8 +13,8 @@ export default class SupplementFactsInput extends React.Component {
         this.state = {
             productType: this._readProductTypes()[0],
             percentOfDailyValueAdditionalSymbol: "",
+            servingSizeInfoValue: 0,
             servingSizeInfo: {
-                value: 0,
                 type: null,
                 additionalComments: null,
                 servingsPerContainer: 10
@@ -38,7 +38,6 @@ export default class SupplementFactsInput extends React.Component {
         //**** event handlers *****
         this._productTypeChanged = this._productTypeChanged.bind(this)
         this._handleTextChanged = this._handleTextChanged.bind(this)
-        this._handleServingSizeInfoTextChanged = this._handleServingSizeInfoTextChanged.bind(this)
 
         //TODO: delete these once the data input is ready
         this._displayLabel1 = this._displayLabel1.bind(this)
@@ -62,8 +61,8 @@ export default class SupplementFactsInput extends React.Component {
         this._handleChange({
             productType: "Adults",
             percentOfDailyValueAdditionalSymbol: "^",
+            servingSizeInfoValue: 23,
             servingSizeInfo: {
-                value: 23,
                 type: "packet",
                 additionalComments: "(8g) 1 tbsp",
                 servingsPerContainer: 10
@@ -103,8 +102,8 @@ export default class SupplementFactsInput extends React.Component {
         this._handleChange({
             productType: "Adults",
             percentOfDailyValueAdditionalSymbol: "",
+            servingSizeInfoValue: 1,
             servingSizeInfo: {
-                value: 1,
                 type: "bottle",
                 additionalComments: "1 tbsp",
                 servingsPerContainer: 1
@@ -148,19 +147,6 @@ export default class SupplementFactsInput extends React.Component {
         }
     }
 
-    _handleServingSizeInfoTextChanged(propertyName){
-        var that = this
-
-        return (event) => {
-            var stateChange = {
-                servingSizeInfo: {}
-            }
-            stateChange.servingSizeInfo[propertyName] = event.target.value
-
-            that._handleChange(stateChange)
-        }
-    }
-
     render (){
         var productTypesSelect = this._readProductTypes().map(v => {
             return { value: v, label: v }
@@ -192,8 +178,8 @@ export default class SupplementFactsInput extends React.Component {
                     className="form-control"
                     placeholder="Value"
                     type="text"
-                    value={this.state.servingSizeInfo.value}
-                    onChange={this._handleServingSizeInfoTextChanged("value")} 
+                    value={this.state.servingSizeInfoValue}
+                    onChange={this._handleTextChanged("servingSizeInfoValue")} 
                     />
 
                 <hr />
