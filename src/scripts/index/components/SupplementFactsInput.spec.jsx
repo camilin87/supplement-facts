@@ -22,38 +22,56 @@ describe("SupplementFactsInput", () => {
         }
     })
 
-    test("default state", () => {
-        const component = shallow(
-            <SupplementFactsInput ProductTypesDataService={productTypesDataServiceMock} onChange={onChangeHandler}/>
-        )
+    describe("", () => {
+        var component = null
 
-        expect(component.state()).toEqual({
-            productType: "Adults",
-            percentOfDailyValueAdditionalSymbol: "",
-            servingSizeInfo: {
-                value: 0,
-                type: null,
-                additionalComments: null,
-                servingsPerContainer: 10
-            },
-            otherIngredients: [],
-            allergens: [],
-            businessInfo: {
-                distributedByLabel: null,
-                businessName: null,
-                streetAddressLine1: null,
-                streetAddressLine2: null,
-                city: null,
-                state: null,
-                zipCode: null,
-                phone: null
-            },
-            dailyValueIngredients: [],
-            nonDailyValueIngredients: []
+        beforeEach(() => {
+            component = shallow(
+                <SupplementFactsInput ProductTypesDataService={productTypesDataServiceMock} onChange={onChangeHandler}/>
+            )
+        })
+
+        test("default state", () => {
+            expect(component.state()).toEqual({
+                productType: "Adults",
+                percentOfDailyValueAdditionalSymbol: "",
+                servingSizeInfo: {
+                    value: 0,
+                    type: null,
+                    additionalComments: null,
+                    servingsPerContainer: 10
+                },
+                otherIngredients: [],
+                allergens: [],
+                businessInfo: {
+                    distributedByLabel: null,
+                    businessName: null,
+                    streetAddressLine1: null,
+                    streetAddressLine2: null,
+                    city: null,
+                    state: null,
+                    zipCode: null,
+                    phone: null
+                },
+                dailyValueIngredients: [],
+                nonDailyValueIngredients: []
+            })
+        })
+
+        test("updates the percentOfDailyValueAdditionalSymbol", () => {
+            component.find("input[name='percentOfDailyValueAdditionalSymbol']").simulate("change", {target: {value: "newValue"}})
+
+            expect(latestBroadcastedState.percentOfDailyValueAdditionalSymbol).toBe("newValue")
+        })
+
+        test("displays the percentOfDailyValueAdditionalSymbol", () => {
+            component.setState({percentOfDailyValueAdditionalSymbol: "^"})
+
+            expect(component.find("input[name='percentOfDailyValueAdditionalSymbol']").props().value).toBe("^")
         })
     })
 
-    describe("Product Selection", () => {
+    describe("Product Type Selection", () => {
         var component = null
 
         beforeEach(() => {
@@ -88,25 +106,5 @@ describe("SupplementFactsInput", () => {
 
             expect(latestBroadcastedState.productType).toBe("Pregnant")
         })
-    })
-
-    test("updates the percentOfDailyValueAdditionalSymbol", () => {
-        const component = shallow(
-            <SupplementFactsInput ProductTypesDataService={productTypesDataServiceMock} onChange={onChangeHandler}/>
-        )
-
-        component.find("input[name='percentOfDailyValueAdditionalSymbol']").simulate("change", {target: {value: "newValue"}})
-
-        expect(latestBroadcastedState.percentOfDailyValueAdditionalSymbol).toBe("newValue")
-    })
-
-    test("displays the percentOfDailyValueAdditionalSymbol", () => {
-        const component = shallow(
-            <SupplementFactsInput ProductTypesDataService={productTypesDataServiceMock} onChange={onChangeHandler}/>
-        )
-
-        component.setState({percentOfDailyValueAdditionalSymbol: "^"})
-
-        expect(component.find("input[name='percentOfDailyValueAdditionalSymbol']").props().value).toBe("^")
     })
 })
