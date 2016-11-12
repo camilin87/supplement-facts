@@ -69,6 +69,16 @@ describe("SupplementFactsInput", () => {
 
             expect(latestBroadcastedState.percentOfDailyValueAdditionalSymbol).toBe("newValue")
         })
+
+        test("displays the serving size value", () => {
+            component.setState({
+                servingSizeInfo: {
+                    value: 10
+                }
+            })
+
+            expect(component.find("input[name='servingSizeInfoValue']").props().value).toBe(10)
+        })
     })
 
     describe("Product Type Selection", () => {

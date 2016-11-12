@@ -176,6 +176,14 @@ export default class SupplementFactsInput extends React.Component {
                     value={this.state.percentOfDailyValueAdditionalSymbol}
                     onChange={this._handleTextChanged("percentOfDailyValueAdditionalSymbol")} />
 
+                <input 
+                    name="servingSizeInfoValue"
+                    className="form-control"
+                    placeholder="Value"
+                    type="text"
+                    value={this.state.servingSizeInfo.value}
+                    />
+
                 <hr />
 
             </div>
