@@ -70,7 +70,7 @@ describe("SupplementFactsInput", () => {
             expect(latestBroadcastedState.percentOfDailyValueAdditionalSymbol).toBe("newValue")
         })
 
-        test("displays the serving size value", () => {
+        test("displays the serving size info value", () => {
             component.setState({
                 servingSizeInfo: {
                     value: 10
@@ -78,6 +78,12 @@ describe("SupplementFactsInput", () => {
             })
 
             expect(component.find("input[name='servingSizeInfoValue']").props().value).toBe(10)
+        })
+
+        test("updates the serving size info value", () => {
+            component.find("input[name='servingSizeInfoValue']").simulate("change", {target: {value: 11}})
+
+            expect(latestBroadcastedState.servingSizeInfo.value).toBe(11)
         })
     })
 
