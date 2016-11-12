@@ -29,7 +29,7 @@ describe("SupplementFactsInput", () => {
 
         expect(component.state()).toEqual({
             productType: "Adults",
-            percentOfDailyValueAdditionalSymbol: null,
+            percentOfDailyValueAdditionalSymbol: "",
             servingSizeInfo: {
                 value: 0,
                 type: null,
@@ -98,5 +98,15 @@ describe("SupplementFactsInput", () => {
         component.find("input[name='percentOfDailyValueAdditionalSymbol']").simulate("change", {target: {value: "newValue"}})
 
         expect(latestBroadcastedState.percentOfDailyValueAdditionalSymbol).toBe("newValue")
+    })
+
+    test("displays the percentOfDailyValueAdditionalSymbol", () => {
+        const component = shallow(
+            <SupplementFactsInput ProductTypesDataService={productTypesDataServiceMock} onChange={onChangeHandler}/>
+        )
+
+        component.setState({percentOfDailyValueAdditionalSymbol: "^"})
+
+        expect(component.find("input[name='percentOfDailyValueAdditionalSymbol']").props().value).toBe("^")
     })
 })

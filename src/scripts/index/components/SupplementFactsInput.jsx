@@ -12,7 +12,7 @@ export default class SupplementFactsInput extends React.Component {
         //**** initial state ****
         this.state = {
             productType: this._readProductTypes()[0],
-            percentOfDailyValueAdditionalSymbol: null,
+            percentOfDailyValueAdditionalSymbol: "",
             servingSizeInfo: {
                 value: 0,
                 type: null,
@@ -154,9 +154,11 @@ export default class SupplementFactsInput extends React.Component {
                     value={this.state.productType}
                     onChange={this._productTypeChanged} />
 
+
                 <input 
                     name="percentOfDailyValueAdditionalSymbol"
                     type="text"
+                    value={this.state.percentOfDailyValueAdditionalSymbol}
                     onChange={this._handleTextChanged("percentOfDailyValueAdditionalSymbol")} />
 
                 <hr />
