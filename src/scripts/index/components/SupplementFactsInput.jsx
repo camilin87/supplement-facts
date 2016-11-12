@@ -149,10 +149,7 @@ export default class SupplementFactsInput extends React.Component {
 
     render (){
         var productTypesSelect = this._readProductTypes().map(v => {
-            return {
-                value: v,
-                label: v
-            }
+            return { value: v, label: v }
         })
 
         return (
