@@ -59,8 +59,8 @@ export default class SupplementFactsInput extends React.Component {
 
     _displayLabel1(){
         this._handleChange({
-            productType: this.state.productType,
-            percentOfDailyValueAdditionalSymbol: this.state.percentOfDailyValueAdditionalSymbol,
+            productType: "Adults",
+            percentOfDailyValueAdditionalSymbol: "^",
             servingSizeInfo: {
                 value: 23,
                 type: "packet",
@@ -100,12 +100,25 @@ export default class SupplementFactsInput extends React.Component {
 
     _displayLabel2(){
         this._handleChange({
-            productType: this.state.productType,
+            productType: "Adults",
+            percentOfDailyValueAdditionalSymbol: "",
             servingSizeInfo: {
                 value: 1,
                 type: "bottle",
                 additionalComments: "1 tbsp",
                 servingsPerContainer: 1
+            },
+            otherIngredients: [],
+            allergens: [],
+            businessInfo: {
+                distributedByLabel: "",
+                businessName: "",
+                streetAddressLine1: "",
+                streetAddressLine2: "",
+                city: "",
+                state: "",
+                zipCode: "",
+                phone: ""
             },
             dailyValueIngredients: [
                 {name: "Vitamin D", quantity: 11},
