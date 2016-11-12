@@ -58,16 +58,16 @@ describe("SupplementFactsInput", () => {
             })
         })
 
-        test("updates the percentOfDailyValueAdditionalSymbol", () => {
-            component.find("input[name='percentOfDailyValueAdditionalSymbol']").simulate("change", {target: {value: "newValue"}})
-
-            expect(latestBroadcastedState.percentOfDailyValueAdditionalSymbol).toBe("newValue")
-        })
-
         test("displays the percentOfDailyValueAdditionalSymbol", () => {
             component.setState({percentOfDailyValueAdditionalSymbol: "^"})
 
             expect(component.find("input[name='percentOfDailyValueAdditionalSymbol']").props().value).toBe("^")
+        })
+
+        test("updates the percentOfDailyValueAdditionalSymbol", () => {
+            component.find("input[name='percentOfDailyValueAdditionalSymbol']").simulate("change", {target: {value: "newValue"}})
+
+            expect(latestBroadcastedState.percentOfDailyValueAdditionalSymbol).toBe("newValue")
         })
     })
 
