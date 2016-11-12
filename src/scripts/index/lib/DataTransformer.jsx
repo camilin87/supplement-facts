@@ -52,7 +52,7 @@ export default class DataTransformer {
         var result = {
             value: input.servingSizeInfoValue,
             servingsPerContainer: inputServingSizeInfo.servingsPerContainer,
-            type: inputServingSizeInfo.type || "",
+            type: input.servingSizeInfoType || "",
             additionalComments: inputServingSizeInfo.additionalComments || "",
         }
 

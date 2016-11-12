@@ -36,8 +36,8 @@ describe("SupplementFactsInput", () => {
                 productType: "Adults",
                 percentOfDailyValueAdditionalSymbol: "",
                 servingSizeInfoValue: 0,
+                servingSizeInfoType: "",
                 servingSizeInfo: {
-                    type: null,
                     additionalComments: null,
                     servingsPerContainer: 10
                 },

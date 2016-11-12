@@ -14,8 +14,8 @@ export default class SupplementFactsInput extends React.Component {
             productType: this._readProductTypes()[0],
             percentOfDailyValueAdditionalSymbol: "",
             servingSizeInfoValue: 0,
+            servingSizeInfoType: "",
             servingSizeInfo: {
-                type: null,
                 additionalComments: null,
                 servingsPerContainer: 10
             },
@@ -62,8 +62,8 @@ export default class SupplementFactsInput extends React.Component {
             productType: "Adults",
             percentOfDailyValueAdditionalSymbol: "^",
             servingSizeInfoValue: 23,
+            servingSizeInfoType: "packet",
             servingSizeInfo: {
-                type: "packet",
                 additionalComments: "(8g) 1 tbsp",
                 servingsPerContainer: 10
             },
@@ -103,8 +103,8 @@ export default class SupplementFactsInput extends React.Component {
             productType: "Adults",
             percentOfDailyValueAdditionalSymbol: "",
             servingSizeInfoValue: 1,
+            servingSizeInfoType: "bottle",
             servingSizeInfo: {
-                type: "bottle",
                 additionalComments: "1 tbsp",
                 servingsPerContainer: 1
             },
