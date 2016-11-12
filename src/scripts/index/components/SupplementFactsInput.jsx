@@ -170,6 +170,8 @@ export default class SupplementFactsInput extends React.Component {
 
                 <input 
                     name="percentOfDailyValueAdditionalSymbol"
+                    className="form-control"
+                    placeholder="Percent of Daily Value additional symbol"
                     type="text"
                     value={this.state.percentOfDailyValueAdditionalSymbol}
                     onChange={this._handleTextChanged("percentOfDailyValueAdditionalSymbol")} />
