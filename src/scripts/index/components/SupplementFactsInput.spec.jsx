@@ -180,6 +180,38 @@ describe("SupplementFactsInput", () => {
                 expectStatePropertyUnderTestToBe("tdd apps")
             })
         })
+
+        describe("businessInfoStreetAddressLine1", () => {
+            beforeEach(() => {
+                propertyUnderTest = "businessInfoStreetAddressLine1"
+            })
+
+            test("gets displayed", () => {
+                seedStatePropertyUnderTest("11 nw 1 st")
+                expectValueForControlUnderTestToBe("11 nw 1 st")
+            })
+
+            test("gets updated", () => {
+                triggerChangeForControlUnderTest("11 nw 2 st")
+                expectStatePropertyUnderTestToBe("11 nw 2 st")
+            })
+        })
+
+        describe("businessInfoStreetAddressLine2", () => {
+            beforeEach(() => {
+                propertyUnderTest = "businessInfoStreetAddressLine2"
+            })
+
+            test("gets displayed", () => {
+                seedStatePropertyUnderTest("apt 5")
+                expectValueForControlUnderTestToBe("apt 5")
+            })
+
+            test("gets updated", () => {
+                triggerChangeForControlUnderTest("apt 2")
+                expectStatePropertyUnderTestToBe("apt 2")
+            })
+        })
     })
 
     describe("Dropdowns", () => {
