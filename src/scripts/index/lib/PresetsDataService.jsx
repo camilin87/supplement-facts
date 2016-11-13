@@ -7,4 +7,14 @@ export default class PresetsDataService {
             pregnant: "Pregnant"
         }
     }
+
+    readServingSizeInfoTypes() {
+        return [
+            "Tablet",
+            "Capsule",
+            "Veggie Capsule",
+            "Gram",
+            "Packet"
+        ]
+    }
 }
