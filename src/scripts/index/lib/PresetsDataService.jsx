@@ -1,5 +1,5 @@
 export default class PresetsDataService {
-    read () {
+    readProductTypes () {
         return {
             adults: "Adults",
             infants: "Infants",

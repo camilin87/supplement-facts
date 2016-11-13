@@ -5,9 +5,9 @@ import PresetsDataService from './PresetsDataService.jsx'
 export default class DataTransformer {
     constructor(dailyValueIngredientsDataService, presetsDataService){
         this._dailyValueIngredientsDataService = dailyValueIngredientsDataService || new DailyValueIngredientsDataService()
-        this.presetsDataService = presetsDataService || new PresetsDataService()
+        this._presetsDataService = presetsDataService || new PresetsDataService()
 
-        this._PRODUCT_TYPES = this.presetsDataService.read()
+        this._PRODUCT_TYPES = this._presetsDataService.readProductTypes()
     }
 
     generateLabelData(input){

@@ -4,7 +4,7 @@ import SupplementFactsInput from "./SupplementFactsInput.jsx"
 
 describe("SupplementFactsInput", () => {
     var seededProductTypes = null
-    const presetsDataServiceMock = { read: () => seededProductTypes }
+    const presetsDataServiceMock = { readProductTypes: () => seededProductTypes }
 
     var latestBroadcastedState = null
     var onChangeHandler = change => {

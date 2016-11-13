@@ -45,7 +45,7 @@ export default class SupplementFactsInput extends React.Component {
     }
 
     _readProductTypes(){
-        var productTypesRaw = this._presetsDataService.read()
+        var productTypesRaw = this._presetsDataService.readProductTypes()
         return Object.keys(productTypesRaw).map(k => productTypesRaw[k])
     }
 
