@@ -148,6 +148,38 @@ describe("SupplementFactsInput", () => {
                 expectStatePropertyUnderTestToBe(11)
             })
         })
+
+        describe("businessInfoDistributedByLabel", () => {
+            beforeEach(() => {
+                propertyUnderTest = "businessInfoDistributedByLabel"
+            })
+
+            test("gets displayed", () => {
+                seedStatePropertyUnderTest("distributed by")
+                expectValueForControlUnderTestToBe("distributed by")
+            })
+
+            test("gets updated", () => {
+                triggerChangeForControlUnderTest("sold by")
+                expectStatePropertyUnderTestToBe("sold by")
+            })
+        })
+
+        describe("businessInfoBusinessName", () => {
+            beforeEach(() => {
+                propertyUnderTest = "businessInfoBusinessName"
+            })
+
+            test("gets displayed", () => {
+                seedStatePropertyUnderTest("tddapps")
+                expectValueForControlUnderTestToBe("tddapps")
+            })
+
+            test("gets updated", () => {
+                triggerChangeForControlUnderTest("tdd apps")
+                expectStatePropertyUnderTestToBe("tdd apps")
+            })
+        })
     })
 
     describe("Dropdowns", () => {

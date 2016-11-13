@@ -239,7 +239,28 @@ export default class SupplementFactsInput extends React.Component {
                   </div>
                 </div>
 
+                <div className="panel panel-default">
+                  <div className="panel-heading">
+                    <h3 className="panel-title">Business Info</h3>
+                  </div>
+                  <div className="panel-body">
+                    <input 
+                        name="businessInfoDistributedByLabel"
+                        className="form-control"
+                        placeholder="Distributed by Heading"
+                        type="text"
+                        value={this.state.businessInfoDistributedByLabel}
+                        onChange={this._handleTextChanged("businessInfoDistributedByLabel")} />
 
+                    <input 
+                        name="businessInfoBusinessName"
+                        className="form-control"
+                        placeholder="Business Name"
+                        type="text"
+                        value={this.state.businessInfoBusinessName}
+                        onChange={this._handleTextChanged("businessInfoBusinessName")} />
+                  </div>
+                </div>
             </div>
         )
     }
