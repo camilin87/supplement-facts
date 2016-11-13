@@ -209,6 +209,15 @@ export default class SupplementFactsInput extends React.Component {
                     onChange={this._handleTextChanged("servingSizeInfoAdditionalComments")} 
                     />
 
+                <input 
+                    name="servingSizeInfoServingsPerContainer"
+                    className="form-control"
+                    placeholder="Servings per container"
+                    type="text"
+                    value={this.state.servingSizeInfoServingsPerContainer}
+                    onChange={this._handleTextChanged("servingSizeInfoServingsPerContainer")} 
+                    />
+
 
                 <hr />
 

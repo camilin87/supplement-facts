@@ -132,6 +132,22 @@ describe("SupplementFactsInput", () => {
                 expectStatePropertyUnderTestToBe("poison")
             })
         })
+
+        describe("servingSizeInfoServingsPerContainer", () => {
+            beforeEach(() => {
+                propertyUnderTest = "servingSizeInfoServingsPerContainer"
+            })
+
+            test("gets displayed", () => {
+                seedStatePropertyUnderTest(10)
+                expectValueForControlUnderTestToBe(10)
+            })
+
+            test("gets updated", () => {
+                triggerChangeForControlUnderTest(11)
+                expectStatePropertyUnderTestToBe(11)
+            })
+        })
     })
 
     describe("Dropdowns", () => {
