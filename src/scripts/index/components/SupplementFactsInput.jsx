@@ -200,6 +200,15 @@ export default class SupplementFactsInput extends React.Component {
                     onChange={this._handleSelectChanged("servingSizeInfoType")}
                     />
 
+                <input 
+                    name="servingSizeInfoAdditionalComments"
+                    className="form-control"
+                    placeholder="Additional comments"
+                    type="text"
+                    value={this.state.servingSizeInfoAdditionalComments}
+                    onChange={this._handleTextChanged("servingSizeInfoAdditionalComments")} 
+                    />
+
 
                 <hr />
 

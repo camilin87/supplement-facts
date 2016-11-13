@@ -116,6 +116,22 @@ describe("SupplementFactsInput", () => {
                 expectStatePropertyUnderTestToBe(11)
             })
         })
+
+        describe("servingSizeInfoAdditionalComments", () => {
+            beforeEach(() => {
+                propertyUnderTest = "servingSizeInfoAdditionalComments"
+            })
+
+            test("gets displayed", () => {
+                seedStatePropertyUnderTest("lead container")
+                expectValueForControlUnderTestToBe("lead container")
+            })
+
+            test("gets updated", () => {
+                triggerChangeForControlUnderTest("poison")
+                expectStatePropertyUnderTestToBe("poison")
+            })
+        })
     })
 
     describe("Dropdowns", () => {
