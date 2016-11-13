@@ -29,7 +29,7 @@ describe("SupplementFactsInput", () => {
         seededServingSizeInfoTypes = []
     })
 
-    describe("", () => {
+    describe("Text fields", () => {
         var component = null
 
         beforeEach(() => {
@@ -86,75 +86,77 @@ describe("SupplementFactsInput", () => {
         })
     })
 
-    describe("Product Type Selection", () => {
-        var component = null
-        const findQuery = "Select[name='productType']"
+    describe("Dropdowns", () => {
+        describe("Product Type Selection", () => {
+            var component = null
+            const findQuery = "Select[name='productType']"
 
-        beforeEach(() => {
-            seededProductTypes = {
-                toddlers: "Toddlers",
-                pregnant: "Pregnant"
-            }
+            beforeEach(() => {
+                seededProductTypes = {
+                    toddlers: "Toddlers",
+                    pregnant: "Pregnant"
+                }
 
-            component = shallow(
-                <SupplementFactsInput PresetsDataService={presetsDataServiceMock} onChange={onChangeHandler}/>
-            )
+                component = shallow(
+                    <SupplementFactsInput PresetsDataService={presetsDataServiceMock} onChange={onChangeHandler}/>
+                )
+            })
+
+            test("The product type is not clearable", () => {
+                expect(component.find(findQuery).props().clearable).toBe(false)
+            })
+
+            test("Displays one option per product type", () => {
+                expect(component.find(findQuery).props().options).toEqual([
+                    {value: "Toddlers", label: "Toddlers"},
+                    {value: "Pregnant", label: "Pregnant"}
+                ])
+            })
+
+            test("Product type changes are broadcasted", () => {
+                component.find(findQuery).simulate("change", {value: "Pregnant"})
+
+                expect(latestBroadcastedState.productType).toBe("Pregnant")
+            })
+
+            test("Selects the first product type", () => {
+                expect(component.state().productType).toBe("Toddlers")
+                expect(component.find(findQuery).props().value).toBe("Toddlers")
+            })
         })
 
-        test("The product type is not clearable", () => {
-            expect(component.find(findQuery).props().clearable).toBe(false)
-        })
+        describe("Serving Size Selection", () => {
+            var component = null
+            const findQuery = "Select[name='servingSizeInfoType']"
 
-        test("Displays one option per product type", () => {
-            expect(component.find(findQuery).props().options).toEqual([
-                {value: "Toddlers", label: "Toddlers"},
-                {value: "Pregnant", label: "Pregnant"}
-            ])
-        })
+            beforeEach(() => {
+                seededServingSizeInfoTypes = [
+                    "Capsule",
+                    "Packet"
+                ]
 
-        test("Product type changes are broadcasted", () => {
-            component.find(findQuery).simulate("change", {value: "Pregnant"})
+                component = shallow(
+                    <SupplementFactsInput PresetsDataService={presetsDataServiceMock} onChange={onChangeHandler}/>
+                )
+            })
 
-            expect(latestBroadcastedState.productType).toBe("Pregnant")
-        })
+            test("The serving size info type is not clearable", () => {
+                expect(component.find(findQuery).props().clearable).toBe(false)
+            })
 
-        test("Selects the first product type", () => {
-            expect(component.state().productType).toBe("Toddlers")
-            expect(component.find(findQuery).props().value).toBe("Toddlers")
-        })
-    })
+            test("Displays one option per serving size info type", () => {
+                expect(component.find(findQuery).props().options).toEqual([
+                    {value: "Capsule", label: "Capsule"},
+                    {value: "Packet", label: "Packet"}
+                ])
+            })
 
-    describe("Serving Size Selection", () => {
-        var component = null
-        const findQuery = "Select[name='servingSizeInfoType']"
+            test("Serving Size Info type changes are broadcasted", () => {
+                component.find(findQuery).simulate("change", {value: "Packet"})
 
-        beforeEach(() => {
-            seededServingSizeInfoTypes = [
-                "Capsule",
-                "Packet"
-            ]
-
-            component = shallow(
-                <SupplementFactsInput PresetsDataService={presetsDataServiceMock} onChange={onChangeHandler}/>
-            )
-        })
-
-        test("The serving size info type is not clearable", () => {
-            expect(component.find(findQuery).props().clearable).toBe(false)
-        })
-
-        test("Displays one option per serving size info type", () => {
-            expect(component.find(findQuery).props().options).toEqual([
-                {value: "Capsule", label: "Capsule"},
-                {value: "Packet", label: "Packet"}
-            ])
-        })
-
-        test("Serving Size Info type changes are broadcasted", () => {
-            component.find(findQuery).simulate("change", {value: "Packet"})
-
-            expect(latestBroadcastedState.servingSizeInfoType).toBe("Packet")
-            expect(component.find(findQuery).props().value).toBe("Packet")
+                expect(latestBroadcastedState.servingSizeInfoType).toBe("Packet")
+                expect(component.find(findQuery).props().value).toBe("Packet")
+            })
         })
     })
 })
