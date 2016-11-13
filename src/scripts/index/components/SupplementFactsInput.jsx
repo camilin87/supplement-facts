@@ -22,7 +22,7 @@ export default class SupplementFactsInput extends React.Component {
             otherIngredients: [],
             allergens: [],
 
-            businessInfoDistributedByLabel: "",
+            businessInfoDistributedByLabel: "Distributed by",
             businessInfoBusinessName: "",
             businessInfoStreetAddressLine1: "",
             businessInfoStreetAddressLine2: "",
