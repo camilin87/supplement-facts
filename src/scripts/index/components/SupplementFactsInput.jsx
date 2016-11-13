@@ -244,21 +244,26 @@ export default class SupplementFactsInput extends React.Component {
                     <h3 className="panel-title">Business Info</h3>
                   </div>
                   <div className="panel-body">
-                    <input 
-                        name="businessInfoDistributedByLabel"
-                        className="form-control"
-                        placeholder="Distributed by Heading"
-                        type="text"
-                        value={this.state.businessInfoDistributedByLabel}
-                        onChange={this._handleTextChanged("businessInfoDistributedByLabel")} />
 
-                    <input 
-                        name="businessInfoBusinessName"
-                        className="form-control"
-                        placeholder="Business Name"
-                        type="text"
-                        value={this.state.businessInfoBusinessName}
-                        onChange={this._handleTextChanged("businessInfoBusinessName")} />
+                    <div className="input-group">
+                        <input 
+                            name="businessInfoDistributedByLabel"
+                            className="form-control"
+                            placeholder="Distributed by Heading"
+                            type="text"
+                            value={this.state.businessInfoDistributedByLabel}
+                            onChange={this._handleTextChanged("businessInfoDistributedByLabel")} />
+
+                        <span className="input-group-addon"></span>
+
+                        <input 
+                            name="businessInfoBusinessName"
+                            className="form-control"
+                            placeholder="Business Name"
+                            type="text"
+                            value={this.state.businessInfoBusinessName}
+                            onChange={this._handleTextChanged("businessInfoBusinessName")} />
+                    </div>
 
                     <input 
                         name="businessInfoStreetAddressLine1"
@@ -276,29 +281,35 @@ export default class SupplementFactsInput extends React.Component {
                         value={this.state.businessInfoStreetAddressLine2}
                         onChange={this._handleTextChanged("businessInfoStreetAddressLine2")} />
 
-                    <input 
-                        name="businessInfoCity"
-                        className="form-control"
-                        placeholder="City"
-                        type="text"
-                        value={this.state.businessInfoCity}
-                        onChange={this._handleTextChanged("businessInfoCity")} />
+                    <div className="input-group">
+                        <input 
+                            name="businessInfoCity"
+                            className="form-control"
+                            placeholder="City"
+                            type="text"
+                            value={this.state.businessInfoCity}
+                            onChange={this._handleTextChanged("businessInfoCity")} />
 
-                    <input 
-                        name="businessInfoState"
-                        className="form-control"
-                        placeholder="State"
-                        type="text"
-                        value={this.state.businessInfoState}
-                        onChange={this._handleTextChanged("businessInfoState")} />
+                        <span className="input-group-addon"></span>
 
-                    <input 
-                        name="businessInfoZipCode"
-                        className="form-control"
-                        placeholder="Zip"
-                        type="text"
-                        value={this.state.businessInfoZipCode}
-                        onChange={this._handleTextChanged("businessInfoZipCode")} />
+                        <input 
+                            name="businessInfoState"
+                            className="form-control"
+                            placeholder="State"
+                            type="text"
+                            value={this.state.businessInfoState}
+                            onChange={this._handleTextChanged("businessInfoState")} />
+
+                        <span className="input-group-addon"></span>
+
+                        <input 
+                            name="businessInfoZipCode"
+                            className="form-control"
+                            placeholder="Zip"
+                            type="text"
+                            value={this.state.businessInfoZipCode}
+                            onChange={this._handleTextChanged("businessInfoZipCode")} />
+                    </div>
 
                     <input 
                         name="businessInfoPhone"
