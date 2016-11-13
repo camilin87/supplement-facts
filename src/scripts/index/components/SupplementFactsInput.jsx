@@ -292,6 +292,14 @@ export default class SupplementFactsInput extends React.Component {
                         value={this.state.businessInfoState}
                         onChange={this._handleTextChanged("businessInfoState")} />
 
+                    <input 
+                        name="businessInfoZipCode"
+                        className="form-control"
+                        placeholder="Zip"
+                        type="text"
+                        value={this.state.businessInfoZipCode}
+                        onChange={this._handleTextChanged("businessInfoZipCode")} />
+
                   </div>
                 </div>
             </div>

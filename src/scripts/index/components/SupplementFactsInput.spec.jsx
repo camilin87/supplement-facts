@@ -244,6 +244,22 @@ describe("SupplementFactsInput", () => {
                 expectStatePropertyUnderTestToBe("ny")
             })
         })
+
+        describe("businessInfoZipCode", () => {
+            beforeEach(() => {
+                propertyUnderTest = "businessInfoZipCode"
+            })
+
+            test("gets displayed", () => {
+                seedStatePropertyUnderTest("33333")
+                expectValueForControlUnderTestToBe("33333")
+            })
+
+            test("gets updated", () => {
+                triggerChangeForControlUnderTest("55555")
+                expectStatePropertyUnderTestToBe("55555")
+            })
+        })
     })
 
     describe("Dropdowns", () => {
