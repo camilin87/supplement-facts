@@ -2,8 +2,10 @@ import React from "react"
 import {shallow} from "enzyme"
 import DataTransformer from "./DataTransformer.jsx"
 
+const dataTransformer = new DataTransformer()
+
 test("Returns empty object by default", () => {
-    var vm = new DataTransformer().generateLabelData({})
+    var vm = dataTransformer.generateLabelData({})
 
     expect(vm).toEqual({
         servingSizeInfo: {
@@ -37,7 +39,7 @@ test("Returns empty object by default", () => {
 })
 
 test("Returns the otherIngredients", () => {
-    var vm = new DataTransformer().generateLabelData({
+    var vm = dataTransformer.generateLabelData({
         otherIngredients: [
             {name: "hg", quantity: 10},
             {name: "U", quantity: 1001},
@@ -50,7 +52,7 @@ test("Returns the otherIngredients", () => {
 })
 
 test("Returns the allergens", () => {
-    var vm = new DataTransformer().generateLabelData({
+    var vm = dataTransformer.generateLabelData({
         allergens: [
             "penicillin",
             "nuts",
@@ -62,7 +64,7 @@ test("Returns the allergens", () => {
 })
 
 test("returns the percent of daily value additional symbol", () => {
-    var vm = new DataTransformer().generateLabelData({
+    var vm = dataTransformer.generateLabelData({
         percentOfDailyValueAdditionalSymbol: "^"
     })
 
@@ -71,7 +73,7 @@ test("returns the percent of daily value additional symbol", () => {
 })
 
 test("Reads the Serving Size Info", () => {
-    var vm = new DataTransformer().generateLabelData({
+    var vm = dataTransformer.generateLabelData({
         servingSizeInfoValue: 1,
         servingSizeInfoType: "bottle",
         servingSizeInfoAdditionalComments: "(4g) 1 tbsp",
@@ -87,7 +89,7 @@ test("Reads the Serving Size Info", () => {
 })
 
 test("Pluralizes the Serving Size type", () => {
-    var vm = new DataTransformer().generateLabelData({
+    var vm = dataTransformer.generateLabelData({
         servingSizeInfoValue: 2,
         servingSizeInfoType: "bottle"
     })
@@ -96,7 +98,7 @@ test("Pluralizes the Serving Size type", () => {
 })
 
 test("Reads the Business Info", () => {
-    var vm = new DataTransformer().generateLabelData({
+    var vm = dataTransformer.generateLabelData({
         businessInfoDistributedByLabel: "Distributed by",
         businessInfoBusinessName: "Apple",
         businessInfoStreetAddressLine1: "One infinite loop",
@@ -120,7 +122,7 @@ test("Reads the Business Info", () => {
 })
 
 test("Reads the non dailyValue Ingredients", () => {
-    var vm = new DataTransformer().generateLabelData({
+    var vm = dataTransformer.generateLabelData({
         nonDailyValueIngredients: [
             {name: "Calcium", source: "AAAA", quantity: 14, unit: "mg"},
             {name: "Chlorine", quantity: 140, unit: "mg"},
@@ -137,7 +139,7 @@ test("Reads the non dailyValue Ingredients", () => {
 })
 
 test("Displays the children disclaimer for infants", () => {
-    var vm = new DataTransformer().generateLabelData({
+    var vm = dataTransformer.generateLabelData({
         productType: "Infants",
         nonDailyValueIngredients: [
             {name: "Calcium", source: "AAAA", quantity: 14, unit: "mg"}
@@ -148,7 +150,7 @@ test("Displays the children disclaimer for infants", () => {
 })
 
 test("Displays the children disclaimer for toddlers", () => {
-    var vm = new DataTransformer().generateLabelData({
+    var vm = dataTransformer.generateLabelData({
         productType: "Toddlers",
         nonDailyValueIngredients: [
             {name: "Calcium", source: "AAAA", quantity: 14, unit: "mg"}
@@ -159,7 +161,7 @@ test("Displays the children disclaimer for toddlers", () => {
 })
 
 test("Displays the pregnant women disclaimer for pregnant women", () => {
-    var vm = new DataTransformer().generateLabelData({
+    var vm = dataTransformer.generateLabelData({
         productType: "Pregnant",
         nonDailyValueIngredients: [
             {name: "Calcium", source: "AAAA", quantity: 14, unit: "mg"}
