@@ -3,6 +3,8 @@ import {shallow} from "enzyme"
 import SupplementFactsInput from "./SupplementFactsInput.jsx"
 
 describe("SupplementFactsInput", () => {
+    var component = null
+
     var seededProductTypes = null
     var seededServingSizeInfoTypes = null
 
@@ -30,7 +32,29 @@ describe("SupplementFactsInput", () => {
     })
 
     describe("Text fields", () => {
-        var component = null
+        function findInputWithName(name){
+            return component.find(`input[name='${name}']`)
+        }
+
+        var propertyUnderTest = null
+        function controlUnderTest(){
+            return findInputWithName(propertyUnderTest)
+        }
+        function seedStatePropertyUnderTest(value) {
+            var updatedState = {}
+            updatedState[propertyUnderTest] = value
+
+            component.setState(updatedState)
+        }
+        function triggerChangeForControlUnderTest(newValue){
+            controlUnderTest().simulate("change", {target: {value: newValue}})
+        }
+        function expectStatePropertyUnderTestToBe(expectation){
+            expect(latestBroadcastedState[propertyUnderTest]).toBe(expectation)
+        }
+        function expectValueForControlUnderTestToBe(expectation){
+            expect(controlUnderTest().props().value).toBe(expectation)
+        }
 
         beforeEach(() => {
             component = shallow(
@@ -61,37 +85,53 @@ describe("SupplementFactsInput", () => {
             })
         })
 
-        test("displays the percentOfDailyValueAdditionalSymbol", () => {
-            component.setState({percentOfDailyValueAdditionalSymbol: "^"})
+        describe("percentOfDailyValueAdditionalSymbol", () => {
+            beforeEach(() => {
+                propertyUnderTest = "percentOfDailyValueAdditionalSymbol"
+            })
 
-            expect(component.find("input[name='percentOfDailyValueAdditionalSymbol']").props().value).toBe("^")
+            test("gets displayed", () => {
+                seedStatePropertyUnderTest("^")
+                expectValueForControlUnderTestToBe("^")
+            })
+
+            test("gets updated", () => {
+                triggerChangeForControlUnderTest("newValue")
+                expectStatePropertyUnderTestToBe("newValue")
+            })
         })
 
-        test("updates the percentOfDailyValueAdditionalSymbol", () => {
-            component.find("input[name='percentOfDailyValueAdditionalSymbol']").simulate("change", {target: {value: "newValue"}})
+        describe("servingSizeInfoValue", () => {
+            beforeEach(() => {
+                propertyUnderTest = "servingSizeInfoValue"
+            })
 
-            expect(latestBroadcastedState.percentOfDailyValueAdditionalSymbol).toBe("newValue")
-        })
+            test("gets displayed", () => {
+                seedStatePropertyUnderTest(10)
+                expectValueForControlUnderTestToBe(10)
+            })
 
-        test("displays the serving size info value", () => {
-            component.setState({ servingSizeInfoValue: 10 })
-
-            expect(component.find("input[name='servingSizeInfoValue']").props().value).toBe(10)
-        })
-
-        test("updates the serving size info value", () => {
-            component.find("input[name='servingSizeInfoValue']").simulate("change", {target: {value: 11}})
-
-            expect(latestBroadcastedState.servingSizeInfoValue).toBe(11)
+            test("gets updated", () => {
+                triggerChangeForControlUnderTest(11)
+                expectStatePropertyUnderTestToBe(11)
+            })
         })
     })
 
     describe("Dropdowns", () => {
-        describe("Product Type Selection", () => {
-            var component = null
-            const findQuery = "Select[name='productType']"
+        function findSelectWithName(name){
+            return component.find(`Select[name='${name}']`)
+        }
 
+        var propertyUnderTest = null
+        function controlUnderTest(){
+            return findSelectWithName(propertyUnderTest)
+        }
+
+        describe("Product Type Selection", () => {
             beforeEach(() => {
+                propertyUnderTest = "productType"
+
                 seededProductTypes = {
                     toddlers: "Toddlers",
                     pregnant: "Pregnant"
@@ -103,33 +143,32 @@ describe("SupplementFactsInput", () => {
             })
 
             test("The product type is not clearable", () => {
-                expect(component.find(findQuery).props().clearable).toBe(false)
+                expect(controlUnderTest().props().clearable).toBe(false)
             })
 
             test("Displays one option per product type", () => {
-                expect(component.find(findQuery).props().options).toEqual([
+                expect(controlUnderTest().props().options).toEqual([
                     {value: "Toddlers", label: "Toddlers"},
                     {value: "Pregnant", label: "Pregnant"}
                 ])
             })
 
             test("Product type changes are broadcasted", () => {
-                component.find(findQuery).simulate("change", {value: "Pregnant"})
+                controlUnderTest().simulate("change", {value: "Pregnant"})
 
                 expect(latestBroadcastedState.productType).toBe("Pregnant")
             })
 
             test("Selects the first product type", () => {
                 expect(component.state().productType).toBe("Toddlers")
-                expect(component.find(findQuery).props().value).toBe("Toddlers")
+                expect(controlUnderTest().props().value).toBe("Toddlers")
             })
         })
 
         describe("Serving Size Selection", () => {
-            var component = null
-            const findQuery = "Select[name='servingSizeInfoType']"
-
             beforeEach(() => {
+                propertyUnderTest = "servingSizeInfoType"
+
                 seededServingSizeInfoTypes = [
                     "Capsule",
                     "Packet"
@@ -141,21 +180,21 @@ describe("SupplementFactsInput", () => {
             })
 
             test("The serving size info type is not clearable", () => {
-                expect(component.find(findQuery).props().clearable).toBe(false)
+                expect(controlUnderTest().props().clearable).toBe(false)
             })
 
             test("Displays one option per serving size info type", () => {
-                expect(component.find(findQuery).props().options).toEqual([
+                expect(controlUnderTest().props().options).toEqual([
                     {value: "Capsule", label: "Capsule"},
                     {value: "Packet", label: "Packet"}
                 ])
             })
 
             test("Serving Size Info type changes are broadcasted", () => {
-                component.find(findQuery).simulate("change", {value: "Packet"})
+                controlUnderTest().simulate("change", {value: "Packet"})
 
                 expect(latestBroadcastedState.servingSizeInfoType).toBe("Packet")
-                expect(component.find(findQuery).props().value).toBe("Packet")
+                expect(controlUnderTest().props().value).toBe("Packet")
             })
         })
     })
