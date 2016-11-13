@@ -300,6 +300,14 @@ export default class SupplementFactsInput extends React.Component {
                         value={this.state.businessInfoZipCode}
                         onChange={this._handleTextChanged("businessInfoZipCode")} />
 
+                    <input 
+                        name="businessInfoPhone"
+                        className="form-control"
+                        placeholder="Phone"
+                        type="text"
+                        value={this.state.businessInfoPhone}
+                        onChange={this._handleTextChanged("businessInfoPhone")} />
+
                   </div>
                 </div>
             </div>

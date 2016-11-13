@@ -260,6 +260,22 @@ describe("SupplementFactsInput", () => {
                 expectStatePropertyUnderTestToBe("55555")
             })
         })
+
+        describe("businessInfoPhone", () => {
+            beforeEach(() => {
+                propertyUnderTest = "businessInfoPhone"
+            })
+
+            test("gets displayed", () => {
+                seedStatePropertyUnderTest("555-555-5555")
+                expectValueForControlUnderTestToBe("555-555-5555")
+            })
+
+            test("gets updated", () => {
+                triggerChangeForControlUnderTest("1-800-555-5555")
+                expectStatePropertyUnderTestToBe("1-800-555-5555")
+            })
+        })
     })
 
     describe("Dropdowns", () => {
