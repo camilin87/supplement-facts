@@ -74,8 +74,8 @@ test("Reads the Serving Size Info", () => {
     var vm = new DataTransformer().generateLabelData({
         servingSizeInfoValue: 1,
         servingSizeInfoType: "bottle",
+        servingSizeInfoAdditionalComments: "(4g) 1 tbsp",
         servingSizeInfo: {
-            additionalComments: "(4g) 1 tbsp",
             servingsPerContainer: 5
         }
     })

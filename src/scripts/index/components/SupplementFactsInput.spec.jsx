@@ -37,8 +37,8 @@ describe("SupplementFactsInput", () => {
                 percentOfDailyValueAdditionalSymbol: "",
                 servingSizeInfoValue: 0,
                 servingSizeInfoType: "",
+                servingSizeInfoAdditionalComments: "",
                 servingSizeInfo: {
-                    additionalComments: null,
                     servingsPerContainer: 10
                 },
                 otherIngredients: [],

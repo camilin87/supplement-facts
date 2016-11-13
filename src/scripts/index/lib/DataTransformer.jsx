@@ -53,7 +53,7 @@ export default class DataTransformer {
             value: input.servingSizeInfoValue,
             servingsPerContainer: inputServingSizeInfo.servingsPerContainer,
             type: input.servingSizeInfoType || "",
-            additionalComments: inputServingSizeInfo.additionalComments || "",
+            additionalComments: input.servingSizeInfoAdditionalComments || "",
         }
 
         if (result.value > 1){
