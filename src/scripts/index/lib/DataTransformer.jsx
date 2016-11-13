@@ -26,16 +26,7 @@ export default class DataTransformer {
 
         result.percentOfDailyValueAdditionalSymbol = input.percentOfDailyValueAdditionalSymbol || ""
         result.servingSizeInfo = this._readServingSizeInfo(input)
-
-        var inputBusinessInfo = input.businessInfo || {}
-        result.businessInfo.distributedByLabel = inputBusinessInfo.distributedByLabel || ""
-        result.businessInfo.businessName = inputBusinessInfo.businessName || ""
-        result.businessInfo.streetAddressLine1 = inputBusinessInfo.streetAddressLine1 || ""
-        result.businessInfo.streetAddressLine2 = inputBusinessInfo.streetAddressLine2 || ""
-        result.businessInfo.city = inputBusinessInfo.city || ""
-        result.businessInfo.state = inputBusinessInfo.state || ""
-        result.businessInfo.zipCode = inputBusinessInfo.zipCode || ""
-        result.businessInfo.phone = inputBusinessInfo.phone || ""
+        result.businessInfo = this._readBusinessInfo(input)
 
         var nonDailyValueIngredients = input.nonDailyValueIngredients || []
         result.disclaimers = this._readDisclaimers(input.productType, nonDailyValueIngredients, input.percentOfDailyValueAdditionalSymbol)
@@ -46,8 +37,20 @@ export default class DataTransformer {
         return result
     }
 
-    _readServingSizeInfo(input){
+    _readBusinessInfo(input){
+        return {
+            distributedByLabel: input.businessInfoDistributedByLabel || "",
+            businessName: input.businessInfoBusinessName || "",
+            streetAddressLine1: input.businessInfoStreetAddressLine1 || "",
+            streetAddressLine2: input.businessInfoStreetAddressLine2 || "",
+            city: input.businessInfoCity || "",
+            state: input.businessInfoState || "",
+            zipCode: input.businessInfoZipCode || "",
+            phone: input.businessInfoPhone || ""
+        }
+    }
 
+    _readServingSizeInfo(input){
         var result = {
             value: input.servingSizeInfoValue,
             servingsPerContainer: input.servingSizeInfoServingsPerContainer,

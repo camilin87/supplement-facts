@@ -13,22 +13,24 @@ export default class SupplementFactsInput extends React.Component {
         this.state = {
             productType: this._readProductTypes()[0],
             percentOfDailyValueAdditionalSymbol: "",
+
             servingSizeInfoValue: 0,
             servingSizeInfoType: "",
             servingSizeInfoAdditionalComments: "",
             servingSizeInfoServingsPerContainer: 1,
+
             otherIngredients: [],
             allergens: [],
-            businessInfo: {
-                distributedByLabel: null,
-                businessName: null,
-                streetAddressLine1: null,
-                streetAddressLine2: null,
-                city: null,
-                state: null,
-                zipCode: null,
-                phone: null
-            },
+
+            businessInfoDistributedByLabel: "",
+            businessInfoBusinessName: "",
+            businessInfoStreetAddressLine1: "",
+            businessInfoStreetAddressLine2: "",
+            businessInfoCity: "",
+            businessInfoState: "",
+            businessInfoZipCode: "",
+            businessInfoPhone: "",
+
             dailyValueIngredients: [],
             nonDailyValueIngredients: []
         }
@@ -59,10 +61,12 @@ export default class SupplementFactsInput extends React.Component {
         this._handleChange({
             productType: "Adults",
             percentOfDailyValueAdditionalSymbol: "^",
+
             servingSizeInfoValue: 23,
             servingSizeInfoType: "packet",
             servingSizeInfoAdditionalComments: "(8g) 1 tbsp",
             servingSizeInfoServingsPerContainer: 10,
+
             otherIngredients: [
                 {name: "hg", quantity: 10},
                 {name: "pb", quantity: 1000}
@@ -71,21 +75,22 @@ export default class SupplementFactsInput extends React.Component {
                 "nuts",
                 "penicillin"
             ],
-            businessInfo: {
-                distributedByLabel: "Distributed by",
-                businessName: "Apple",
-                streetAddressLine1: "One infinite loop",
-                streetAddressLine2: " --- ",
-                city: "cupertino",
-                state: "CA",
-                zipCode: "55555",
-                phone: "1-800-my-apple"
-            },
+
+            businessInfoDistributedByLabel: "Distributed by",
+            businessInfoBusinessName: "Apple",
+            businessInfoStreetAddressLine1: "One infinite loop",
+            businessInfoStreetAddressLine2: " --- ",
+            businessInfoCity: "cupertino",
+            businessInfoState: "CA",
+            businessInfoZipCode: "55555",
+            businessInfoPhone: "1-800-my-apple",
+
             dailyValueIngredients: [
                 {name: "Vitamin A", source: "AAAA", quantity: 14},
                 {name: "Vitamin D", source: "CCCC", quantity: 11},
                 {name: "Vitamin C", source: "BBBB", quantity: 10}
             ],
+
             nonDailyValueIngredients: [
                 {name: "Calcium", source: "AAAA", quantity: 14, unit: "mg"},
                 {name: "Chlorine", quantity: 14, unit: "mg"},
@@ -98,26 +103,29 @@ export default class SupplementFactsInput extends React.Component {
         this._handleChange({
             productType: "Adults",
             percentOfDailyValueAdditionalSymbol: "",
+
             servingSizeInfoValue: 1,
             servingSizeInfoType: "bottle",
             servingSizeInfoAdditionalComments: "1 tbsp",
             servingSizeInfoServingsPerContainer: 1,
+
             otherIngredients: [],
             allergens: [],
-            businessInfo: {
-                distributedByLabel: "",
-                businessName: "",
-                streetAddressLine1: "",
-                streetAddressLine2: "",
-                city: "",
-                state: "",
-                zipCode: "",
-                phone: ""
-            },
+
+            businessInfoDistributedByLabel: "",
+            businessInfoBusinessName: "",
+            businessInfoStreetAddressLine1: "",
+            businessInfoStreetAddressLine2: "",
+            businessInfoCity: "",
+            businessInfoState: "",
+            businessInfoZipCode: "",
+            businessInfoPhone: "",
+
             dailyValueIngredients: [
                 {name: "Vitamin D", quantity: 11},
                 {name: "Vitamin C", quantity: 10}
             ],
+
             nonDailyValueIngredients: [
                 {name: "Sodium", quantity: 14, unit: "mg"}
             ]

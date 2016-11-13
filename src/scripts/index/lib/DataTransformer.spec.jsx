@@ -97,16 +97,14 @@ test("Pluralizes the Serving Size type", () => {
 
 test("Reads the Business Info", () => {
     var vm = new DataTransformer().generateLabelData({
-        businessInfo: {
-            distributedByLabel: "Distributed by",
-            businessName: "Apple",
-            streetAddressLine1: "One infinite loop",
-            streetAddressLine2: " --- ",
-            city: "cupertino",
-            state: "CA",
-            zipCode: "55555",
-            phone: "1-800-my-apple"
-        }
+        businessInfoDistributedByLabel: "Distributed by",
+        businessInfoBusinessName: "Apple",
+        businessInfoStreetAddressLine1: "One infinite loop",
+        businessInfoStreetAddressLine2: " --- ",
+        businessInfoCity: "cupertino",
+        businessInfoState: "CA",
+        businessInfoZipCode: "55555",
+        businessInfoPhone: "1-800-my-apple"
     })
 
     expect(vm.businessInfo).toEqual({

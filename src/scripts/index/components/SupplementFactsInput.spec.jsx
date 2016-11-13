@@ -41,16 +41,14 @@ describe("SupplementFactsInput", () => {
                 servingSizeInfoServingsPerContainer: 1,
                 otherIngredients: [],
                 allergens: [],
-                businessInfo: {
-                    distributedByLabel: null,
-                    businessName: null,
-                    streetAddressLine1: null,
-                    streetAddressLine2: null,
-                    city: null,
-                    state: null,
-                    zipCode: null,
-                    phone: null
-                },
+                businessInfoDistributedByLabel: "",
+                businessInfoBusinessName: "",
+                businessInfoStreetAddressLine1: "",
+                businessInfoStreetAddressLine2: "",
+                businessInfoCity: "",
+                businessInfoState: "",
+                businessInfoZipCode: "",
+                businessInfoPhone: "",
                 dailyValueIngredients: [],
                 nonDailyValueIngredients: []
             })
