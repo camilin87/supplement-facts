@@ -80,7 +80,7 @@ export default class SupplementFactsInput extends React.Component {
             businessInfoBusinessName: "Apple",
             businessInfoStreetAddressLine1: "One infinite loop",
             businessInfoStreetAddressLine2: " --- ",
-            businessInfoCity: "cupertino",
+            businessInfoCity: "Cupertino",
             businessInfoState: "CA",
             businessInfoZipCode: "55555",
             businessInfoPhone: "1-800-my-apple",
@@ -275,6 +275,14 @@ export default class SupplementFactsInput extends React.Component {
                         type="text"
                         value={this.state.businessInfoStreetAddressLine2}
                         onChange={this._handleTextChanged("businessInfoStreetAddressLine2")} />
+
+                    <input 
+                        name="businessInfoCity"
+                        className="form-control"
+                        placeholder="City"
+                        type="text"
+                        value={this.state.businessInfoCity}
+                        onChange={this._handleTextChanged("businessInfoCity")} />
 
                   </div>
                 </div>

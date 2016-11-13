@@ -212,6 +212,22 @@ describe("SupplementFactsInput", () => {
                 expectStatePropertyUnderTestToBe("apt 2")
             })
         })
+
+        describe("businessInfoCity", () => {
+            beforeEach(() => {
+                propertyUnderTest = "businessInfoCity"
+            })
+
+            test("gets displayed", () => {
+                seedStatePropertyUnderTest("miami")
+                expectValueForControlUnderTestToBe("miami")
+            })
+
+            test("gets updated", () => {
+                triggerChangeForControlUnderTest("new york")
+                expectStatePropertyUnderTestToBe("new york")
+            })
+        })
     })
 
     describe("Dropdowns", () => {
