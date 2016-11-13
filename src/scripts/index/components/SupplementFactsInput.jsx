@@ -36,9 +36,8 @@ export default class SupplementFactsInput extends React.Component {
         }
 
         //**** event handlers *****
-        this._productTypeChanged = this._productTypeChanged.bind(this)
-        this._servingSizeInfoTypeChanged = this._servingSizeInfoTypeChanged.bind(this)
         this._handleTextChanged = this._handleTextChanged.bind(this)
+        this._handleSelectChanged = this._handleSelectChanged.bind(this)
 
         //TODO: delete these once the data input is ready
         this._displayLabel1 = this._displayLabel1.bind(this)
@@ -133,18 +132,6 @@ export default class SupplementFactsInput extends React.Component {
         })
     }
 
-    _productTypeChanged(newValue){
-        this._handleChange({
-            productType: newValue.value
-        })
-    }
-
-    _servingSizeInfoTypeChanged(newValue){
-        this._handleChange({
-            servingSizeInfoType: newValue.value
-        })
-    }
-
     _handleTextChanged(propertyName){
         var that = this
 
@@ -156,15 +143,24 @@ export default class SupplementFactsInput extends React.Component {
         }
     }
 
+    _handleSelectChanged(propertyName){
+        var that = this
+
+        return (event) => {
+            var stateChange = {}
+            stateChange[propertyName] = event.value
+
+            this._handleChange(stateChange)
+        }
+    }
+
+    _listToSelectOptions(list){
+        return list.map(v => {
+            return { value: v, label: v }
+        })
+    }
+
     render (){
-        var productTypesSelect = this._readProductTypes().map(v => {
-            return { value: v, label: v }
-        })
-
-        var servingSizeInfoTypesSelect = this._presetsDataService.readServingSizeInfoTypes().map(v => {
-            return { value: v, label: v }
-        })
-
         return (
             <div>
                 <button type="button" className="btn btn-primary" onClick={this._displayLabel1}>Label 1</button>
@@ -173,9 +169,9 @@ export default class SupplementFactsInput extends React.Component {
                 <Select 
                     name="productType"
                     clearable={false}
-                    options={productTypesSelect}
+                    options={this._listToSelectOptions(this._readProductTypes())}
                     value={this.state.productType}
-                    onChange={this._productTypeChanged} />
+                    onChange={this._handleSelectChanged("productType")} />
 
 
                 <input 
@@ -199,9 +195,9 @@ export default class SupplementFactsInput extends React.Component {
                 <Select 
                     name="servingSizeInfoType"
                     clearable={false}
-                    options={servingSizeInfoTypesSelect}
+                    options={this._listToSelectOptions(this._presetsDataService.readServingSizeInfoTypes())}
                     value={this.state.servingSizeInfoType}
-                    onChange={this._servingSizeInfoTypeChanged}
+                    onChange={this._handleSelectChanged("servingSizeInfoType")}
                     />
 
 
