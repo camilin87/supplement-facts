@@ -228,6 +228,22 @@ describe("SupplementFactsInput", () => {
                 expectStatePropertyUnderTestToBe("new york")
             })
         })
+
+        describe("businessInfoState", () => {
+            beforeEach(() => {
+                propertyUnderTest = "businessInfoState"
+            })
+
+            test("gets displayed", () => {
+                seedStatePropertyUnderTest("fl")
+                expectValueForControlUnderTestToBe("fl")
+            })
+
+            test("gets updated", () => {
+                triggerChangeForControlUnderTest("ny")
+                expectStatePropertyUnderTestToBe("ny")
+            })
+        })
     })
 
     describe("Dropdowns", () => {
