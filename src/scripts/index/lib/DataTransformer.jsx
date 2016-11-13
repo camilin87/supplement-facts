@@ -1,13 +1,13 @@
 var pluralize = require("pluralize")
 import DailyValueIngredientsDataService from './DailyValueIngredientsDataService.jsx'
-import ProductTypesDataService from './ProductTypesDataService.jsx'
+import PresetsDataService from './PresetsDataService.jsx'
 
 export default class DataTransformer {
-    constructor(dailyValueIngredientsDataService, productTypesDataService){
+    constructor(dailyValueIngredientsDataService, presetsDataService){
         this._dailyValueIngredientsDataService = dailyValueIngredientsDataService || new DailyValueIngredientsDataService()
-        this._productTypesDataService = productTypesDataService || new ProductTypesDataService()
+        this.presetsDataService = presetsDataService || new PresetsDataService()
 
-        this._PRODUCT_TYPES = this._productTypesDataService.read()
+        this._PRODUCT_TYPES = this.presetsDataService.read()
     }
 
     generateLabelData(input){

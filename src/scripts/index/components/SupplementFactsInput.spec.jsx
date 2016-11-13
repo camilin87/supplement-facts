@@ -4,7 +4,7 @@ import SupplementFactsInput from "./SupplementFactsInput.jsx"
 
 describe("SupplementFactsInput", () => {
     var seededProductTypes = null
-    const productTypesDataServiceMock = { read: () => seededProductTypes }
+    const presetsDataServiceMock = { read: () => seededProductTypes }
 
     var latestBroadcastedState = null
     var onChangeHandler = change => {
@@ -27,7 +27,7 @@ describe("SupplementFactsInput", () => {
 
         beforeEach(() => {
             component = shallow(
-                <SupplementFactsInput ProductTypesDataService={productTypesDataServiceMock} onChange={onChangeHandler}/>
+                <SupplementFactsInput PresetsDataService={presetsDataServiceMock} onChange={onChangeHandler}/>
             )
         })
 
@@ -89,7 +89,7 @@ describe("SupplementFactsInput", () => {
             }
 
             component = shallow(
-                <SupplementFactsInput ProductTypesDataService={productTypesDataServiceMock} onChange={onChangeHandler}/>
+                <SupplementFactsInput PresetsDataService={presetsDataServiceMock} onChange={onChangeHandler}/>
             )
         })
 

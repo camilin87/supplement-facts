@@ -1,13 +1,13 @@
 import React from 'react'
 import Select from 'react-select'
-import ProductTypesDataService from '../lib/ProductTypesDataService.jsx'
+import PresetsDataService from '../lib/PresetsDataService.jsx'
 
 export default class SupplementFactsInput extends React.Component {
     constructor(props){
         super(props)
 
         //**** dependencies ****
-        this._productTypesDataService = props["ProductTypesDataService"] || new ProductTypesDataService()
+        this._presetsDataService = props["PresetsDataService"] || new PresetsDataService()
 
         //**** initial state ****
         this.state = {
@@ -45,7 +45,7 @@ export default class SupplementFactsInput extends React.Component {
     }
 
     _readProductTypes(){
-        var productTypesRaw = this._productTypesDataService.read()
+        var productTypesRaw = this._presetsDataService.read()
         return Object.keys(productTypesRaw).map(k => productTypesRaw[k])
     }
 

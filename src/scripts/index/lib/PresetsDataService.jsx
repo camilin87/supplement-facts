@@ -1,4 +1,4 @@
-export default class ProductTypesDataService {
+export default class PresetsDataService {
     read () {
         return {
             adults: "Adults",
