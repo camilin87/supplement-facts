@@ -14,18 +14,20 @@ describe("DataTransformer", () => {
             all: () => seededDailyValueIngredients
         }
 
-        dataTransformer = new DataTransformer(
-            dailyValueIngredientsDataServiceMock,
-            {
-                readProductTypes: () => { 
-                    return {
-                        adults: "Adults",
-                        infants: "Infants",
-                        toddlers: "Toddlers",
-                        pregnant: "Pregnant"
-                    }
+        var presetsDataServiceMock = {
+            readProductTypes: () => { 
+                return {
+                    adults: "Adults",
+                    infants: "Infants",
+                    toddlers: "Toddlers",
+                    pregnant: "Pregnant"
                 }
             }
+        }
+
+        dataTransformer = new DataTransformer(
+            dailyValueIngredientsDataServiceMock,
+            presetsDataServiceMock
         )
     })
 
