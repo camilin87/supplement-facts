@@ -4,7 +4,12 @@ import SupplementFactsInput from "./SupplementFactsInput.jsx"
 
 describe("SupplementFactsInput", () => {
     var seededProductTypes = null
-    const presetsDataServiceMock = { readProductTypes: () => seededProductTypes }
+    var seededServingSizeInfoTypes = null
+
+    const presetsDataServiceMock = { 
+        readProductTypes: () => seededProductTypes,
+        readServingSizeInfoTypes: () => seededServingSizeInfoTypes
+    }
 
     var latestBroadcastedState = null
     var onChangeHandler = change => {
@@ -20,6 +25,8 @@ describe("SupplementFactsInput", () => {
             toddlers: "Toddlers",
             pregnant: "Pregnant"
         }
+
+        seededServingSizeInfoTypes = []
     })
 
     describe("", () => {
@@ -93,11 +100,6 @@ describe("SupplementFactsInput", () => {
             )
         })
 
-        test("Selects the first product type", () => {
-            expect(component.state().productType).toBe("Toddlers")
-            expect(component.find("Select[name='productType']").props().value).toBe("Toddlers")
-        })
-
         test("The product type is not clearable", () => {
             expect(component.find("Select[name='productType']").props().clearable).toBe(false)
         })
@@ -113,6 +115,44 @@ describe("SupplementFactsInput", () => {
             component.find("Select[name='productType']").simulate("change", {value: "Pregnant"})
 
             expect(latestBroadcastedState.productType).toBe("Pregnant")
+        })
+
+        test("Selects the first product type", () => {
+            expect(component.state().productType).toBe("Toddlers")
+            expect(component.find("Select[name='productType']").props().value).toBe("Toddlers")
+        })
+    })
+
+    describe("Serving Size Selection", () => {
+        var component = null
+
+        beforeEach(() => {
+            seededServingSizeInfoTypes = [
+                "Capsule",
+                "Packet"
+            ]
+
+            component = shallow(
+                <SupplementFactsInput PresetsDataService={presetsDataServiceMock} onChange={onChangeHandler}/>
+            )
+        })
+
+        test("The serving size info type is not clearable", () => {
+            expect(component.find("Select[name='servingSizeInfoType']").props().clearable).toBe(false)
+        })
+
+        test("Displays one option per serving size info type", () => {
+            expect(component.find("Select[name='servingSizeInfoType']").props().options).toEqual([
+                {value: "Capsule", label: "Capsule"},
+                {value: "Packet", label: "Packet"}
+            ])
+        })
+
+        test("Serving Size Info type changes are broadcasted", () => {
+            component.find("Select[name='servingSizeInfoType']").simulate("change", {value: "Packet"})
+
+            expect(latestBroadcastedState.servingSizeInfoType).toBe("Packet")
+            expect(component.find("Select[name='servingSizeInfoType']").props().value).toBe("Packet")
         })
     })
 })
