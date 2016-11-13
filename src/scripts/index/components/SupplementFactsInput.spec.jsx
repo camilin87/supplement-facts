@@ -38,9 +38,7 @@ describe("SupplementFactsInput", () => {
                 servingSizeInfoValue: 0,
                 servingSizeInfoType: "",
                 servingSizeInfoAdditionalComments: "",
-                servingSizeInfo: {
-                    servingsPerContainer: 10
-                },
+                servingSizeInfoServingsPerContainer: 1,
                 otherIngredients: [],
                 allergens: [],
                 businessInfo: {

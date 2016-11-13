@@ -16,9 +16,7 @@ export default class SupplementFactsInput extends React.Component {
             servingSizeInfoValue: 0,
             servingSizeInfoType: "",
             servingSizeInfoAdditionalComments: "",
-            servingSizeInfo: {
-                servingsPerContainer: 10
-            },
+            servingSizeInfoServingsPerContainer: 1,
             otherIngredients: [],
             allergens: [],
             businessInfo: {
@@ -64,9 +62,7 @@ export default class SupplementFactsInput extends React.Component {
             servingSizeInfoValue: 23,
             servingSizeInfoType: "packet",
             servingSizeInfoAdditionalComments: "(8g) 1 tbsp",
-            servingSizeInfo: {
-                servingsPerContainer: 10
-            },
+            servingSizeInfoServingsPerContainer: 10,
             otherIngredients: [
                 {name: "hg", quantity: 10},
                 {name: "pb", quantity: 1000}
@@ -105,9 +101,7 @@ export default class SupplementFactsInput extends React.Component {
             servingSizeInfoValue: 1,
             servingSizeInfoType: "bottle",
             servingSizeInfoAdditionalComments: "1 tbsp",
-            servingSizeInfo: {
-                servingsPerContainer: 1
-            },
+            servingSizeInfoServingsPerContainer: 1,
             otherIngredients: [],
             allergens: [],
             businessInfo: {

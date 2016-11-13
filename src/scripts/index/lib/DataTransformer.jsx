@@ -25,7 +25,7 @@ export default class DataTransformer {
         result.otherIngredients.allergens = (input.allergens || []).join(", ")
 
         result.percentOfDailyValueAdditionalSymbol = input.percentOfDailyValueAdditionalSymbol || ""
-        result.servingSizeInfo = this._readServingSizeInfo(input.servingSizeInfo, input)
+        result.servingSizeInfo = this._readServingSizeInfo(input)
 
         var inputBusinessInfo = input.businessInfo || {}
         result.businessInfo.distributedByLabel = inputBusinessInfo.distributedByLabel || ""
@@ -46,12 +46,11 @@ export default class DataTransformer {
         return result
     }
 
-    _readServingSizeInfo(inputServingSizeInfo, input){
-        var inputServingSizeInfo = inputServingSizeInfo || {}
+    _readServingSizeInfo(input){
 
         var result = {
             value: input.servingSizeInfoValue,
-            servingsPerContainer: inputServingSizeInfo.servingsPerContainer,
+            servingsPerContainer: input.servingSizeInfoServingsPerContainer,
             type: input.servingSizeInfoType || "",
             additionalComments: input.servingSizeInfoAdditionalComments || "",
         }

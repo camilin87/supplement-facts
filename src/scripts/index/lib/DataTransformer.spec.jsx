@@ -75,9 +75,7 @@ test("Reads the Serving Size Info", () => {
         servingSizeInfoValue: 1,
         servingSizeInfoType: "bottle",
         servingSizeInfoAdditionalComments: "(4g) 1 tbsp",
-        servingSizeInfo: {
-            servingsPerContainer: 5
-        }
+        servingSizeInfoServingsPerContainer: 5
     })
 
     expect(vm.servingSizeInfo).toEqual({
