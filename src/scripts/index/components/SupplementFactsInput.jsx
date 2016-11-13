@@ -163,63 +163,82 @@ export default class SupplementFactsInput extends React.Component {
     render (){
         return (
             <div>
-                <button type="button" className="btn btn-primary" onClick={this._displayLabel1}>Label 1</button>
-                <button type="button" className="btn btn-success" onClick={this._displayLabel2}>Label 2</button>
-
-                <Select 
-                    name="productType"
-                    clearable={false}
-                    options={this._listToSelectOptions(this._readProductTypes())}
-                    value={this.state.productType}
-                    onChange={this._handleSelectChanged("productType")} />
-
-
-                <input 
-                    name="percentOfDailyValueAdditionalSymbol"
-                    className="form-control"
-                    placeholder="Percent of Daily Value additional symbol"
-                    type="text"
-                    value={this.state.percentOfDailyValueAdditionalSymbol}
-                    onChange={this._handleTextChanged("percentOfDailyValueAdditionalSymbol")} />
-
-                <input 
-                    name="servingSizeInfoValue"
-                    className="form-control"
-                    placeholder="Value"
-                    type="text"
-                    value={this.state.servingSizeInfoValue}
-                    onChange={this._handleTextChanged("servingSizeInfoValue")} 
-                    />
+                <div className="panel panel-default">
+                  <div className="panel-heading">
+                    <h3 className="panel-title">Presets</h3>
+                  </div>
+                  <div className="panel-body">
+                    <button type="button" className="btn btn-primary" onClick={this._displayLabel1}>Label 1</button>
+                    <button type="button" className="btn btn-success" onClick={this._displayLabel2}>Label 2</button>
+                  </div>
+                </div>
 
 
-                <Select 
-                    name="servingSizeInfoType"
-                    clearable={false}
-                    options={this._listToSelectOptions(this._presetsDataService.readServingSizeInfoTypes())}
-                    value={this.state.servingSizeInfoType}
-                    onChange={this._handleSelectChanged("servingSizeInfoType")}
-                    />
+                <div className="panel panel-default">
+                  <div className="panel-heading">
+                    <h3 className="panel-title">Product Type</h3>
+                  </div>
+                  <div className="panel-body">
+                    <Select 
+                        name="productType"
+                        clearable={false}
+                        options={this._listToSelectOptions(this._readProductTypes())}
+                        value={this.state.productType}
+                        onChange={this._handleSelectChanged("productType")} />
+                  </div>
+                </div>
 
-                <input 
-                    name="servingSizeInfoAdditionalComments"
-                    className="form-control"
-                    placeholder="Additional comments"
-                    type="text"
-                    value={this.state.servingSizeInfoAdditionalComments}
-                    onChange={this._handleTextChanged("servingSizeInfoAdditionalComments")} 
-                    />
+                <div className="panel panel-default">
+                  <div className="panel-heading">
+                    <h3 className="panel-title">Daily Value</h3>
+                  </div>
+                  <div className="panel-body">
+                    <input 
+                        name="percentOfDailyValueAdditionalSymbol"
+                        className="form-control"
+                        placeholder="Percent of Daily Value additional symbol"
+                        type="text"
+                        value={this.state.percentOfDailyValueAdditionalSymbol}
+                        onChange={this._handleTextChanged("percentOfDailyValueAdditionalSymbol")} />
 
-                <input 
-                    name="servingSizeInfoServingsPerContainer"
-                    className="form-control"
-                    placeholder="Servings per container"
-                    type="text"
-                    value={this.state.servingSizeInfoServingsPerContainer}
-                    onChange={this._handleTextChanged("servingSizeInfoServingsPerContainer")} 
-                    />
+                    <input 
+                        name="servingSizeInfoValue"
+                        className="form-control"
+                        placeholder="Value"
+                        type="text"
+                        value={this.state.servingSizeInfoValue}
+                        onChange={this._handleTextChanged("servingSizeInfoValue")} 
+                        />
 
 
-                <hr />
+                    <Select 
+                        name="servingSizeInfoType"
+                        clearable={false}
+                        options={this._listToSelectOptions(this._presetsDataService.readServingSizeInfoTypes())}
+                        value={this.state.servingSizeInfoType}
+                        onChange={this._handleSelectChanged("servingSizeInfoType")}
+                        />
+
+                    <input 
+                        name="servingSizeInfoAdditionalComments"
+                        className="form-control"
+                        placeholder="Additional comments"
+                        type="text"
+                        value={this.state.servingSizeInfoAdditionalComments}
+                        onChange={this._handleTextChanged("servingSizeInfoAdditionalComments")} 
+                        />
+
+                    <input 
+                        name="servingSizeInfoServingsPerContainer"
+                        className="form-control"
+                        placeholder="Servings per container"
+                        type="text"
+                        value={this.state.servingSizeInfoServingsPerContainer}
+                        onChange={this._handleTextChanged("servingSizeInfoServingsPerContainer")} 
+                        />
+                  </div>
+                </div>
+
 
             </div>
         )
