@@ -11,12 +11,22 @@ describe("DataTransformer", () => {
         seededDailyValueIngredients = []
 
         var dailyValueIngredientsDataServiceMock = {
-            all: () => {
-                return seededDailyValueIngredients
-            }
+            all: () => seededDailyValueIngredients
         }
 
-        dataTransformer = new DataTransformer(dailyValueIngredientsDataServiceMock)
+        dataTransformer = new DataTransformer(
+            dailyValueIngredientsDataServiceMock,
+            {
+                readProductTypes: () => { 
+                    return {
+                        adults: "Adults",
+                        infants: "Infants",
+                        toddlers: "Toddlers",
+                        pregnant: "Pregnant"
+                    }
+                }
+            }
+        )
     })
 
     test("Returns empty object by default", () => {
