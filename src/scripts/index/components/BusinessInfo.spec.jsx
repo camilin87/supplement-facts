@@ -33,6 +33,19 @@ test("returns the business name", () => {
     expect(component.text()).toContain("Manufactured by Apple")
 })
 
+test("returns the business name even if no distributed by label is specified", () => {
+    var info = {
+        distributedByLabel: "",
+        businessName: "Apple"
+    }
+
+    const component = shallow(
+        <BusinessInfo info={info} />
+    )
+
+    expect(component.text()).toContain("Apple")
+})
+
 test("returns the business address", () => {
     var info = {
         streetAddressLine1: "one infinite loop",

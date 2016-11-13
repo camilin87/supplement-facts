@@ -11,8 +11,16 @@ export default class BusinessInfo extends React.Component {
 
         var lines = []
 
-        if (info.distributedByLabel && info.businessName){
-            lines.push(`${info.distributedByLabel} ${info.businessName}`)
+        var distributedByLabel = info.distributedByLabel || ""
+
+        if (info.businessName){
+            var businessNameLine = [
+                distributedByLabel,
+                info.businessName || ""
+            ].join(" ")
+            .trim()
+
+            lines.push(businessNameLine)
         }
 
         if (info.streetAddressLine1){
