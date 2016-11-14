@@ -1,6 +1,7 @@
 import React from 'react'
 import Select from 'react-select'
 import PresetsDataService from '../lib/PresetsDataService.jsx'
+const ReactTags = require('react-tag-input').WithContext
 
 export default class SupplementFactsInput extends React.Component {
     constructor(props){
@@ -38,6 +39,9 @@ export default class SupplementFactsInput extends React.Component {
         //**** event handlers *****
         this._handleTextChanged = this._handleTextChanged.bind(this)
         this._handleSelectChanged = this._handleSelectChanged.bind(this)
+
+        this._handleTagDelete = this._handleTagDelete.bind(this)
+        this._handleTagAddition = this._handleTagAddition.bind(this)
 
         //TODO: delete these once the data input is ready
         this._displayLabel1 = this._displayLabel1.bind(this)
@@ -154,6 +158,21 @@ export default class SupplementFactsInput extends React.Component {
         }
     }
 
+    _handleTagDelete(i) {
+        let tags = this.state.allergens
+        tags.splice(i, 1)
+        this._handleChange({tags: tags})
+    }
+
+    _handleTagAddition(tag) {
+        let tags = this.state.allergens
+        tags.push({
+            id: tags.length + 1,
+            text: tag
+        })
+        this._handleChange({tags: tags})
+    }
+
     _listToSelectOptions(list){
         return list.map(v => {
             return { value: v, label: v }
@@ -236,6 +255,23 @@ export default class SupplementFactsInput extends React.Component {
                         value={this.state.servingSizeInfoServingsPerContainer}
                         onChange={this._handleTextChanged("servingSizeInfoServingsPerContainer")} 
                         />
+                  </div>
+                </div>
+
+                <div className="panel panel-default">
+                  <div className="panel-heading">
+                    <h3 className="panel-title">Allergens</h3>
+                  </div>
+                  <div className="panel-body">
+
+                    <ReactTags 
+                        name="allergens"
+                        placeholder="Allergens"
+                        tags={this.state.allergens}
+                        handleDelete={this._handleTagDelete}
+                        handleAddition={this._handleTagAddition}
+                        />
+
                   </div>
                 </div>
 

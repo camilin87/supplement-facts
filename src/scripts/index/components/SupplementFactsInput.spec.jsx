@@ -362,4 +362,54 @@ describe("SupplementFactsInput", () => {
             })
         })
     })
+
+    describe("Tags", () => {
+        function findTagsWithName(name){
+            return component.find(`[name='${name}']`)
+        }
+
+        var propertyUnderTest = null
+        function controlUnderTest(){
+            return findTagsWithName(propertyUnderTest)
+        }
+
+        describe("Allergens", () => {
+            beforeEach(() => {
+                propertyUnderTest = "allergens"
+
+                component = shallow(
+                    <SupplementFactsInput PresetsDataService={presetsDataServiceMock} onChange={onChangeHandler}/>
+                )
+            })
+
+            test("displays no allergens by default", () => {
+                expect(controlUnderTest().props().tags).toEqual([])
+            })
+
+            test("adds allergens", () => {
+                controlUnderTest().props().handleAddition("lead")
+
+                expect(latestBroadcastedState.allergens).toEqual([
+                    {id: 1, text: "lead"}
+                ])
+                expect(controlUnderTest().props().tags).toEqual([
+                    {id: 1, text: "lead"}
+                ])
+            })
+
+            test("removes allergens", () => {
+                controlUnderTest().props().handleAddition("penicillin")
+                controlUnderTest().props().handleAddition("peanuts")
+
+                controlUnderTest().props().handleDelete(0)
+
+                expect(latestBroadcastedState.allergens).toEqual([
+                    {id: 2, text: "peanuts"}
+                ])
+                expect(controlUnderTest().props().tags).toEqual([
+                    {id: 2, text: "peanuts"}
+                ])
+            })
+        })
+    })
 })
