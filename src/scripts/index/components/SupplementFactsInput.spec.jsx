@@ -31,6 +31,33 @@ describe("SupplementFactsInput", () => {
         seededServingSizeInfoTypes = []
     })
 
+    test("default state", () => {
+        component = shallow(
+            <SupplementFactsInput PresetsDataService={presetsDataServiceMock} onChange={onChangeHandler}/>
+        )
+
+        expect(component.state()).toEqual({
+            productType: "Adults",
+            percentOfDailyValueAdditionalSymbol: "",
+            servingSizeInfoValue: 0,
+            servingSizeInfoType: "",
+            servingSizeInfoAdditionalComments: "",
+            servingSizeInfoServingsPerContainer: 1,
+            otherIngredients: [],
+            allergens: [],
+            businessInfoDistributedByLabel: "Distributed by",
+            businessInfoBusinessName: "",
+            businessInfoStreetAddressLine1: "",
+            businessInfoStreetAddressLine2: "",
+            businessInfoCity: "",
+            businessInfoState: "",
+            businessInfoZipCode: "",
+            businessInfoPhone: "",
+            dailyValueIngredients: [],
+            nonDailyValueIngredients: []
+        })
+    })
+
     describe("Text fields", () => {
         function findInputWithName(name){
             return component.find(`input[name='${name}']`)
@@ -60,29 +87,6 @@ describe("SupplementFactsInput", () => {
             component = shallow(
                 <SupplementFactsInput PresetsDataService={presetsDataServiceMock} onChange={onChangeHandler}/>
             )
-        })
-
-        test("default state", () => {
-            expect(component.state()).toEqual({
-                productType: "Adults",
-                percentOfDailyValueAdditionalSymbol: "",
-                servingSizeInfoValue: 0,
-                servingSizeInfoType: "",
-                servingSizeInfoAdditionalComments: "",
-                servingSizeInfoServingsPerContainer: 1,
-                otherIngredients: [],
-                allergens: [],
-                businessInfoDistributedByLabel: "Distributed by",
-                businessInfoBusinessName: "",
-                businessInfoStreetAddressLine1: "",
-                businessInfoStreetAddressLine2: "",
-                businessInfoCity: "",
-                businessInfoState: "",
-                businessInfoZipCode: "",
-                businessInfoPhone: "",
-                dailyValueIngredients: [],
-                nonDailyValueIngredients: []
-            })
         })
 
         describe("percentOfDailyValueAdditionalSymbol", () => {
