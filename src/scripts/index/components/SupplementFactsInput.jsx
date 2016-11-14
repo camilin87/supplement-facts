@@ -161,7 +161,7 @@ export default class SupplementFactsInput extends React.Component {
     _handleTagDelete(i) {
         let tags = this.state.allergens
         tags.splice(i, 1)
-        this._handleChange({tags: tags})
+        this._handleChange({allergens: tags})
     }
 
     _handleTagAddition(tag) {
@@ -170,7 +170,7 @@ export default class SupplementFactsInput extends React.Component {
             id: tags.length + 1,
             text: tag
         })
-        this._handleChange({tags: tags})
+        this._handleChange({allergens: tags})
     }
 
     _listToSelectOptions(list){
