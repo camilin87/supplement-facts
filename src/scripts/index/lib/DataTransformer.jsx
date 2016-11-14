@@ -22,7 +22,7 @@ export default class DataTransformer {
 
         result.otherIngredients.otherIngredients = this._readOtherIngredients(input.otherIngredients)
 
-        result.otherIngredients.allergens = (input.allergens || []).join(", ")
+        result.otherIngredients.allergens = (input.allergens || []).map(a => a.text).join(", ")
 
         result.percentOfDailyValueAdditionalSymbol = input.percentOfDailyValueAdditionalSymbol || ""
         result.servingSizeInfo = this._readServingSizeInfo(input)

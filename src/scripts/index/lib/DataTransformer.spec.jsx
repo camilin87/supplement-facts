@@ -81,9 +81,9 @@ describe("DataTransformer", () => {
     test("Returns the allergens", () => {
         var vm = dataTransformer.generateLabelData({
             allergens: [
-                "penicillin",
-                "nuts",
-                "soy"
+                {id: 34, text: "penicillin"},
+                {id: 31, text: "nuts"},
+                {id: 12, text: "soy"}
             ]
         })
 
