@@ -7,3 +7,5 @@
 
 ## Infrastructure  
 - Github Pages  
+
+## Contributing to the styling
