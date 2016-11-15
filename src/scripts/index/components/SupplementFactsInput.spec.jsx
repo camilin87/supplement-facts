@@ -386,6 +386,19 @@ describe("SupplementFactsInput", () => {
                 expect(controlUnderTest().props().tags).toEqual([])
             })
 
+            test("has suggested values", () => {
+                expect(controlUnderTest().props().suggestions).toEqual([
+                    "Milk",
+                    "Eggs",
+                    "Peanuts",
+                    "Tree nuts",
+                    "Fish",
+                    "Shellfish",
+                    "Soy",
+                    "Wheat"
+                ])
+            })
+
             test("adds allergens", () => {
                 controlUnderTest().props().handleAddition("lead")
 
