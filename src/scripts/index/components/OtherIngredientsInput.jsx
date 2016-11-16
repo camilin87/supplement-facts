@@ -51,7 +51,13 @@ export default class OtherIngredientsInput extends React.Component {
                 <ul className="list-group">
                     { 
                         ingredients.map(i => <li className="list-group-item" key={i.name}>
+                              <span>
                                 {i.name} <span className="badge">{i.quantity} mg</span>
+                              </span>
+
+                              <span className="pull-right">
+                                <a href="#">x</a>
+                              </span>
                             </li>
                         ) 
                     }

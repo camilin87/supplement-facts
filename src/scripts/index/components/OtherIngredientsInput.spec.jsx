@@ -30,9 +30,9 @@ describe("OtherIngredientsInput", () => {
             <OtherIngredientsInput value={ingredients} />
         )
 
-        expect(component.find("li").map(n => n.text())).toEqual([
-            "hg 10 mg",
-            "pb 1000 mg"
+        expect(component.find("li").map(n => n.text().replace(/\s/g, ""))).toEqual([
+            "hg10mgx",
+            "pb1000mgx"
         ])
     })
 
