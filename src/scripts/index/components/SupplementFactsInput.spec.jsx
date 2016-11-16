@@ -67,13 +67,9 @@ describe("SupplementFactsInput", () => {
     })
 
     describe("Text fields", () => {
-        function findInputWithName(name){
-            return component.find(`input[name='${name}']`)
-        }
-
         var propertyUnderTest = null
         function controlUnderTest(){
-            return findInputWithName(propertyUnderTest)
+            return component.find(`input[name='${propertyUnderTest}']`)
         }
         function seedStatePropertyUnderTest(value) {
             var updatedState = {}
@@ -291,13 +287,9 @@ describe("SupplementFactsInput", () => {
     })
 
     describe("Dropdowns", () => {
-        function findSelectWithName(name){
-            return component.find(`Select[name='${name}']`)
-        }
-
         var propertyUnderTest = null
         function controlUnderTest(){
-            return findSelectWithName(propertyUnderTest)
+            return component.find(`Select[name='${propertyUnderTest}']`)
         }
 
         describe("Product Type Selection", () => {
@@ -372,13 +364,9 @@ describe("SupplementFactsInput", () => {
     })
 
     describe("Tags", () => {
-        function findTagsWithName(name){
-            return component.find(`[name='${name}']`)
-        }
-
         var propertyUnderTest = null
         function controlUnderTest(){
-            return findTagsWithName(propertyUnderTest)
+            return component.find(`[name='${propertyUnderTest}']`)
         }
 
         describe("Allergens", () => {
