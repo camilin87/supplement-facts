@@ -267,16 +267,7 @@ export default class SupplementFactsInput extends React.Component {
                     <ReactTags 
                         name="allergens"
                         placeholder="Allergens"
-                        suggestions={[
-                            "Milk",
-                            "Eggs",
-                            "Peanuts",
-                            "Tree nuts",
-                            "Fish",
-                            "Shellfish",
-                            "Soy",
-                            "Wheat"
-                        ]}
+                        suggestions={this._presetsDataService.readAllergens()}
                         tags={this.state.allergens}
                         handleDelete={this._handleTagDelete}
                         handleAddition={this._handleTagAddition}

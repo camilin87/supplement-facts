@@ -7,10 +7,12 @@ describe("SupplementFactsInput", () => {
 
     var seededProductTypes = null
     var seededServingSizeInfoTypes = null
+    var seededAllergens = null
 
     const presetsDataServiceMock = { 
         readProductTypes: () => seededProductTypes,
-        readServingSizeInfoTypes: () => seededServingSizeInfoTypes
+        readServingSizeInfoTypes: () => seededServingSizeInfoTypes,
+        readAllergens: () => seededAllergens
     }
 
     var latestBroadcastedState = null
@@ -29,6 +31,12 @@ describe("SupplementFactsInput", () => {
         }
 
         seededServingSizeInfoTypes = []
+
+        seededAllergens = [
+            "Peanuts",
+            "Soy",
+            "Shellfish"
+        ]
     })
 
     test("default state", () => {
@@ -387,16 +395,7 @@ describe("SupplementFactsInput", () => {
             })
 
             test("has suggested values", () => {
-                expect(controlUnderTest().props().suggestions).toEqual([
-                    "Milk",
-                    "Eggs",
-                    "Peanuts",
-                    "Tree nuts",
-                    "Fish",
-                    "Shellfish",
-                    "Soy",
-                    "Wheat"
-                ])
+                expect(controlUnderTest().props().suggestions).toEqual(seededAllergens)
             })
 
             test("adds allergens", () => {

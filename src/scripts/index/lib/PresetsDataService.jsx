@@ -17,4 +17,17 @@ export default class PresetsDataService {
             "Packet"
         ]
     }
+
+    readAllergens() {
+        return [
+            "Milk",
+            "Eggs",
+            "Peanuts",
+            "Tree nuts",
+            "Fish",
+            "Shellfish",
+            "Soy",
+            "Wheat"
+        ]
+    }
 }
