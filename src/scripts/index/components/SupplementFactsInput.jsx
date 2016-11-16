@@ -76,8 +76,8 @@ export default class SupplementFactsInput extends React.Component {
                 {name: "pb", quantity: 1000}
             ],
             allergens: [
-                {id: 1, text: "nuts"},
-                {id: 2, text: "penicillin"}
+                {id: 1, text: "Tree nuts"},
+                {id: 2, text: "Soy"}
             ],
 
             businessInfoDistributedByLabel: "Distributed by",
