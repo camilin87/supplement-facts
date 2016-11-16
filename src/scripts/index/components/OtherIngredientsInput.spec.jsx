@@ -25,3 +25,14 @@ test("Returns one item per defined ingredient", () => {
         "pb 1000 mg"
     ])
 })
+
+test("has the correct input controls", () => {
+    const component = shallow(
+        <OtherIngredientsInput value={[]} />
+    )
+
+    expect(component.find("input[type='text']").length).toBe(2)
+    expect(component.find("input[type='text'][name='otherIngredientName']").length).toBe(1)
+    expect(component.find("input[type='text'][name='otherIngredientQuantity']").length).toBe(1)
+    expect(component.find("button").length).toBe(1)
+})
