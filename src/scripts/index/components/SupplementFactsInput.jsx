@@ -1,6 +1,7 @@
 import React from 'react'
 import Select from 'react-select'
 import PresetsDataService from '../lib/PresetsDataService.jsx'
+import OtherIngredientsInput from './OtherIngredientsInput.jsx'
 const ReactTags = require('react-tag-input').WithContext
 
 export default class SupplementFactsInput extends React.Component {
@@ -42,6 +43,7 @@ export default class SupplementFactsInput extends React.Component {
 
         this._handleTagDelete = this._handleTagDelete.bind(this)
         this._handleTagAddition = this._handleTagAddition.bind(this)
+        this._handleOtherIngredientsChange = this._handleOtherIngredientsChange.bind(this)
 
         //TODO: delete these once the data input is ready
         this._displayLabel1 = this._displayLabel1.bind(this)
@@ -173,6 +175,10 @@ export default class SupplementFactsInput extends React.Component {
         this._handleChange({allergens: tags})
     }
 
+    _handleOtherIngredientsChange(otherIngredients){
+        this._handleChange({otherIngredients: otherIngredients})
+    }
+
     _listToSelectOptions(list){
         return list.map(v => {
             return { value: v, label: v }
@@ -271,6 +277,21 @@ export default class SupplementFactsInput extends React.Component {
                         tags={this.state.allergens}
                         handleDelete={this._handleTagDelete}
                         handleAddition={this._handleTagAddition}
+                        />
+
+                  </div>
+                </div>
+
+                <div className="panel panel-default">
+                  <div className="panel-heading">
+                    <h3 className="panel-title">Other Ingredients</h3>
+                  </div>
+                  <div className="panel-body">
+
+                    <OtherIngredientsInput 
+                        name="otherIngredients"
+                        value={this.state.otherIngredients}
+                        onChange={this._handleOtherIngredientsChange}
                         />
 
                   </div>

@@ -424,4 +424,27 @@ describe("SupplementFactsInput", () => {
             })
         })
     })
+
+    describe("Other Ingredients", () => {
+        function controlUnderTest(){
+            return component.find(`OtherIngredientsInput[name='otherIngredients']`)
+        }
+
+        test("displays no other ingredients by default", () => {
+            expect(controlUnderTest().props().value).toEqual([])
+        })
+
+        test("on change replaces the other ingredients", () => {
+            controlUnderTest().simulate("change", [
+                {name: "hg", quantity: 10}
+            ])
+
+            expect(latestBroadcastedState.otherIngredients).toEqual([
+                {name: "hg", quantity: 10}
+            ])
+            expect(controlUnderTest().props().value).toEqual([
+                {name: "hg", quantity: 10}
+            ])
+        })
+    })
 })
