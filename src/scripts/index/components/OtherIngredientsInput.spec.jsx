@@ -34,6 +34,7 @@ describe("OtherIngredientsInput", () => {
             "hg10mgx",
             "pb1000mgx"
         ])
+        expect(component.find("a").map(n => n.text())).toEqual(["x", "x"])
     })
 
     test("has the correct input controls", () => {
@@ -84,6 +85,24 @@ describe("OtherIngredientsInput", () => {
         expect(latestBroadcastedState).toEqual([
             {name: "hg", quantity: 10},
             {name: "pb", quantity: 1000},
+            {name: "lead", quantity: 13}
+        ])
+    })
+
+    test("deletes the selected ingredient", () => {
+        var ingredients = [
+            {name: "hg", quantity: 10},
+            {name: "pb", quantity: 1000},
+            {name: "lead", quantity: 13}
+        ]
+
+        const component = shallow(
+            <OtherIngredientsInput value={ingredients} onChange={onChangeHandler} />
+        )
+        component.find("a").at(1).simulate("click")
+
+        expect(latestBroadcastedState).toEqual([
+            {name: "hg", quantity: 10},
             {name: "lead", quantity: 13}
         ])
     })
