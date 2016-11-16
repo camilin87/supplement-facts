@@ -5,8 +5,8 @@ export default class OtherIngredientsInput extends React.Component {
         var lines = (this.props.value || []).map(i => `${i.name} ${i.quantity}mg`)
 
         return (
-            <ul>
-                { lines.map(l => <li key={l}>{l}</li>) }
+            <ul className="list-group">
+                { lines.map(l => <li className="list-group-item" key={l}>{l}</li>) }
             </ul>
         )
     }
