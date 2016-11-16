@@ -79,7 +79,7 @@ export default class OtherIngredientsInput extends React.Component {
                   <span className="input-group-addon">mg</span>
                   <span className="input-group-btn">
                     <button
-                        className="btn btn-default"
+                        className="btn btn-primary"
                         type="button"
                         onClick={this._handleButtonClick}>
                         Add
