@@ -9,7 +9,7 @@ export default class OtherIngredientsInput extends React.Component {
                 { 
                     ingredients.map(i => {
                         return <li className="list-group-item" key={i.name}>
-                            {i.name} <span className="badge">{i.quantity}mg</span>
+                            {i.name} <span className="badge">{i.quantity} mg</span>
                         </li>
                     }) 
                 }

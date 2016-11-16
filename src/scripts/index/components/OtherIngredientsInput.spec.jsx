@@ -21,7 +21,7 @@ test("Returns one item per defined ingredient", () => {
     )
 
     expect(component.find("li").map(n => n.text())).toEqual([
-        "hg 10mg",
-        "pb 1000mg"
+        "hg 10 mg",
+        "pb 1000 mg"
     ])
 })
