@@ -21,35 +21,41 @@ export default class NonDailyValueIngredientsInput extends React.Component {
                     }
                 </ul>
 
-                <input 
-                    name="nondvIngredientName"
-                    type="text"
-                    className="form-control"
-                    placeholder="Ingredient"/>
+                <div className="input-group">
+                    <input 
+                        name="nondvIngredientName"
+                        type="text"
+                        className="form-control"
+                        placeholder="Ingredient"/>
+                    <span className="input-group-addon"></span>
+                    <input 
+                        name="nondvIngredientSource"
+                        type="text"
+                        className="form-control"
+                        placeholder="Source"/>
+                </div>
 
-                <input 
-                    name="nondvIngredientSource"
-                    type="text"
-                    className="form-control"
-                    placeholder="Source"/>
-
-                <input 
-                    name="nondvIngredientQuantity"
-                    type="text"
-                    className="form-control"
-                    placeholder="Quantity"/>
-
-                <input 
-                    name="nondvIngredientUnit"
-                    type="text"
-                    className="form-control"
-                    placeholder="Unit"/>
-
-                <button
-                        className="btn btn-primary"
-                        type="button">
-                        Add
-                    </button>
+                <div className="input-group">
+                    <input 
+                        name="nondvIngredientQuantity"
+                        type="text"
+                        className="form-control"
+                        placeholder="Quantity"/>
+                    <span className="input-group-addon"></span>
+                    <input 
+                        name="nondvIngredientUnit"
+                        type="text"
+                        className="form-control"
+                        placeholder="Unit"/>
+                    <span className="input-group-addon"></span>
+                    <span className="input-group-btn">
+                        <button
+                            className="btn btn-primary"
+                            type="button">
+                            Add
+                        </button>
+                    </span>
+                </div>
             </div>
         )
     }
