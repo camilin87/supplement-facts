@@ -50,7 +50,7 @@ describe("NonDailyValueIngredientsInput", () => {
         expect(component.find("button").length).toBe(1)
     })
 
-    xtest("broadcasts the ingredient creation", () => {
+    test("broadcasts the ingredient creation", () => {
         const component = shallow(
             <NonDailyValueIngredientsInput value={[]} onChange={onChangeHandler} />
         )
@@ -58,14 +58,14 @@ describe("NonDailyValueIngredientsInput", () => {
         component.find("input[name='nondvIngredientName']").simulate("change", {target: {value: "lead"}})
         component.find("input[name='nondvIngredientSource']").simulate("change", {target: {value: "BBBB"}})
         component.find("input[name='nondvIngredientQuantity']").simulate("change", {target: {value: "13"}})
-        component.find("input[name='nondvIngredientUnit']").simulate("change", {target: {value: "mg"}})
+        component.find("input[name='nondvIngredientUnit']").simulate("change", {target: {value: "mcg"}})
         component.find("button").simulate("click")
 
         expect(latestBroadcastedState).toEqual([
-            {name: "lead", source: "BBBB", quantity: 13, unit: "mg"},
+            {name: "lead", source: "BBBB", quantity: 13, unit: "mcg"},
         ])
 
-        expect(component.find("input[name='otherIngredientName']").text()).toBe("")
+        expect(component.find("input[name='nondvIngredientName']").text()).toBe("")
         expect(component.find("input[name='nondvIngredientSource']").text()).toBe("")
         expect(component.find("input[name='nondvIngredientQuantity']").text()).toBe("")
         expect(component.find("input[name='nondvIngredientUnit']").text()).toBe("")

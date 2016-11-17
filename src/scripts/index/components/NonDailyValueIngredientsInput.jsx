@@ -1,6 +1,57 @@
 import React from 'react'
 
 export default class NonDailyValueIngredientsInput extends React.Component {
+    constructor(props){
+        super(props)
+
+        //**** initial state ****
+        this.state = this._getDefaultState()
+
+        //**** event handlers *****
+        this._handleTextChanged = this._handleTextChanged.bind(this)
+        this._handleAddButtonClick = this._handleAddButtonClick.bind(this)
+    }
+
+    _getDefaultState(){
+        return {
+            nondvIngredientName: "",
+            nondvIngredientSource: "",
+            nondvIngredientQuantity: "",
+            nondvIngredientUnit: ""
+        }
+    }
+
+    _handleTextChanged(propertyName){
+        var that = this
+
+        return (event) => {
+            var stateChange = {}
+            stateChange[propertyName] = event.target.value
+            that.setState(stateChange)
+        }
+    }
+
+    _handleAddButtonClick(){
+        var newIngredient = {
+            name: this.state.nondvIngredientName,
+            source: this.state.nondvIngredientSource,
+            quantity: parseInt(this.state.nondvIngredientQuantity || "0"),
+            unit: this.state.nondvIngredientUnit
+        }
+        // var updatedIngredients = (this.props.value || []).concat(newIngredient)
+
+        this.setState(this._getDefaultState())
+        // this._broadcastChange(updatedIngredients)
+
+        this._broadcastChange([newIngredient])
+    }
+
+    _broadcastChange(componentStatus){
+        if (this.props.onChange){
+            this.props.onChange(componentStatus)
+        }
+    }
+
     render (){
         var ingredients = this.props.value || []
 
@@ -22,36 +73,52 @@ export default class NonDailyValueIngredientsInput extends React.Component {
                 </ul>
 
                 <div className="input-group">
+
                     <input 
                         name="nondvIngredientName"
                         type="text"
                         className="form-control"
-                        placeholder="Ingredient"/>
+                        placeholder="Ingredient"
+                        value={this.state.nondvIngredientName}
+                        onChange={this._handleTextChanged("nondvIngredientName")} />
+
                     <span className="input-group-addon"></span>
+
                     <input 
                         name="nondvIngredientSource"
                         type="text"
                         className="form-control"
-                        placeholder="Source"/>
+                        placeholder="Source"
+                        value={this.state.nondvIngredientSource}
+                        onChange={this._handleTextChanged("nondvIngredientSource")}/>
                 </div>
 
                 <div className="input-group">
+
                     <input 
                         name="nondvIngredientQuantity"
                         type="text"
                         className="form-control"
-                        placeholder="Quantity"/>
+                        placeholder="Quantity"
+                        value={this.state.nondvIngredientQuantity}
+                        onChange={this._handleTextChanged("nondvIngredientQuantity")}/>
+
                     <span className="input-group-addon"></span>
+
                     <input 
                         name="nondvIngredientUnit"
                         type="text"
                         className="form-control"
-                        placeholder="Unit"/>
+                        placeholder="Unit"
+                        value={this.state.nondvIngredientUnit}
+                        onChange={this._handleTextChanged("nondvIngredientUnit")}/>
+
                     <span className="input-group-addon"></span>
                     <span className="input-group-btn">
                         <button
                             className="btn btn-primary"
-                            type="button">
+                            type="button"
+                            onClick={this._handleAddButtonClick}>
                             Add
                         </button>
                     </span>
