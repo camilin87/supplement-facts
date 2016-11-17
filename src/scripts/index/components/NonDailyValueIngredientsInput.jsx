@@ -20,6 +20,36 @@ export default class NonDailyValueIngredientsInput extends React.Component {
                         ) 
                     }
                 </ul>
+
+                <input 
+                    name="nondvIngredientName"
+                    type="text"
+                    className="form-control"
+                    placeholder="Ingredient"/>
+
+                <input 
+                    name="nondvIngredientSource"
+                    type="text"
+                    className="form-control"
+                    placeholder="Source"/>
+
+                <input 
+                    name="nondvIngredientQuantity"
+                    type="text"
+                    className="form-control"
+                    placeholder="Quantity"/>
+
+                <input 
+                    name="nondvIngredientUnit"
+                    type="text"
+                    className="form-control"
+                    placeholder="Unit"/>
+
+                <button
+                        className="btn btn-primary"
+                        type="button">
+                        Add
+                    </button>
             </div>
         )
     }

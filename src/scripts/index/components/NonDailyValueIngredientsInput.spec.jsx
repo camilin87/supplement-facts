@@ -36,5 +36,19 @@ describe("NonDailyValueIngredientsInput", () => {
         ])
         expect(component.find("a").map(n => n.text())).toEqual(["x", "x"])
     })
+
+    test("has the correct input controls", () => {
+        const component = shallow(
+            <NonDailyValueIngredientsInput value={[]} />
+        )
+
+        expect(component.find("input").length).toBe(4)
+        expect(component.find("input[type='text'][name='nondvIngredientName']").length).toBe(1)
+        expect(component.find("input[type='text'][name='nondvIngredientSource']").length).toBe(1)
+        expect(component.find("input[type='text'][name='nondvIngredientQuantity']").length).toBe(1)
+        expect(component.find("input[type='text'][name='nondvIngredientUnit']").length).toBe(1)
+        expect(component.find("button").length).toBe(1)
+    })
+
 })
 
