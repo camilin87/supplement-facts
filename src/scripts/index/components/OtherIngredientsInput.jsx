@@ -66,7 +66,7 @@ export default class OtherIngredientsInput extends React.Component {
             <div>
                 <ul className="list-group">
                     { 
-                        ingredients.map(i => <li className="list-group-item" key={i.name}>
+                        ingredients.map((i, idx) => <li className="list-group-item" key={idx}>
                               <span>
                                 {i.name} <span className="badge">{i.quantity} mg</span>
                               </span>
