@@ -435,4 +435,27 @@ describe("SupplementFactsInput", () => {
             ])
         })
     })
+
+    describe("Non Daily Value Ingredients", () => {
+        function controlUnderTest(){
+            return component.find(`NonDailyValueIngredientsInput[name='nonDailyValueIngredients']`)
+        }
+
+        test("displays no nondv ingredients by default", () => {
+            expect(controlUnderTest().props().value).toEqual([])
+        })
+
+        test("on change replaces the nondv ingredients", () => {
+            controlUnderTest().simulate("change", [
+                {name: "Calcium", source: "AAAA", quantity: 14, unit: "mg"}
+            ])
+
+            expect(latestBroadcastedState.nonDailyValueIngredients).toEqual([
+                {name: "Calcium", source: "AAAA", quantity: 14, unit: "mg"}
+            ])
+            expect(controlUnderTest().props().value).toEqual([
+                {name: "Calcium", source: "AAAA", quantity: 14, unit: "mg"}
+            ])
+        })
+    })
 })

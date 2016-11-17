@@ -2,6 +2,7 @@ import React from 'react'
 import Select from 'react-select'
 import PresetsDataService from '../lib/PresetsDataService.jsx'
 import OtherIngredientsInput from './OtherIngredientsInput.jsx'
+import NonDailyValueIngredientsInput from './NonDailyValueIngredientsInput.jsx'
 const ReactTags = require('react-tag-input').WithContext
 
 export default class SupplementFactsInput extends React.Component {
@@ -43,7 +44,7 @@ export default class SupplementFactsInput extends React.Component {
 
         this._handleTagDelete = this._handleTagDelete.bind(this)
         this._handleTagAddition = this._handleTagAddition.bind(this)
-        this._handleOtherIngredientsChange = this._handleOtherIngredientsChange.bind(this)
+        this._handleIngredientsChange = this._handleIngredientsChange.bind(this)
 
         //TODO: delete these once the data input is ready
         this._displayLabel1 = this._displayLabel1.bind(this)
@@ -156,7 +157,7 @@ export default class SupplementFactsInput extends React.Component {
             var stateChange = {}
             stateChange[propertyName] = event.value
 
-            this._handleChange(stateChange)
+            that._handleChange(stateChange)
         }
     }
 
@@ -175,8 +176,15 @@ export default class SupplementFactsInput extends React.Component {
         this._handleChange({allergens: tags})
     }
 
-    _handleOtherIngredientsChange(otherIngredients){
-        this._handleChange({otherIngredients: otherIngredients})
+    _handleIngredientsChange(propertyName){
+        var that = this
+
+        return (updatedValue) => {
+            var stateChange = {}
+            stateChange[propertyName] = updatedValue
+
+            that._handleChange(stateChange)
+        }
     }
 
     _listToSelectOptions(list){
@@ -284,6 +292,21 @@ export default class SupplementFactsInput extends React.Component {
 
                 <div className="panel panel-default">
                   <div className="panel-heading">
+                    <h3 className="panel-title">Non Daily Value Ingredients</h3>
+                  </div>
+                  <div className="panel-body">
+
+                    <NonDailyValueIngredientsInput 
+                        name="nonDailyValueIngredients"
+                        value={this.state.nonDailyValueIngredients}
+                        onChange={this._handleIngredientsChange("nonDailyValueIngredients")}
+                        />
+
+                  </div>
+                </div>
+
+                <div className="panel panel-default">
+                  <div className="panel-heading">
                     <h3 className="panel-title">Other Ingredients</h3>
                   </div>
                   <div className="panel-body">
@@ -291,7 +314,7 @@ export default class SupplementFactsInput extends React.Component {
                     <OtherIngredientsInput 
                         name="otherIngredients"
                         value={this.state.otherIngredients}
-                        onChange={this._handleOtherIngredientsChange}
+                        onChange={this._handleIngredientsChange("otherIngredients")}
                         />
 
                   </div>
