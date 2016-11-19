@@ -65,15 +65,10 @@ describe("NonDailyValueIngredientsInput", () => {
             {name: "lead", source: "BBBB", quantity: 13, unit: "mcg"},
         ])
 
-        expect(component.find("input[name='nondvIngredientName']").text()).toBe("")
-        expect(component.find("input[name='nondvIngredientSource']").text()).toBe("")
-        expect(component.find("input[name='nondvIngredientQuantity']").text()).toBe("")
-        expect(component.find("input[name='nondvIngredientUnit']").text()).toBe("")
-
         expect(component.state().nondvIngredientName).toBe("")
         expect(component.state().nondvIngredientSource).toBe("")
         expect(component.state().nondvIngredientQuantity).toBe("")
-        expect(component.state().nondvIngredientUnit).toBe("")
+        expect(component.state().nondvIngredientUnit).toBe("mg")
     })
 
     test("broadcasts the ingredient creation considering what was there before", () => {

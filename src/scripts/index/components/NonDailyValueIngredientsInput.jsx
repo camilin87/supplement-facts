@@ -18,7 +18,7 @@ export default class NonDailyValueIngredientsInput extends React.Component {
             nondvIngredientName: "",
             nondvIngredientSource: "",
             nondvIngredientQuantity: "",
-            nondvIngredientUnit: ""
+            nondvIngredientUnit: "mg"
         }
     }
 
