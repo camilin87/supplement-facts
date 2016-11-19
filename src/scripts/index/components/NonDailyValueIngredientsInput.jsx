@@ -38,12 +38,10 @@ export default class NonDailyValueIngredientsInput extends React.Component {
             quantity: parseInt(this.state.nondvIngredientQuantity || "0"),
             unit: this.state.nondvIngredientUnit
         }
-        // var updatedIngredients = (this.props.value || []).concat(newIngredient)
+        var updatedIngredients = (this.props.value || []).concat(newIngredient)
 
         this.setState(this._getDefaultState())
-        // this._broadcastChange(updatedIngredients)
-
-        this._broadcastChange([newIngredient])
+        this._broadcastChange(updatedIngredients)
     }
 
     _broadcastChange(componentStatus){

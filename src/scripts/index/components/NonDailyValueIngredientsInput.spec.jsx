@@ -76,5 +76,28 @@ describe("NonDailyValueIngredientsInput", () => {
         expect(component.state().nondvIngredientUnit).toBe("")
     })
 
+    test("broadcasts the ingredient creation considering what was there before", () => {
+        var ingredients = [
+            {name: "hg", source: "AAAA", quantity: 13, unit: "mcg"},
+            {name: "pb", source: "BBBB", quantity: 15, unit: "mg"}
+        ]
+
+        const component = shallow(
+            <NonDailyValueIngredientsInput value={ingredients} onChange={onChangeHandler} />
+        )
+
+        component.find("input[name='nondvIngredientName']").simulate("change", {target: {value: "lead"}})
+        component.find("input[name='nondvIngredientSource']").simulate("change", {target: {value: "DDDD"}})
+        component.find("input[name='nondvIngredientQuantity']").simulate("change", {target: {value: "13"}})
+        component.find("input[name='nondvIngredientUnit']").simulate("change", {target: {value: "mcg"}})
+        component.find("button").simulate("click")
+
+        expect(latestBroadcastedState).toEqual([
+            {name: "hg", source: "AAAA", quantity: 13, unit: "mcg"},
+            {name: "pb", source: "BBBB", quantity: 15, unit: "mg"},
+            {name: "lead", source: "DDDD", quantity: 13, unit: "mcg"}
+        ])
+    })
+
 })
 
