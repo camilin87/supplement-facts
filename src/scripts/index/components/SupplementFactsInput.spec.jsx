@@ -458,4 +458,27 @@ describe("SupplementFactsInput", () => {
             ])
         })
     })
+
+    describe("Daily Value Ingredients", () => {
+        function controlUnderTest(){
+            return component.find(`DailyValueIngredientsInput[name='dailyValueIngredients']`)
+        }
+
+        test("displays no dv ingredients by default", () => {
+            expect(controlUnderTest().props().value).toEqual([])
+        })
+
+        test("on change replaces the dv ingredients", () => {
+            controlUnderTest().simulate("change", [
+                {name: "Chlorine", source: "AAAA", quantity: 14}
+            ])
+
+            expect(latestBroadcastedState.dailyValueIngredients).toEqual([
+                {name: "Chlorine", source: "AAAA", quantity: 14}
+            ])
+            expect(controlUnderTest().props().value).toEqual([
+                {name: "Chlorine", source: "AAAA", quantity: 14}
+            ])
+        })
+    })
 })

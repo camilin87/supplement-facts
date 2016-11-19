@@ -3,6 +3,7 @@ import Select from 'react-select'
 import PresetsDataService from '../lib/PresetsDataService.jsx'
 import OtherIngredientsInput from './OtherIngredientsInput.jsx'
 import NonDailyValueIngredientsInput from './NonDailyValueIngredientsInput.jsx'
+import DailyValueIngredientsInput from './DailyValueIngredientsInput.jsx'
 const ReactTags = require('react-tag-input').WithContext
 
 export default class SupplementFactsInput extends React.Component {
@@ -285,6 +286,21 @@ export default class SupplementFactsInput extends React.Component {
                         tags={this.state.allergens}
                         handleDelete={this._handleTagDelete}
                         handleAddition={this._handleTagAddition}
+                        />
+
+                  </div>
+                </div>
+
+                <div className="panel panel-default">
+                  <div className="panel-heading">
+                    <h3 className="panel-title">Daily Value Ingredients</h3>
+                  </div>
+                  <div className="panel-body">
+
+                    <DailyValueIngredientsInput 
+                        name="dailyValueIngredients"
+                        value={this.state.dailyValueIngredients}
+                        onChange={this._handleIngredientsChange("dailyValueIngredients")}
                         />
 
                   </div>
