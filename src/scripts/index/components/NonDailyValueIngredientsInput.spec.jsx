@@ -99,5 +99,22 @@ describe("NonDailyValueIngredientsInput", () => {
         ])
     })
 
+    test("deletes the selected ingredient", () => {
+        var ingredients = [
+            {name: "hg", source: "AAAA", quantity: 13, unit: "mg"},
+            {name: "pb", source: "BBBB", quantity: 12, unit: "mg"},
+            {name: "lead", source: "CCCC", quantity: 11, unit: "mg"}
+        ]
+
+        const component = shallow(
+            <NonDailyValueIngredientsInput value={ingredients} onChange={onChangeHandler} />
+        )
+        component.find("a").at(1).simulate("click")
+
+        expect(latestBroadcastedState).toEqual([
+            {name: "hg", source: "AAAA", quantity: 13, unit: "mg"},
+            {name: "lead", source: "CCCC", quantity: 11, unit: "mg"}
+        ])
+    })
 })
 
