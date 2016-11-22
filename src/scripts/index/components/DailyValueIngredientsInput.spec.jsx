@@ -109,6 +109,32 @@ describe("DailyValueIngredientsInput", () => {
         ])
     })
 
+    test("Displays mg as the default unit", () => {
+        component = shallow(
+            <DailyValueIngredientsInput 
+                DailyValueIngredientsDataService={dailyValueIngredientsDataServiceMock}
+                value={[]}
+                onChange={onChangeHandler}
+                />
+        )
+
+        expect(component.find("#dvIngredientUnit").text()).toBe("mg")
+    })
+
+    test("Updates the unit based on the selected ingredient", () => {
+        component = shallow(
+            <DailyValueIngredientsInput 
+                DailyValueIngredientsDataService={dailyValueIngredientsDataServiceMock}
+                value={[]}
+                onChange={onChangeHandler}
+                />
+        )
+
+        productNameSelect().simulate("change", {value: "Vitamin A"})
+
+        expect(component.find("#dvIngredientUnit").text()).toBe("IU")
+    })
+
     test("broadcasts the ingredient creation", () => {
         component = shallow(
             <DailyValueIngredientsInput 

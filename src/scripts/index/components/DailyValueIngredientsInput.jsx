@@ -14,7 +14,7 @@ export default class DailyValueIngredientsInput extends React.Component {
 
         //**** event handlers *****
         this._handleTextChanged = this._handleTextChanged.bind(this)
-        this._handleSelectChanged = this._handleSelectChanged.bind(this)
+        this._handleIngredientNameSelectChanged = this._handleIngredientNameSelectChanged.bind(this)
         this._handleAddButtonClick = this._handleAddButtonClick.bind(this)
     }
 
@@ -22,7 +22,8 @@ export default class DailyValueIngredientsInput extends React.Component {
         return {
             dvIngredientName: "",
             dvIngredientSource: "",
-            dvIngredientQuantity: ""
+            dvIngredientQuantity: "",
+            dvIngredientUnit: "mg"
         }
     }
 
@@ -36,15 +37,11 @@ export default class DailyValueIngredientsInput extends React.Component {
         }
     }
 
-    _handleSelectChanged(propertyName){
-        var that = this
-
-        return (event) => {
-            var stateChange = {}
-            stateChange[propertyName] = event.value
-
-            that.setState(stateChange)
-        }
+    _handleIngredientNameSelectChanged(event){
+        this.setState({
+            dvIngredientName: event.value,
+            dvIngredientUnit: this._getIngredientUnit(event.value)
+        })
     }
 
     _broadcastChange(componentStatus){
@@ -103,7 +100,7 @@ export default class DailyValueIngredientsInput extends React.Component {
                         clearable={false}
                         options={this._ingredientsToSelectOptions(this._dailyValueIngredientsDataService.all())}
                         value={this.state.dvIngredientName}
-                        onChange={this._handleSelectChanged("dvIngredientName")} />
+                        onChange={this._handleIngredientNameSelectChanged} />
 
                     <input 
                         name="dvIngredientSource"
@@ -122,7 +119,9 @@ export default class DailyValueIngredientsInput extends React.Component {
                         value={this.state.dvIngredientQuantity}
                         onChange={this._handleTextChanged("dvIngredientQuantity")} />
 
-                    <span className="input-group-addon">mg</span>
+                    <span className="input-group-addon" id="dvIngredientUnit">
+                        {this.state.dvIngredientUnit}
+                    </span>
 
                     <span className="input-group-btn">
                         <button
