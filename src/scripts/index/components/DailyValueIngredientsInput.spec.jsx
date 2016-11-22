@@ -72,5 +72,36 @@ describe("DailyValueIngredientsInput", () => {
         expect(component.find("input[type='text'][name='dvIngredientQuantity']").length).toBe(1)
         expect(component.find("button").length).toBe(1)
     })
+
+    describe("Ingredient Selection", () => {
+        var component = null
+
+        function controlUnderTest(){
+            return component.find(`Select[name='dvIngredientName']`)
+        }
+
+        beforeEach(() => {
+            component = shallow(
+                <DailyValueIngredientsInput 
+                    DailyValueIngredientsDataService={dailyValueIngredientsDataServiceMock}
+                    value={[]}
+                    onChange={onChangeHandler}
+                    />
+            )
+        })
+
+        test("The product type is not clearable", () => {
+            expect(controlUnderTest().props().clearable).toBe(false)
+        })
+
+        test("Displays one option per product type", () => {
+            expect(controlUnderTest().props().options).toEqual([
+                {value: "Vitamin A", label: "Vitamin A"},
+                {value: "Vitamin B", label: "Vitamin B"},
+                {value: "Vitamin C", label: "Vitamin C"},
+                {value: "Vitamin D", label: "Vitamin D"}
+            ])
+        })
+    })
 })
 

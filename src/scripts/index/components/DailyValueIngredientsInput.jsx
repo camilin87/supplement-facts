@@ -14,6 +14,12 @@ export default class DailyValueIngredientsInput extends React.Component {
         //**** event handlers *****
     }
 
+    _ingredientsToSelectOptions(ingredients){
+        return (ingredients || []).map(i => {
+            return {value: i.name, label: i.name}
+        })
+    }
+
     render (){
         var allIngredientPresets = this._dailyValueIngredientsDataService.all()
         var ingredients = (this.props.value || []).map(i => {
@@ -40,6 +46,8 @@ export default class DailyValueIngredientsInput extends React.Component {
 
                     <Select 
                         name="dvIngredientName"
+                        clearable={false}
+                        options={this._ingredientsToSelectOptions(allIngredientPresets)}
                         />
 
                     <input 
