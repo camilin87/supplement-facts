@@ -13,7 +13,15 @@ describe("DailyValueIngredientsInput", () => {
         all: () => seededIngredients
     }
 
+    var component = null
+
+    function productNameSelect(){
+        return component.find(`Select[name='dvIngredientName']`)
+    }
+
     beforeEach(() => {
+        component = null
+
         latestBroadcastedState = null
         seededIngredients = [
             {name: "Vitamin A", unit: "IU", values: [1000, 2000, 3000, 4000]},
@@ -24,7 +32,7 @@ describe("DailyValueIngredientsInput", () => {
     })
 
     test("Returns no items when there are no ingredients", () => {
-        const component = shallow(
+        component = shallow(
             <DailyValueIngredientsInput 
                 DailyValueIngredientsDataService={dailyValueIngredientsDataServiceMock}
                 value={[]}
@@ -41,7 +49,7 @@ describe("DailyValueIngredientsInput", () => {
             {name: "Vitamin D", quantity: 15}
         ]
 
-        const component = shallow(
+        component = shallow(
             <DailyValueIngredientsInput 
                 DailyValueIngredientsDataService={dailyValueIngredientsDataServiceMock}
                 value={ingredients}
@@ -57,7 +65,7 @@ describe("DailyValueIngredientsInput", () => {
     })
 
     test("has the correct input controls", () => {
-        const component = shallow(
+        component = shallow(
             <DailyValueIngredientsInput 
                 DailyValueIngredientsDataService={dailyValueIngredientsDataServiceMock}
                 value={[]}
@@ -73,35 +81,33 @@ describe("DailyValueIngredientsInput", () => {
         expect(component.find("button").length).toBe(1)
     })
 
-    describe("Ingredient Selection", () => {
-        var component = null
+    test("The product type is not clearable", () => {
+        component = shallow(
+            <DailyValueIngredientsInput 
+                DailyValueIngredientsDataService={dailyValueIngredientsDataServiceMock}
+                value={[]}
+                onChange={onChangeHandler}
+                />
+        )
 
-        function controlUnderTest(){
-            return component.find(`Select[name='dvIngredientName']`)
-        }
+        expect(productNameSelect().props().clearable).toBe(false)
+    })
 
-        beforeEach(() => {
-            component = shallow(
-                <DailyValueIngredientsInput 
-                    DailyValueIngredientsDataService={dailyValueIngredientsDataServiceMock}
-                    value={[]}
-                    onChange={onChangeHandler}
-                    />
-            )
-        })
+    test("Ingredient Selection Displays one option per product type", () => {
+        component = shallow(
+            <DailyValueIngredientsInput 
+                DailyValueIngredientsDataService={dailyValueIngredientsDataServiceMock}
+                value={[]}
+                onChange={onChangeHandler}
+                />
+        )
 
-        test("The product type is not clearable", () => {
-            expect(controlUnderTest().props().clearable).toBe(false)
-        })
-
-        test("Displays one option per product type", () => {
-            expect(controlUnderTest().props().options).toEqual([
-                {value: "Vitamin A", label: "Vitamin A"},
-                {value: "Vitamin B", label: "Vitamin B"},
-                {value: "Vitamin C", label: "Vitamin C"},
-                {value: "Vitamin D", label: "Vitamin D"}
-            ])
-        })
+        expect(productNameSelect().props().options).toEqual([
+            {value: "Vitamin A", label: "Vitamin A"},
+            {value: "Vitamin B", label: "Vitamin B"},
+            {value: "Vitamin C", label: "Vitamin C"},
+            {value: "Vitamin D", label: "Vitamin D"}
+        ])
     })
 })
 
