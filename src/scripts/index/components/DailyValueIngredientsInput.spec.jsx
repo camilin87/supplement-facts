@@ -184,5 +184,26 @@ describe("DailyValueIngredientsInput", () => {
         ])
     })
 
+    test("deletes the selected ingredient", () => {
+        var ingredients = [
+            {name: "Vitamin A", source: "AAAA", quantity: 13},
+            {name: "Vitamin D", source: "CCCC", quantity: 11},
+            {name: "Vitamin C", source: "BBBB", quantity: 15}
+        ]
+
+        component = shallow(
+            <DailyValueIngredientsInput 
+                DailyValueIngredientsDataService={dailyValueIngredientsDataServiceMock}
+                value={ingredients}
+                onChange={onChangeHandler}
+                />
+        )
+        component.find("a").at(1).simulate("click")
+
+        expect(latestBroadcastedState).toEqual([
+            {name: "Vitamin A", source: "AAAA", quantity: 13},
+            {name: "Vitamin C", source: "BBBB", quantity: 15}
+        ])
+    })
 })
 
