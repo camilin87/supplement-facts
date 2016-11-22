@@ -19,7 +19,7 @@ describe("DailyValueIngredientsInput", () => {
             {name: "Vitamin A", unit: "IU", values: [1000, 2000, 3000, 4000]},
             {name: "Vitamin B", unit: "IU", values: [1001, 2001, 3001, 4001]},
             {name: "Vitamin C", unit: "IU", values: [1002, 2002, 3002, 4002]},
-            {name: "Vitamin D", unit: "IU", values: [1003, 2003, 3003, 4003]}
+            {name: "Vitamin D", unit: "mg", values: [1003, 2003, 3003, 4003]}
         ]
     })
 
@@ -33,6 +33,27 @@ describe("DailyValueIngredientsInput", () => {
         )
 
         expect(component.find("li").length).toBe(0)
+    })
+
+    test("Returns one item per defined ingredient", () => {
+        var ingredients = [
+            {name: "Vitamin B", source: "AAAA", quantity: 14},
+            {name: "Vitamin D", quantity: 15}
+        ]
+
+        const component = shallow(
+            <DailyValueIngredientsInput 
+                DailyValueIngredientsDataService={dailyValueIngredientsDataServiceMock}
+                value={ingredients}
+                onChange={onChangeHandler}
+                />
+        )
+
+        expect(component.find("li").map(n => n.text().replace(/\s/g, ""))).toEqual([
+            "VitaminBAAAA14IUx",
+            "VitaminD15mgx"
+        ])
+        expect(component.find("a").map(n => n.text())).toEqual(["x", "x"])
     })
 })
 
