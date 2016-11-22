@@ -1,4 +1,5 @@
 import React from 'react'
+import Select from 'react-select'
 import DailyValueIngredientsDataService from '../lib/DailyValueIngredientsDataService.jsx'
 
 export default class DailyValueIngredientsInput extends React.Component {
@@ -36,6 +37,34 @@ export default class DailyValueIngredientsInput extends React.Component {
                         ) 
                     }
                 </ul>
+
+                    <Select 
+                        name="dvIngredientName"
+                        />
+
+                    <input 
+                        name="dvIngredientSource"
+                        type="text"
+                        className="form-control"
+                        placeholder="Source"/>
+
+                <div className="input-group">
+                    <input 
+                        name="dvIngredientQuantity"
+                        type="text"
+                        className="form-control"
+                        placeholder="Quantity"/>
+
+                    <span className="input-group-addon">mg</span>
+
+                    <span className="input-group-btn">
+                        <button
+                            className="btn btn-primary"
+                            type="button">
+                            Add
+                        </button>
+                    </span>
+                </div>
             </div>
         )
     }

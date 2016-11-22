@@ -55,5 +55,22 @@ describe("DailyValueIngredientsInput", () => {
         ])
         expect(component.find("a").map(n => n.text())).toEqual(["x", "x"])
     })
+
+    test("has the correct input controls", () => {
+        const component = shallow(
+            <DailyValueIngredientsInput 
+                DailyValueIngredientsDataService={dailyValueIngredientsDataServiceMock}
+                value={[]}
+                onChange={onChangeHandler}
+                />
+        )
+
+        expect(component.find("input").length).toBe(2)
+        expect(component.find("Select").length).toBe(1)
+        expect(component.find("Select[name='dvIngredientName']").length).toBe(1)
+        expect(component.find("input[type='text'][name='dvIngredientSource']").length).toBe(1)
+        expect(component.find("input[type='text'][name='dvIngredientQuantity']").length).toBe(1)
+        expect(component.find("button").length).toBe(1)
+    })
 })
 
