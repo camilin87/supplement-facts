@@ -58,6 +58,11 @@
     white-space: nowrap
 }
 
+/** Read Select **/
+.Select-menu-outer {
+    z-index: 1000;
+}
+
 /**React Tags**/
 
 .ReactTags__tag {
