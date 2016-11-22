@@ -21,7 +21,6 @@ describe("DailyValueIngredientsInput", () => {
 
     beforeEach(() => {
         component = null
-
         latestBroadcastedState = null
         seededIngredients = [
             {name: "Vitamin A", unit: "IU", values: [1000, 2000, 3000, 4000]},
@@ -109,5 +108,55 @@ describe("DailyValueIngredientsInput", () => {
             {value: "Vitamin D", label: "Vitamin D"}
         ])
     })
+
+    test("broadcasts the ingredient creation", () => {
+        component = shallow(
+            <DailyValueIngredientsInput 
+                DailyValueIngredientsDataService={dailyValueIngredientsDataServiceMock}
+                value={[]}
+                onChange={onChangeHandler}
+                />
+        )
+
+        productNameSelect().simulate("change", {value: "Vitamin D"})
+        component.find("input[name='dvIngredientSource']").simulate("change", {target: {value: "BBBB"}})
+        component.find("input[name='dvIngredientQuantity']").simulate("change", {target: {value: "13"}})
+        component.find("button").simulate("click")
+
+        expect(latestBroadcastedState).toEqual([
+            {name: "Vitamin D", source: "BBBB", quantity: 13}
+        ])
+
+        expect(component.state().dvIngredientName).toBe("")
+        expect(component.state().dvIngredientSource).toBe("")
+        expect(component.state().dvIngredientQuantity).toBe("")
+    })
+
+    test("broadcasts the ingredient creation considering what was there before", () => {
+        var ingredients = [
+            {name: "Vitamin A", source: "AAAA", quantity: 13},
+            {name: "Vitamin C", source: "BBBB", quantity: 15}
+        ]
+
+        component = shallow(
+            <DailyValueIngredientsInput 
+                DailyValueIngredientsDataService={dailyValueIngredientsDataServiceMock}
+                value={ingredients}
+                onChange={onChangeHandler}
+                />
+        )
+
+        productNameSelect().simulate("change", {value: "Vitamin D"})
+        component.find("input[name='dvIngredientSource']").simulate("change", {target: {value: "DDDD"}})
+        component.find("input[name='dvIngredientQuantity']").simulate("change", {target: {value: "13"}})
+        component.find("button").simulate("click")
+
+        expect(latestBroadcastedState).toEqual([
+            {name: "Vitamin A", source: "AAAA", quantity: 13},
+            {name: "Vitamin C", source: "BBBB", quantity: 15},
+            {name: "Vitamin D", source: "DDDD", quantity: 13}
+        ])
+    })
+
 })
 
