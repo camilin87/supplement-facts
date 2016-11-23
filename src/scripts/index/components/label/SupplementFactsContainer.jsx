@@ -9,7 +9,7 @@ import DisplayOtherIngredients from './DisplayOtherIngredients.jsx'
 import BusinessInfo from './BusinessInfo.jsx'
 
 export default class SupplementFactsContainer extends React.Component {
-    initIngredients(arr){
+    _initIngredients(arr){
         arr = arr || []
 
         if (arr.length > 0){
@@ -37,10 +37,10 @@ export default class SupplementFactsContainer extends React.Component {
                     <IngredientsHeader addSymbol={vm.percentOfDailyValueAdditionalSymbol}/>
                     <hr className="slim"/>
 
-                    {this.initIngredients(vm.dailyValueIngredients).map(i => <SingleIngredient key={i.name} item={i}/>)}
+                    {this._initIngredients(vm.dailyValueIngredients).map(i => <SingleIngredient key={i.name} item={i}/>)}
 
                     <NonDailyValueSeparator ingredients={vm.nonDailyValueIngredients} />
-                    {this.initIngredients(vm.nonDailyValueIngredients).map(i => <SingleIngredient key={i.name} item={i}/>)}
+                    {this._initIngredients(vm.nonDailyValueIngredients).map(i => <SingleIngredient key={i.name} item={i}/>)}
                     <hr />
 
                     <DisplayDisclaimers info={vm.disclaimers} />
