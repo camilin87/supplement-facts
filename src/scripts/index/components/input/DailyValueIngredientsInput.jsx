@@ -1,6 +1,6 @@
 import React from 'react'
 import Select from 'react-select'
-import DailyValueIngredientsDataService from '../lib/DailyValueIngredientsDataService.jsx'
+import DailyValueIngredientsDataService from '../../lib/DailyValueIngredientsDataService.jsx'
 
 export default class DailyValueIngredientsInput extends React.Component {
     constructor(props){

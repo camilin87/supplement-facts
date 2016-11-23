@@ -1,6 +1,6 @@
 import React from 'react'
 import Select from 'react-select'
-import PresetsDataService from '../lib/PresetsDataService.jsx'
+import PresetsDataService from '../../lib/PresetsDataService.jsx'
 import OtherIngredientsInput from './OtherIngredientsInput.jsx'
 import NonDailyValueIngredientsInput from './NonDailyValueIngredientsInput.jsx'
 import DailyValueIngredientsInput from './DailyValueIngredientsInput.jsx'

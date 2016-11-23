@@ -1,6 +1,6 @@
 import React from 'react'
-import SupplementFactsContainer from './SupplementFactsContainer.jsx'
-import SupplementFactsInput from './SupplementFactsInput.jsx'
+import SupplementFactsContainer from './label/SupplementFactsContainer.jsx'
+import SupplementFactsInput from './input/SupplementFactsInput.jsx'
 import DataTransformer from '../lib/DataTransformer.jsx'
 
 export default class AppContainer extends React.Component {
