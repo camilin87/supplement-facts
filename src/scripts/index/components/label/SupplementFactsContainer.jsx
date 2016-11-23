@@ -3,6 +3,7 @@ import SupplementFactsHeader from './SupplementFactsHeader.jsx'
 import ServingSize from './ServingSize.jsx'
 import SingleIngredient from './SingleIngredient.jsx'
 import IngredientsHeader from './IngredientsHeader.jsx'
+import DailyValueSeparator from './DailyValueSeparator.jsx'
 import NonDailyValueSeparator from './NonDailyValueSeparator.jsx'
 import DisplayDisclaimers from './DisplayDisclaimers.jsx'
 import DisplayOtherIngredients from './DisplayOtherIngredients.jsx'
@@ -40,8 +41,8 @@ export default class SupplementFactsContainer extends React.Component {
                     <hr />
 
                     <IngredientsHeader addSymbol={vm.percentOfDailyValueAdditionalSymbol}/>
-                    <hr className="slim"/>
 
+                    <DailyValueSeparator ingredients={vm.dailyValueIngredients} />
                     {this._initIngredients(vm.dailyValueIngredients).map(i => <SingleIngredient key={i.name} item={i}/>)}
 
                     <NonDailyValueSeparator ingredients={vm.nonDailyValueIngredients} />
