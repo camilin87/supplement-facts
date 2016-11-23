@@ -47,7 +47,7 @@ test("displays the daily value ingredients", () => {
     )
 
     expect(component.find("SingleIngredient").nodes.map(n => n.key)).toEqual(["ingredient1", "ingredient2"])
-    expect(component.find("SingleIngredient").nodes.map(n => n.props.item.isLast)).toEqual([undefined, true])
+    expect(component.find("SingleIngredient").nodes.map(n => n.props.item.isLast)).toEqual([false, true])
 })
 
 test("displays the non daily value ingredients", () => {
@@ -63,7 +63,7 @@ test("displays the non daily value ingredients", () => {
     )
 
     expect(component.find("SingleIngredient").nodes.map(n => n.key)).toEqual(["ingredient1", "ingredient2"])
-    expect(component.find("SingleIngredient").nodes.map(n => n.props.item.isLast)).toEqual([undefined, true])
+    expect(component.find("SingleIngredient").nodes.map(n => n.props.item.isLast)).toEqual([false, true])
     expect(component.find("NonDailyValueSeparator").props().ingredients).toBe(vm.nonDailyValueIngredients)
 })
 

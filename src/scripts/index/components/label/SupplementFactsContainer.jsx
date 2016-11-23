@@ -10,13 +10,18 @@ import BusinessInfo from './BusinessInfo.jsx'
 
 export default class SupplementFactsContainer extends React.Component {
     _initIngredients(arr){
-        arr = arr || []
+        var arr = arr || []
+        var lastIndex = arr.length - 1
 
-        if (arr.length > 0){
-            arr[arr.length - 1].isLast = true
-        }
+        return arr.map((item, idx) => {
+            item.isLast = false
 
-        return arr
+            if (idx === lastIndex){
+                item.isLast = true
+            }
+
+            return item
+        })
     }
 
     render (){
