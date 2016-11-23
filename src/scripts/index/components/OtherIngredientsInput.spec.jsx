@@ -67,6 +67,16 @@ describe("OtherIngredientsInput", () => {
         expect(component.state().otherIngredientQuantity).toBe("")
     })
 
+     test("doesn't create anything if no input is given", () => {
+        const component = shallow(
+            <OtherIngredientsInput value={[]} onChange={onChangeHandler} />
+        )
+
+        component.find("button").simulate("click")
+
+        expect(latestBroadcastedState).toEqual(null)
+    })
+
     test("broadcasts the ingredient creation considering what was there before", () => {
         var ingredients = [
             {name: "hg", quantity: 10},

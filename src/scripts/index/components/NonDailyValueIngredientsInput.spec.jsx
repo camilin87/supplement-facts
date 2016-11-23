@@ -50,6 +50,16 @@ describe("NonDailyValueIngredientsInput", () => {
         expect(component.find("button").length).toBe(1)
     })
 
+    test("doesn't create anything if no input was given", () => {
+        const component = shallow(
+            <NonDailyValueIngredientsInput value={[]} onChange={onChangeHandler} />
+        )
+
+        component.find("button").simulate("click")
+
+        expect(latestBroadcastedState).toEqual(null)
+    })
+
     test("broadcasts the ingredient creation", () => {
         const component = shallow(
             <NonDailyValueIngredientsInput value={[]} onChange={onChangeHandler} />

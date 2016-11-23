@@ -58,6 +58,13 @@ export default class DailyValueIngredientsInput extends React.Component {
     }
 
     _handleAddButtonClick(){
+        if (!this.state.dvIngredientName ||
+            !this.state.dvIngredientSource ||
+            !this.state.dvIngredientQuantity){
+            return
+        }
+
+
         var newIngredient = {
             name: this.state.dvIngredientName,
             source: this.state.dvIngredientSource,

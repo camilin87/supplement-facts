@@ -31,6 +31,11 @@ export default class OtherIngredientsInput extends React.Component {
     }
 
     _handleAddButtonClick(){
+        if (!this.state.otherIngredientName ||
+            !this.state.otherIngredientQuantity){
+            return
+        }
+
         var newIngredient = {
             name: this.state.otherIngredientName,
             quantity: parseInt(this.state.otherIngredientQuantity || "0")

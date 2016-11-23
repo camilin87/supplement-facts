@@ -158,6 +158,20 @@ describe("DailyValueIngredientsInput", () => {
         expect(component.state().dvIngredientQuantity).toBe("")
     })
 
+    test("doesn't create anything if no input is given", () => {
+        component = shallow(
+            <DailyValueIngredientsInput 
+                DailyValueIngredientsDataService={dailyValueIngredientsDataServiceMock}
+                value={[]}
+                onChange={onChangeHandler}
+                />
+        )
+
+        component.find("button").simulate("click")
+
+        expect(latestBroadcastedState).toEqual(null)
+    })
+
     test("broadcasts the ingredient creation considering what was there before", () => {
         var ingredients = [
             {name: "Vitamin A", source: "AAAA", quantity: 13},

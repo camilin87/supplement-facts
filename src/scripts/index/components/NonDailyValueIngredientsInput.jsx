@@ -33,6 +33,13 @@ export default class NonDailyValueIngredientsInput extends React.Component {
     }
 
     _handleAddButtonClick(){
+        if (!this.state.nondvIngredientName ||
+            !this.state.nondvIngredientSource ||
+            !this.state.nondvIngredientQuantity ||
+            !this.state.nondvIngredientUnit){
+            return
+        }
+
         var newIngredient = {
             name: this.state.nondvIngredientName,
             source: this.state.nondvIngredientSource,
