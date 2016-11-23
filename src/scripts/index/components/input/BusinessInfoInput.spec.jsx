@@ -6,6 +6,9 @@ describe("BusinessInfoInput", () => {
     var component = null
     var latestBroadcastedState = null
     var propertyUnderTest = null
+    const defaultState = {
+        name: "pepin"
+    }
 
     function seedStatePropertyUnderTest(value) {
         var updatedState = {}
@@ -33,21 +36,14 @@ describe("BusinessInfoInput", () => {
         }
 
         component = shallow(
-            <BusinessInfoInput onChange={onChangeHandler} />
+            <BusinessInfoInput 
+                value={defaultState}
+                onChange={onChangeHandler} />
         )
     })
 
     test("default state", () => {
-        expect(component.state()).toEqual({
-            businessInfoDistributedByLabel: "Distributed by",
-            businessInfoBusinessName: "",
-            businessInfoStreetAddressLine1: "",
-            businessInfoStreetAddressLine2: "",
-            businessInfoCity: "",
-            businessInfoState: "",
-            businessInfoZipCode: "",
-            businessInfoPhone: ""
-        })
+        expect(component.state()).toEqual(defaultState)
     })
 
     describe("businessInfoDistributedByLabel", () => {

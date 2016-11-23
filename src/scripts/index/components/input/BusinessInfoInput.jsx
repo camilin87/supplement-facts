@@ -4,16 +4,7 @@ export default class BusinessInfoInput extends React.Component {
     constructor(props){
         super(props)
 
-        this.state = {
-            businessInfoDistributedByLabel: "Distributed by",
-            businessInfoBusinessName: "",
-            businessInfoStreetAddressLine1: "",
-            businessInfoStreetAddressLine2: "",
-            businessInfoCity: "",
-            businessInfoState: "",
-            businessInfoZipCode: "",
-            businessInfoPhone: ""
-        }
+        this.state = this.props.value || {}
 
         this._handleTextChanged = this._handleTextChanged.bind(this)
     }
