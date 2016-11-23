@@ -7,7 +7,14 @@ describe("BusinessInfoInput", () => {
     var latestBroadcastedState = null
     var propertyUnderTest = null
     const defaultState = {
-        name: "pepin"
+        businessInfoDistributedByLabel: "Distributed by",
+        businessInfoBusinessName: "",
+        businessInfoStreetAddressLine1: "",
+        businessInfoStreetAddressLine2: "",
+        businessInfoCity: "",
+        businessInfoState: "",
+        businessInfoZipCode: "",
+        businessInfoPhone: ""
     }
 
     function seedStatePropertyUnderTest(value) {
@@ -26,7 +33,10 @@ describe("BusinessInfoInput", () => {
         expect(controlUnderTest().props().value).toBe(expectation)
     }
     function expectStatePropertyUnderTestToBe(expectation){
-        expect(latestBroadcastedState[propertyUnderTest]).toBe(expectation)
+        var expectedState = Object.assign({}, defaultState)
+        expectedState[propertyUnderTest] = expectation
+
+        expect(latestBroadcastedState).toEqual(expectedState)
     }
 
     beforeEach(() => {
