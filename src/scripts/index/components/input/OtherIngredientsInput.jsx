@@ -1,4 +1,6 @@
 import React from 'react'
+import DeleteIngredientControl from './DeleteIngredientControl.jsx'
+import SingleOtherIngredientDetails from './SingleOtherIngredientDetails.jsx'
 
 export default class OtherIngredientsInput extends React.Component {
     constructor(props) {
@@ -72,13 +74,8 @@ export default class OtherIngredientsInput extends React.Component {
                 <ul className="list-group">
                     { 
                         ingredients.map((i, idx) => <li className="list-group-item" key={idx}>
-                              <span>
-                                {i.name} <span className="badge">{i.quantity} mg</span>
-                              </span>
-
-                              <span className="pull-right">
-                                <a href="#" onClick={this._handleDeleteLinkClick(i)}>x</a>
-                              </span>
+                              <SingleOtherIngredientDetails ingredient={i}/>
+                              <DeleteIngredientControl onClick={this._handleDeleteLinkClick(i)}/>
                             </li>
                         ) 
                     }
