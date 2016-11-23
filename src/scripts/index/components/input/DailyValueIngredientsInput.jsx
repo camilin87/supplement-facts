@@ -2,14 +2,13 @@ import React from 'react'
 import Select from 'react-select'
 import DeleteIngredientControl from './DeleteIngredientControl.jsx'
 import SingleDailyValueIngredientDetails from './SingleDailyValueIngredientDetails.jsx'
-import DailyValueIngredientsDataService from '../../lib/DailyValueIngredientsDataService.jsx'
 
 export default class DailyValueIngredientsInput extends React.Component {
     constructor(props){
         super(props)
 
         //**** dependencies ****
-        this._dailyValueIngredientsDataService = props["DailyValueIngredientsDataService"] || new DailyValueIngredientsDataService()
+        this._dailyValueIngredientsDataService = props.DailyValueIngredientsDataService
 
         //**** initial state ****
         this.state = this._getDefaultState()

@@ -14,6 +14,9 @@ describe("SupplementFactsInput", () => {
         readServingSizeInfoTypes: () => seededServingSizeInfoTypes,
         readAllergens: () => seededAllergens
     }
+    const dailyValueIngredientsDataServiceMock = {
+        name: "daily value ingredients data sevice mock"
+    }
 
     var latestBroadcastedState = null
     var onChangeHandler = change => {
@@ -41,7 +44,10 @@ describe("SupplementFactsInput", () => {
 
     test("default state", () => {
         component = shallow(
-            <SupplementFactsInput PresetsDataService={presetsDataServiceMock} onChange={onChangeHandler}/>
+            <SupplementFactsInput
+                PresetsDataService={presetsDataServiceMock}
+                DailyValueIngredientsDataService={dailyValueIngredientsDataServiceMock}
+                onChange={onChangeHandler}/>
         )
 
         expect(component.state()).toEqual({
@@ -89,7 +95,10 @@ describe("SupplementFactsInput", () => {
 
         beforeEach(() => {
             component = shallow(
-                <SupplementFactsInput PresetsDataService={presetsDataServiceMock} onChange={onChangeHandler}/>
+                <SupplementFactsInput
+                    PresetsDataService={presetsDataServiceMock}
+                    DailyValueIngredientsDataService={dailyValueIngredientsDataServiceMock}
+                    onChange={onChangeHandler}/>
             )
         })
 
@@ -302,7 +311,10 @@ describe("SupplementFactsInput", () => {
                 }
 
                 component = shallow(
-                    <SupplementFactsInput PresetsDataService={presetsDataServiceMock} onChange={onChangeHandler}/>
+                    <SupplementFactsInput
+                        PresetsDataService={presetsDataServiceMock}
+                        DailyValueIngredientsDataService={dailyValueIngredientsDataServiceMock}
+                        onChange={onChangeHandler}/>
                 )
             })
 
@@ -339,7 +351,10 @@ describe("SupplementFactsInput", () => {
                 ]
 
                 component = shallow(
-                    <SupplementFactsInput PresetsDataService={presetsDataServiceMock} onChange={onChangeHandler}/>
+                    <SupplementFactsInput
+                        PresetsDataService={presetsDataServiceMock}
+                        DailyValueIngredientsDataService={dailyValueIngredientsDataServiceMock}
+                        onChange={onChangeHandler}/>
                 )
             })
 
@@ -374,7 +389,10 @@ describe("SupplementFactsInput", () => {
                 propertyUnderTest = "allergens"
 
                 component = shallow(
-                    <SupplementFactsInput PresetsDataService={presetsDataServiceMock} onChange={onChangeHandler}/>
+                    <SupplementFactsInput
+                        PresetsDataService={presetsDataServiceMock}
+                        DailyValueIngredientsDataService={dailyValueIngredientsDataServiceMock}
+                        onChange={onChangeHandler}/>
                 )
             })
 
@@ -466,6 +484,10 @@ describe("SupplementFactsInput", () => {
 
         test("displays no dv ingredients by default", () => {
             expect(controlUnderTest().props().value).toEqual([])
+        })
+
+        test("injects the daily value ingredients data service", () => {
+            expect(controlUnderTest().props().DailyValueIngredientsDataService).toBe(dailyValueIngredientsDataServiceMock)
         })
 
         test("on change replaces the dv ingredients", () => {

@@ -1,6 +1,7 @@
 import React from 'react'
 import Select from 'react-select'
 import PresetsDataService from '../../lib/PresetsDataService.jsx'
+import DailyValueIngredientsDataService from '../../lib/DailyValueIngredientsDataService.jsx'
 import OtherIngredientsInput from './OtherIngredientsInput.jsx'
 import NonDailyValueIngredientsInput from './NonDailyValueIngredientsInput.jsx'
 import DailyValueIngredientsInput from './DailyValueIngredientsInput.jsx'
@@ -12,6 +13,7 @@ export default class SupplementFactsInput extends React.Component {
 
         //**** dependencies ****
         this._presetsDataService = props["PresetsDataService"] || new PresetsDataService()
+        this._dailyValueIngredientsDataService = props["DailyValueIngredientsDataService"] || new DailyValueIngredientsDataService()
 
         //**** initial state ****
         this.state = {
@@ -308,6 +310,7 @@ export default class SupplementFactsInput extends React.Component {
 
                     <DailyValueIngredientsInput 
                         name="dailyValueIngredients"
+                        DailyValueIngredientsDataService={this._dailyValueIngredientsDataService}
                         value={this.state.dailyValueIngredients}
                         onChange={this._handleIngredientsChange("dailyValueIngredients")}
                         />
