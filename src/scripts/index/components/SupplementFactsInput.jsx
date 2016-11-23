@@ -239,7 +239,9 @@ export default class SupplementFactsInput extends React.Component {
                         name="servingSizeInfoValue"
                         className="form-control"
                         placeholder="Value"
-                        type="text"
+                        type="number"
+                        min="0"
+                        step="1"
                         value={this.state.servingSizeInfoValue}
                         onChange={this._handleTextChanged("servingSizeInfoValue")} 
                         />
@@ -266,7 +268,9 @@ export default class SupplementFactsInput extends React.Component {
                         name="servingSizeInfoServingsPerContainer"
                         className="form-control"
                         placeholder="Servings per container"
-                        type="text"
+                        type="number"
+                        min="0"
+                        step="1"
                         value={this.state.servingSizeInfoServingsPerContainer}
                         onChange={this._handleTextChanged("servingSizeInfoServingsPerContainer")} 
                         />

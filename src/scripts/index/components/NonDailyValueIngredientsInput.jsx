@@ -108,7 +108,8 @@ export default class NonDailyValueIngredientsInput extends React.Component {
 
                     <input 
                         name="nondvIngredientQuantity"
-                        type="text"
+                        type="number"
+                        min="0"
                         className="form-control"
                         placeholder="Quantity"
                         value={this.state.nondvIngredientQuantity}

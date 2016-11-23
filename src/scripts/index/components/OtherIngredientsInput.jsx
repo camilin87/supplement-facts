@@ -92,7 +92,8 @@ export default class OtherIngredientsInput extends React.Component {
 
                   <input
                     name="otherIngredientQuantity"
-                    type="text"
+                    type="number"
+                    min="0"
                     className="form-control"
                     placeholder="Quantity"
                     value={this.state.otherIngredientQuantity}

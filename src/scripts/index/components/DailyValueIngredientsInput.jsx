@@ -126,7 +126,8 @@ export default class DailyValueIngredientsInput extends React.Component {
                 <div className="input-group">
                     <input 
                         name="dvIngredientQuantity"
-                        type="text"
+                        type="number"
+                        min="0"
                         className="form-control"
                         placeholder="Quantity"
                         value={this.state.dvIngredientQuantity}
