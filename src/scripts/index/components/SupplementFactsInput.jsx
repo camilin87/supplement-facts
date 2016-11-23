@@ -235,17 +235,19 @@ export default class SupplementFactsInput extends React.Component {
                         value={this.state.percentOfDailyValueAdditionalSymbol}
                         onChange={this._handleTextChanged("percentOfDailyValueAdditionalSymbol")} />
 
-                    <input 
-                        name="servingSizeInfoValue"
-                        className="form-control"
-                        placeholder="Value"
-                        type="number"
-                        min="0"
-                        step="1"
-                        value={this.state.servingSizeInfoValue}
-                        onChange={this._handleTextChanged("servingSizeInfoValue")} 
-                        />
-
+                    <div className="input-group">
+                        <span className="input-group-addon">Serving Size</span>
+                        <input 
+                            name="servingSizeInfoValue"
+                            className="form-control"
+                            placeholder="Value"
+                            type="number"
+                            min="0"
+                            step="1"
+                            value={this.state.servingSizeInfoValue}
+                            onChange={this._handleTextChanged("servingSizeInfoValue")} 
+                            />
+                    </div>
 
                     <Select 
                         name="servingSizeInfoType"
@@ -264,16 +266,19 @@ export default class SupplementFactsInput extends React.Component {
                         onChange={this._handleTextChanged("servingSizeInfoAdditionalComments")} 
                         />
 
-                    <input 
-                        name="servingSizeInfoServingsPerContainer"
-                        className="form-control"
-                        placeholder="Servings per container"
-                        type="number"
-                        min="0"
-                        step="1"
-                        value={this.state.servingSizeInfoServingsPerContainer}
-                        onChange={this._handleTextChanged("servingSizeInfoServingsPerContainer")} 
-                        />
+                    <div className="input-group">
+                        <span className="input-group-addon">Servings per Container</span>
+                        <input 
+                            name="servingSizeInfoServingsPerContainer"
+                            className="form-control"
+                            placeholder="Servings per container"
+                            type="number"
+                            min="0"
+                            step="1"
+                            value={this.state.servingSizeInfoServingsPerContainer}
+                            onChange={this._handleTextChanged("servingSizeInfoServingsPerContainer")} 
+                            />
+                    </div>
                   </div>
                 </div>
 
