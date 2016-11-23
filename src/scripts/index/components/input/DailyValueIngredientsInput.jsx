@@ -1,5 +1,7 @@
 import React from 'react'
 import Select from 'react-select'
+import DeleteIngredientControl from './DeleteIngredientControl.jsx'
+import SingleDailyValueIngredientDetails from './SingleDailyValueIngredientDetails.jsx'
 import DailyValueIngredientsDataService from '../../lib/DailyValueIngredientsDataService.jsx'
 
 export default class DailyValueIngredientsInput extends React.Component {
@@ -99,16 +101,10 @@ export default class DailyValueIngredientsInput extends React.Component {
                 <ul className="list-group">
                     { 
                         (this.props.value || []).map((i, idx) => <li className="list-group-item" key={idx}>
-                              <span>
-                                {i.name} {i.source} 
-                                <span className="badge">
-                                    {i.quantity} {this._getIngredientUnit(i.name)}
-                                </span>
-                              </span>
-
-                              <span className="pull-right">
-                                <a href="#" onClick={this._handleDeleteLinkClick(i)}>x</a>
-                              </span>
+                              <SingleDailyValueIngredientDetails
+                                DailyValueIngredientsDataService={this._dailyValueIngredientsDataService}
+                                ingredient={i} />
+                              <DeleteIngredientControl onClick={this._handleDeleteLinkClick(i)} />
                             </li>
                         ) 
                     }

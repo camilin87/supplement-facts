@@ -56,11 +56,12 @@ describe("DailyValueIngredientsInput", () => {
                 />
         )
 
-        expect(component.find("li").map(n => n.text().replace(/\s/g, ""))).toEqual([
-            "VitaminBAAAA14IUx",
-            "VitaminD15mgx"
+        expect(component.find("SingleDailyValueIngredientDetails").map(n => n.props().ingredient)).toEqual(ingredients)
+        expect(component.find("SingleDailyValueIngredientDetails").map(n => n.props().DailyValueIngredientsDataService)).toEqual([
+            dailyValueIngredientsDataServiceMock,
+            dailyValueIngredientsDataServiceMock
         ])
-        expect(component.find("a").map(n => n.text())).toEqual(["x", "x"])
+        expect(component.find("DeleteIngredientControl").length).toBe(2)
     })
 
     test("has the correct input controls", () => {
@@ -212,7 +213,7 @@ describe("DailyValueIngredientsInput", () => {
                 onChange={onChangeHandler}
                 />
         )
-        component.find("a").at(1).simulate("click")
+        component.find("DeleteIngredientControl").at(1).simulate("click")
 
         expect(latestBroadcastedState).toEqual([
             {name: "Vitamin A", source: "AAAA", quantity: 13},
