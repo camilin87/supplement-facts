@@ -42,9 +42,8 @@ describe("OtherIngredientsInput", () => {
             <OtherIngredientsInput value={[]} />
         )
 
-        expect(component.find("input[type='text']").length).toBe(2)
         expect(component.find("input[type='text'][name='otherIngredientName']").length).toBe(1)
-        expect(component.find("input[type='text'][name='otherIngredientQuantity']").length).toBe(1)
+        expect(component.find("input[type='number'][name='otherIngredientQuantity']").length).toBe(1)
         expect(component.find("button").length).toBe(1)
     })
 

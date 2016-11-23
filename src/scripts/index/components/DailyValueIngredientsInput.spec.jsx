@@ -76,7 +76,7 @@ describe("DailyValueIngredientsInput", () => {
         expect(component.find("Select").length).toBe(1)
         expect(component.find("Select[name='dvIngredientName']").length).toBe(1)
         expect(component.find("input[type='text'][name='dvIngredientSource']").length).toBe(1)
-        expect(component.find("input[type='text'][name='dvIngredientQuantity']").length).toBe(1)
+        expect(component.find("input[type='number'][name='dvIngredientQuantity']").length).toBe(1)
         expect(component.find("button").length).toBe(1)
     })
 
