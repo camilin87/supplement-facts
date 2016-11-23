@@ -30,11 +30,8 @@ describe("NonDailyValueIngredientsInput", () => {
             <NonDailyValueIngredientsInput value={ingredients} />
         )
 
-        expect(component.find("li").map(n => n.text().replace(/\s/g, ""))).toEqual([
-            "CalciumAAAA14mgx",
-            "Chlorine14mcgx"
-        ])
-        expect(component.find("a").map(n => n.text())).toEqual(["x", "x"])
+        expect(component.find("SingleNonDailyValueIngredientDetails").map(n => n.props().ingredient)).toEqual(ingredients)
+        expect(component.find("DeleteIngredientControl").length).toBe(2)
     })
 
     test("has the correct input controls", () => {
@@ -114,7 +111,7 @@ describe("NonDailyValueIngredientsInput", () => {
         const component = shallow(
             <NonDailyValueIngredientsInput value={ingredients} onChange={onChangeHandler} />
         )
-        component.find("a").at(1).simulate("click")
+        component.find("DeleteIngredientControl").at(1).simulate("click")
 
         expect(latestBroadcastedState).toEqual([
             {name: "hg", source: "AAAA", quantity: 13, unit: "mg"},

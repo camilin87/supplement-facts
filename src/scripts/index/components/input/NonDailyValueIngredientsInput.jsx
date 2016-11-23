@@ -1,4 +1,6 @@
 import React from 'react'
+import DeleteIngredientControl from './DeleteIngredientControl.jsx'
+import SingleNonDailyValueIngredientDetails from './SingleNonDailyValueIngredientDetails.jsx'
 
 export default class NonDailyValueIngredientsInput extends React.Component {
     constructor(props){
@@ -77,13 +79,8 @@ export default class NonDailyValueIngredientsInput extends React.Component {
                 <ul className="list-group">
                     { 
                         ingredients.map((i, idx) => <li className="list-group-item" key={idx}>
-                              <span>
-                                {i.name} {i.source} <span className="badge">{i.quantity} {i.unit}</span>
-                              </span>
-
-                              <span className="pull-right">
-                                <a href="#" onClick={this._handleDeleteLinkClick(i)}>x</a>
-                              </span>
+                              <SingleNonDailyValueIngredientDetails ingredient={i} />
+                              <DeleteIngredientControl onClick={this._handleDeleteLinkClick(i)}/>
                             </li>
                         ) 
                     }
