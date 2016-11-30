@@ -132,7 +132,7 @@ export default class SupplementFactsInput extends React.Component {
         }
 
         return (
-            <div>
+            <div className="noPrint">
                 <SupplementFactsPresets onChange={this._handleChange}/>
 
                 <div className="panel panel-default">
