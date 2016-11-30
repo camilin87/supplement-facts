@@ -1,3 +1,11 @@
 .noPrint {
     display:none;
 }
+
+@page {
+    margin: 0.5cm;
+}
+
+.label-container {
+    max-width: 50%;
+}
