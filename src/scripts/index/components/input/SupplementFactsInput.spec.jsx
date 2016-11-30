@@ -503,4 +503,56 @@ describe("SupplementFactsInput", () => {
             ])
         })
     })
+
+    describe("BusinessInfo", () => {
+        function controlUnderTest(){
+            return component.find(`BusinessInfoInput`)
+        }
+
+        test("Displays the default business info by default", () => {
+            expect(controlUnderTest().props().value).toEqual({
+                businessInfoDistributedByLabel: component.state().businessInfoDistributedByLabel,
+                businessInfoBusinessName: component.state().businessInfoBusinessName,
+                businessInfoStreetAddressLine1: component.state().businessInfoStreetAddressLine1,
+                businessInfoStreetAddressLine2: component.state().businessInfoStreetAddressLine2,
+                businessInfoCity: component.state().businessInfoCity,
+                businessInfoState: component.state().businessInfoState,
+                businessInfoZipCode: component.state().businessInfoZipCode,
+                businessInfoPhone: component.state().businessInfoPhone
+            })
+        })
+
+        test("on change replaces the broacasted property", () => {
+            controlUnderTest().simulate("change", {
+                businessInfoDistributedByLabel: "sold by",
+                businessInfoBusinessName: "tdd apps",
+                businessInfoStreetAddressLine1: "111 NW 1 st",
+                businessInfoStreetAddressLine2: "apt 1",
+                businessInfoCity: "miami",
+                businessInfoState: "fl",
+                businessInfoZipCode: "33333",
+                businessInfoPhone: "3053053055"
+            })
+
+            expect(latestBroadcastedState.businessInfoDistributedByLabel).toBe("sold by")
+            expect(latestBroadcastedState.businessInfoBusinessName).toBe("tdd apps")
+            expect(latestBroadcastedState.businessInfoStreetAddressLine1).toBe("111 NW 1 st")
+            expect(latestBroadcastedState.businessInfoStreetAddressLine2).toBe("apt 1")
+            expect(latestBroadcastedState.businessInfoCity).toBe("miami")
+            expect(latestBroadcastedState.businessInfoState).toBe("fl")
+            expect(latestBroadcastedState.businessInfoZipCode).toBe("33333")
+            expect(latestBroadcastedState.businessInfoPhone).toBe("3053053055")
+
+            expect(controlUnderTest().props().value).toEqual({
+                businessInfoDistributedByLabel: "sold by",
+                businessInfoBusinessName: "tdd apps",
+                businessInfoStreetAddressLine1: "111 NW 1 st",
+                businessInfoStreetAddressLine2: "apt 1",
+                businessInfoCity: "miami",
+                businessInfoState: "fl",
+                businessInfoZipCode: "33333",
+                businessInfoPhone: "3053053055"
+            })
+        })
+    })
 })

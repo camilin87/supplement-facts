@@ -5,6 +5,7 @@ import DailyValueIngredientsDataService from '../../lib/DailyValueIngredientsDat
 import OtherIngredientsInput from './OtherIngredientsInput.jsx'
 import NonDailyValueIngredientsInput from './NonDailyValueIngredientsInput.jsx'
 import DailyValueIngredientsInput from './DailyValueIngredientsInput.jsx'
+import BusinessInfoInput from './BusinessInfoInput.jsx'
 import SupplementFactsPresets from './SupplementFactsPresets.jsx'
 const ReactTags = require('react-tag-input').WithContext
 
@@ -120,6 +121,17 @@ export default class SupplementFactsInput extends React.Component {
     }
 
     render (){
+        var businessInfo = {
+            businessInfoDistributedByLabel: this.state.businessInfoDistributedByLabel,
+            businessInfoBusinessName: this.state.businessInfoBusinessName,
+            businessInfoStreetAddressLine1: this.state.businessInfoStreetAddressLine1,
+            businessInfoStreetAddressLine2: this.state.businessInfoStreetAddressLine2,
+            businessInfoCity: this.state.businessInfoCity,
+            businessInfoState: this.state.businessInfoState,
+            businessInfoZipCode: this.state.businessInfoZipCode,
+            businessInfoPhone: this.state.businessInfoPhone
+        }
+
         return (
             <div>
                 <SupplementFactsPresets onChange={this._handleChange}/>
@@ -344,6 +356,8 @@ export default class SupplementFactsInput extends React.Component {
 
                   </div>
                 </div>
+
+                <BusinessInfoInput value={businessInfo} onChange={this._handleChange}/>
             </div>
         )
     }
