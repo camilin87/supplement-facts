@@ -27,7 +27,7 @@ export default class AppContainer extends React.Component {
         return (
             <div className="container">
               <div className="row">
-                <div className="col-sm-6">
+                <div className="col-sm-6 noPrint">
                     <SupplementFactsInput onChange={this.handleSupplementFactsInput}/>
                 </div>
                 <div className="col-sm-6">
