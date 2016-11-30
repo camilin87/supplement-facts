@@ -165,6 +165,134 @@ describe("SupplementFactsInput", () => {
                 expectStatePropertyUnderTestToBe(11)
             })
         })
+
+        describe("businessInfoDistributedByLabel", () => {
+            beforeEach(() => {
+                propertyUnderTest = "businessInfoDistributedByLabel"
+            })
+
+            test("gets displayed", () => {
+                seedStatePropertyUnderTest("distributed by")
+                expectValueForControlUnderTestToBe("distributed by")
+            })
+
+            test("gets updated", () => {
+                triggerChangeForControlUnderTest("sold by")
+                expectStatePropertyUnderTestToBe("sold by")
+            })
+        })
+
+        describe("businessInfoBusinessName", () => {
+            beforeEach(() => {
+                propertyUnderTest = "businessInfoBusinessName"
+            })
+
+            test("gets displayed", () => {
+                seedStatePropertyUnderTest("tddapps")
+                expectValueForControlUnderTestToBe("tddapps")
+            })
+
+            test("gets updated", () => {
+                triggerChangeForControlUnderTest("tdd apps")
+                expectStatePropertyUnderTestToBe("tdd apps")
+            })
+        })
+
+        describe("businessInfoStreetAddressLine1", () => {
+            beforeEach(() => {
+                propertyUnderTest = "businessInfoStreetAddressLine1"
+            })
+
+            test("gets displayed", () => {
+                seedStatePropertyUnderTest("11 nw 1 st")
+                expectValueForControlUnderTestToBe("11 nw 1 st")
+            })
+
+            test("gets updated", () => {
+                triggerChangeForControlUnderTest("11 nw 2 st")
+                expectStatePropertyUnderTestToBe("11 nw 2 st")
+            })
+        })
+
+        describe("businessInfoStreetAddressLine2", () => {
+            beforeEach(() => {
+                propertyUnderTest = "businessInfoStreetAddressLine2"
+            })
+
+            test("gets displayed", () => {
+                seedStatePropertyUnderTest("apt 5")
+                expectValueForControlUnderTestToBe("apt 5")
+            })
+
+            test("gets updated", () => {
+                triggerChangeForControlUnderTest("apt 2")
+                expectStatePropertyUnderTestToBe("apt 2")
+            })
+        })
+
+        describe("businessInfoCity", () => {
+            beforeEach(() => {
+                propertyUnderTest = "businessInfoCity"
+            })
+
+            test("gets displayed", () => {
+                seedStatePropertyUnderTest("miami")
+                expectValueForControlUnderTestToBe("miami")
+            })
+
+            test("gets updated", () => {
+                triggerChangeForControlUnderTest("new york")
+                expectStatePropertyUnderTestToBe("new york")
+            })
+        })
+
+        describe("businessInfoState", () => {
+            beforeEach(() => {
+                propertyUnderTest = "businessInfoState"
+            })
+
+            test("gets displayed", () => {
+                seedStatePropertyUnderTest("fl")
+                expectValueForControlUnderTestToBe("fl")
+            })
+
+            test("gets updated", () => {
+                triggerChangeForControlUnderTest("ny")
+                expectStatePropertyUnderTestToBe("ny")
+            })
+        })
+
+        describe("businessInfoZipCode", () => {
+            beforeEach(() => {
+                propertyUnderTest = "businessInfoZipCode"
+            })
+
+            test("gets displayed", () => {
+                seedStatePropertyUnderTest("33333")
+                expectValueForControlUnderTestToBe("33333")
+            })
+
+            test("gets updated", () => {
+                triggerChangeForControlUnderTest("55555")
+                expectStatePropertyUnderTestToBe("55555")
+            })
+        })
+
+        describe("businessInfoPhone", () => {
+            beforeEach(() => {
+                propertyUnderTest = "businessInfoPhone"
+            })
+
+            test("gets displayed", () => {
+                seedStatePropertyUnderTest("555-555-5555")
+                expectValueForControlUnderTestToBe("555-555-5555")
+            })
+
+            test("gets updated", () => {
+                triggerChangeForControlUnderTest("1-800-555-5555")
+                expectStatePropertyUnderTestToBe("1-800-555-5555")
+            })
+        })
     })
 
     describe("Dropdowns", () => {
@@ -373,58 +501,6 @@ describe("SupplementFactsInput", () => {
             expect(controlUnderTest().props().value).toEqual([
                 {name: "Chlorine", source: "AAAA", quantity: 14}
             ])
-        })
-    })
-
-    describe("BusinessInfo", () => {
-        function controlUnderTest(){
-            return component.find(`BusinessInfoInput`)
-        }
-
-        test("Displays the default business info by default", () => {
-            expect(controlUnderTest().props().value.businessInfoDistributedByLabel).toEqual(component.state().businessInfoDistributedByLabel)
-            expect(controlUnderTest().props().value.businessInfoBusinessName).toEqual(component.state().businessInfoBusinessName)
-            expect(controlUnderTest().props().value.businessInfoStreetAddressLine1).toEqual(component.state().businessInfoStreetAddressLine1)
-            expect(controlUnderTest().props().value.businessInfoStreetAddressLine2).toEqual(component.state().businessInfoStreetAddressLine2)
-            expect(controlUnderTest().props().value.businessInfoCity).toEqual(component.state().businessInfoCity)
-            expect(controlUnderTest().props().value.businessInfoState).toEqual(component.state().businessInfoState)
-            expect(controlUnderTest().props().value.businessInfoZipCode).toEqual(component.state().businessInfoZipCode)
-            expect(controlUnderTest().props().value.businessInfoPhone).toEqual(component.state().businessInfoPhone)
-        })
-
-        test("on change replaces the broacasted property", () => {
-            controlUnderTest().simulate("change", { businessInfoDistributedByLabel: "sold by" })
-            expect(latestBroadcastedState.businessInfoDistributedByLabel).toBe("sold by")
-
-            controlUnderTest().simulate("change", {businessInfoBusinessName: "tdd apps" })
-            expect(latestBroadcastedState.businessInfoBusinessName).toBe("tdd apps")
-
-            controlUnderTest().simulate("change", {businessInfoStreetAddressLine1: "111 NW 1 st" })
-            expect(latestBroadcastedState.businessInfoStreetAddressLine1).toBe("111 NW 1 st")
-
-            controlUnderTest().simulate("change", {businessInfoStreetAddressLine2: "apt 1" })
-            expect(latestBroadcastedState.businessInfoStreetAddressLine2).toBe("apt 1")
-
-            controlUnderTest().simulate("change", {businessInfoCity: "miami" })
-            expect(latestBroadcastedState.businessInfoCity).toBe("miami")
-
-            controlUnderTest().simulate("change", {businessInfoState: "fl" })
-            expect(latestBroadcastedState.businessInfoState).toBe("fl")
-
-            controlUnderTest().simulate("change", {businessInfoZipCode: "33333" })
-            expect(latestBroadcastedState.businessInfoZipCode).toBe("33333")
-
-            controlUnderTest().simulate("change", {businessInfoPhone: "3053053055" })
-            expect(latestBroadcastedState.businessInfoPhone).toBe("3053053055")
-
-            expect(controlUnderTest().props().value.businessInfoDistributedByLabel).toEqual("sold by")
-            expect(controlUnderTest().props().value.businessInfoBusinessName).toEqual("tdd apps")
-            expect(controlUnderTest().props().value.businessInfoStreetAddressLine1).toEqual("111 NW 1 st")
-            expect(controlUnderTest().props().value.businessInfoStreetAddressLine2).toEqual("apt 1")
-            expect(controlUnderTest().props().value.businessInfoCity).toEqual("miami")
-            expect(controlUnderTest().props().value.businessInfoState).toEqual("fl")
-            expect(controlUnderTest().props().value.businessInfoZipCode).toEqual("33333")
-            expect(controlUnderTest().props().value.businessInfoPhone).toEqual("3053053055")
         })
     })
 })
