@@ -4,18 +4,7 @@ export default class BusinessInfoInput extends React.Component {
     constructor(props){
         super(props)
 
-        var value = this.props.value || {}
-
-        this.state = {
-            businessInfoDistributedByLabel: value.businessInfoDistributedByLabel || "Distributed by",
-            businessInfoBusinessName: value.businessInfoBusinessName || "",
-            businessInfoStreetAddressLine1: value.businessInfoStreetAddressLine1 || "",
-            businessInfoStreetAddressLine2: value.businessInfoStreetAddressLine2 || "",
-            businessInfoCity: value.businessInfoCity || "",
-            businessInfoState: value.businessInfoState || "",
-            businessInfoZipCode: value.businessInfoZipCode || "",
-            businessInfoPhone: value.businessInfoPhone || ""
-        }
+        this.state = this.props.value || {}
 
         this._handleTextChanged = this._handleTextChanged.bind(this)
     }
@@ -24,16 +13,7 @@ export default class BusinessInfoInput extends React.Component {
         var that = this
 
         return (event) => {
-            var stateChange = {
-                businessInfoDistributedByLabel: this.state.businessInfoDistributedByLabel,
-                businessInfoBusinessName: this.state.businessInfoBusinessName,
-                businessInfoStreetAddressLine1: this.state.businessInfoStreetAddressLine1,
-                businessInfoStreetAddressLine2: this.state.businessInfoStreetAddressLine2,
-                businessInfoCity: this.state.businessInfoCity,
-                businessInfoState: this.state.businessInfoState,
-                businessInfoZipCode: this.state.businessInfoZipCode,
-                businessInfoPhone: this.state.businessInfoPhone
-            }
+            var stateChange = {}
             stateChange[propertyName] = event.target.value
 
             if (that.props.onChange){
