@@ -31,5 +31,12 @@
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/FitText.js/1.2.0/jquery.fittext.min.js"></script>
     <script src="build/scripts/index.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        if (window.location.href.indexOf(`ni=true`) > 0){
+          $('.noPrint').hide();
+        }
+      });
+    </script>
   </body>
 </html>
