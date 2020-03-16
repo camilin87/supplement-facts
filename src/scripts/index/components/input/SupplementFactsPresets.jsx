@@ -97,8 +97,8 @@ export default class SupplementFactsPresets extends React.Component {
                 <h3 className="panel-title">Presets</h3>
               </div>
               <div className="panel-body">
-                <button type="button" className="btn btn-primary" onClick={this._displayLabel1}>Label 1</button>
-                <button type="button" className="btn btn-success" onClick={this._displayLabel2}>Label 2</button>
+                <button id="presetLabel1" type="button" className="btn btn-primary" onClick={this._displayLabel1}>Label 1</button>
+                <button id="presetLabel2" type="button" className="btn btn-success" onClick={this._displayLabel2}>Label 2</button>
               </div>
             </div>
         )

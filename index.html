@@ -31,5 +31,23 @@
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/FitText.js/1.2.0/jquery.fittext.min.js"></script>
     <script src="build/scripts/index.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        var allowedPresets = ["1", "2"];
+        var presetId = "";
+
+        allowedPresets.forEach(i => {
+          if (window.location.href.indexOf(`p=${i}`) > 0){
+            presetId = i;
+          }
+        });
+
+        if (presetId != ""){
+          console.log("presetId", presetId);
+          $(`#presetLabel${presetId}`).click();
+          $('.noPrint').hide();
+        }
+      });
+    </script>
   </body>
 </html>
